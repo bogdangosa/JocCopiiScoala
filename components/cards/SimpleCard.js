@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, Touchable, View } from 'react-native';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
-const SimpleCard = ({text,image,color})=>{
+const SimpleCard = ({text,image,color,onPress})=>{
 
     return(
-        <View style={[styles.SimpleCard,{borderColor:color}]}>
+        <Pressable style={[styles.SimpleCard,{borderColor:color}]} onPress={onPress}>
             <Text style={[styles.SimpleCardText,{color:color}]}>{text}</Text>
-        </View>
+        </Pressable>
     )
 }
 

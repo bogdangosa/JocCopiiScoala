@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import GameMenuScreen from './screens/GameMenuScreen';
 import HomeScreen from './screens/HomeScreen';
 
 const Stack = createNativeStackNavigator();
@@ -11,6 +12,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Smart Games" component={HomeScreen} options={{headerStyle: {backgroundColor: '#6C63FF',}, headerTintColor: '#fff', headerTitleAlign: 'center', headerTitleStyle: {fontSize: 30,}, }}/>
+        <Stack.Screen name="Games Menu" component={GameMenuScreen} options={{headerStyle: {backgroundColor: '#6C63FF',}, headerTintColor: '#fff', headerTitleAlign: 'center', headerTitleStyle: {fontSize: 30,}, }}/>
+      
       </Stack.Navigator>
     </NavigationContainer>
   );
