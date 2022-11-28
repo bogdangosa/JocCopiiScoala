@@ -10,7 +10,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Games" component={HomeScreen}/>
+        <Stack.Screen name="Smart Games" component={HomeScreen} options={{headerStyle: {backgroundColor: '#6C63FF',}, headerTintColor: '#fff', headerTitleAlign: 'center', headerTitleStyle: {fontSize: 30,}, }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
