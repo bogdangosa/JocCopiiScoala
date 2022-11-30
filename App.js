@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import GameMenuScreen from './screens/GameMenuScreen';
 import HomeScreen from './screens/HomeScreen';
+import GameScreen from './screens/GameScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,8 +12,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Smart Games" component={HomeScreen} options={{headerStyle: {backgroundColor: '#6C63FF',}, headerTintColor: '#fff', headerTitleAlign: 'center', headerTitleStyle: {fontSize: 30,}, }}/>
-        <Stack.Screen name="Games Menu" component={GameMenuScreen} options={{headerStyle: {backgroundColor: '#6C63FF',}, headerTintColor: '#fff', headerTitleAlign: 'center', headerTitleStyle: {fontSize: 30,}, }}/>
+        <Stack.Screen name="Smart Games" component={HomeScreen} options={styles.header}/>
+        <Stack.Screen name="Games Menu" component={GameMenuScreen} options={styles.header}/>
+        <Stack.Screen name="Game" component={GameScreen} options={styles.header}/>
       
       </Stack.Navigator>
     </NavigationContainer>
@@ -26,4 +28,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  header:{headerStyle: {backgroundColor: '#6C63FF',}, headerTintColor: '#fff', headerTitleAlign: 'center', headerTitleStyle: {fontSize: 30,}, },
 });

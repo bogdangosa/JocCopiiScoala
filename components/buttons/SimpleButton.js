@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
-const SimpleButton = ({ text, onPress }) => {
+const SimpleButton = ({ children, onPress }) => {
   return (
     <Pressable style={styles.SimpleButton} onPress={onPress}>
-      <Text style={styles.SimpleButtonText}>{text}</Text>
+      <Text style={styles.SimpleButtonText}>{children}</Text>
     </Pressable>
   );
 };
