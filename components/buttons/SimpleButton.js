@@ -3,7 +3,7 @@ import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
 const SimpleButton = ({ children, onPress, color }) => {
   return (
-    <Pressable style={styles.SimpleButton} backgroundColor={color} onPress={onPress}>
+    <Pressable style={[styles.SimpleButton,{backgroundColor:color}]} onPress={onPress}>
       <Text style={styles.SimpleButtonText}>{children}</Text>
     </Pressable>
   );

@@ -19,7 +19,7 @@ const GameScreen = ({route,navigation})=>{
             </View>
 
             <View style={styles.SimpleButtonContainer}>
-                <SimpleButton onPress={()=>navigation.navigate("Felicitari", { title: "Felicitari" })}>Verify</SimpleButton>
+                <SimpleButton  color="#6C63FF" onPress={()=>navigation.navigate("Felicitari", { title: "Felicitari" })}>Verify</SimpleButton>
             </View>
         </View>
     )
