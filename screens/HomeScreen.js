@@ -30,14 +30,13 @@ const HomeScreen = ({ navigation }) => {
           }}
           />
           <SimpleCard
-          text="Felicitari"
+          text="Test"
           color="#EA9F2F"
           image={require("../assets/Panda3.png")}
           onPress={() => {
             navigation.navigate("Felicitari", { title: "Felicitari" });
           }}
-          
-        />
+          />
       </View>
     </View>
   );
