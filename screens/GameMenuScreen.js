@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import SimpleCard from '../components/cards/SimpleCard';
 import RecunoastereGame from '../games/RecunoastereGame';
+import FelicitariPanda from '../screens/FelicitariPanda';
+
 
 const GameMenuScreen = ({route,navigation})=>{
 
