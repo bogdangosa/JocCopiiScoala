@@ -10,7 +10,7 @@ const FelicitariPanda = ({route,navigation}) => {
       <Text style={styles.ADouaLinieText}>Ai reusit</Text>
       <Image style={styles.image} source={require("../assets/PozaPandaFelicitari.png")}/>
       
-      <SimpleButton onPress={()=>navigation.pop(2)} color="#20D251">Continua!</SimpleButton>
+      <SimpleButton onPress={()=>navigation.pop(2)} color="#15B942">Continua!</SimpleButton>
       </ImageBackground>
     </View>
   );
@@ -19,7 +19,7 @@ const FelicitariPanda = ({route,navigation}) => {
 const styles = StyleSheet.create({
   container:{
     flex:1,   
-    backgroundColor:"#7fff00",
+    backgroundColor:"#2FEA63",
   },
 
   containerInterior:{
@@ -30,10 +30,12 @@ const styles = StyleSheet.create({
   
   PrimaLinieText:{
     fontSize:40,
+    color:"#fff",
   },
 
   ADouaLinieText:{
     fontSize:40,
+    color:"#fff",
   },
 
   image:{
