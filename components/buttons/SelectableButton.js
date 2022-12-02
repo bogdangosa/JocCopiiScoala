@@ -1,25 +1,34 @@
+import { useState } from "react";
 import { StyleSheet, Text, View, color,  backgroundColor } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
-const SimpleButton = ({ children, onPress }) => {
+const SelectableButton = ({ children, onPress, more_styles , button_state}) => {
+    
+    //const [ButtonState,setButtonState] = useState(false);    
+
   return (
-    <Pressable style={styles.SelectableButton} onPress={onPress}>
-      <Text style={styles.SelectableButton}>{children}</Text>
+    <Pressable style={button_state?[styles.SelectableButton,styles.SelectableButtonSelected,more_styles]:[styles.SelectableButton,more_styles]} onPress={()=>onPress()}>
+      <Text style={button_state?[styles.SelectableButtonText,{color:"#fff"}]:styles.SelectableButtonText}>{children}</Text>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-  SimpleButton: {
-    backgroundColor:"#362DD2",
+    SelectableButton: {
+    borderColor:"#6C63FF",
+    borderWidth:2,
     alignItems: "center",
     justifyContent: "center",
-    height: 50,
-    width: 120,
+    height:50,
+    width:50,
     borderRadius: 10,
   },
-  SimpleButtonText: {
-    color: "#fff",
+  SelectableButtonSelected:{
+    backgroundColor:"#6C63FF",
+    borderWidth:0,
+  },
+  SelectableButtonText: {
+    color: "#333",
     fontWeight: "bold",
     fontSize: 20,
   },
