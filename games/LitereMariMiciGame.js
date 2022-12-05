@@ -2,15 +2,69 @@ import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SelectableButton from "../components/buttons/SelectableButton";
 
-const LitereMariMiciGame = () => {
+const LitereMariMiciGame = ({onVerify}) => {
     const [ButtonValueMatrix,setButtonValueMatrix] = useState([]);
     const [ButtonState,setButtonState] = useState(false);
     const [Contor,setContor] = useState(0);
     
 
-    useEffect(()=>{
+    useEffect(()=>{//se apeleaza cand se creeaza jocul
         createMatrix();
     },[])
+
+    useEffect(()=>{//se apeleaza cand apesi butonul de verificare
+        Verify();
+    },[onVerify])
+
+    
+    const ResetWrongAnswers = (i1,j1,i2,j2) =>{
+        const newMatrix = [...ButtonValueMatrix];
+        newMatrix[i1][j1].state=false;
+        newMatrix[i2][j2].state=false;
+        setButtonValueMatrix(newMatrix);
+    }
+
+    const Verify = () =>{
+        let litera1=null,litera2=null;
+        let i1,i2,j1,j2;
+        ButtonValueMatrix.forEach((row,i) => {
+            row.forEach((button,j) => {
+                if(button.state==1){
+                    if(litera1==null){
+                        litera1=button.value;
+                        i1=i;
+                        j1=j;
+                    }
+                    else{
+                        litera2=button.value;
+                        i2=i;
+                        j2=j;
+                    }
+                }
+
+            });
+        });
+        if(litera1!=null && litera2!=null){
+            //console.log(litera1.toLowerCase() + litera2.toLowerCase());
+            if(litera1.toLowerCase()==litera2.toLowerCase()){
+                const newMatrix = [...ButtonValueMatrix];
+                newMatrix[i1][j1].state=2;
+                newMatrix[i2][j2].state=2;
+                setButtonValueMatrix(newMatrix);
+                setContor(0);
+            }
+            else{
+                const newMatrix = [...ButtonValueMatrix];
+                newMatrix[i1][j1].state=3;
+                newMatrix[i2][j2].state=3;
+                setButtonValueMatrix(newMatrix);
+                setContor(0);
+                setTimeout(()=>ResetWrongAnswers(i1,j1,i2,j2),700);
+            }
+
+        }
+    }
+
 
     const createMatrix = () =>{
         const characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -45,6 +99,7 @@ const LitereMariMiciGame = () => {
     }
 
     const ChangeState = (i,j) =>{
+        if(ButtonValueMatrix[i][j].state==2)return;
         if(Contor==2 && !ButtonValueMatrix[i][j].state)return;
         let newMatrix = [...ButtonValueMatrix];
         newMatrix[i][j].state=!newMatrix[i][j].state;
@@ -52,7 +107,7 @@ const LitereMariMiciGame = () => {
             setContor(Contor+1);
         else 
         setContor(Contor-1);
-        console.log(Contor);
+        //console.log(Contor);
         setButtonValueMatrix(newMatrix);
     }
 

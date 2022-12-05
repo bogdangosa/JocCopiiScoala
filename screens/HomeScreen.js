@@ -16,19 +16,22 @@ const HomeScreen = ({ navigation }) => {
         image: require("../assets/Panda6.png"),
         games: [
           {
-            name: "Animale",
-            color: "#EA9F2F",
-            game: <RecunoastereGame field="animal" />,
+            name:"Animale",
+            color:"#EA9F2F",
+            game:"Recunoastere",
+            field:"animal"
           },
           {
             name: "Fructe",
             color: "#6C63FF",
-            game: <RecunoastereGame field="fruct" />,
+            game:"Recunoastere",
+            field:"fruct"
           },
           {
             name: "Cifre",
             color: "#FF5151",
-            game: <RecunoastereGame field="cifra" />,
+            game:"Recunoastere",
+            field:"cifra"
           },
         ],
       },
@@ -40,12 +43,14 @@ const HomeScreen = ({ navigation }) => {
           {
             name: "Litere",
             color: "#EA9F2F",
-            game: <RecunoastereGame field="animal" />,
+            game:"Recunoastere",
+            field:"animal"
           },
           {
             name: "Cifre",
             color: "#FF5151",
-            game: <RecunoastereGame field="animal" />,
+            game:"Recunoastere",
+            field:"animal"
           },
         ],
       },
@@ -55,24 +60,20 @@ const HomeScreen = ({ navigation }) => {
         image: require("../assets/Panda3.png"),
         games: [
           {
-            name: "Vocale",
-            color: "#6C63FF",
-            game: <RecunoastereGame field="animal" />,
-          },
-          {
             name: "Perechi de litere",
             color: "#2FEA63",
-            game: <LitereMariMiciGame />,
+            game:"LitereMariMici",
           },
           {
             name: "Animalul",
             color: "#EA9F2F",
-            game: <RecunoastereGame field="animal" />,
+            game:"Recunoastere",
+            field:"animal"
           },
           {
             name: "Selectare vocale",
             color: "#ff0000",
-            game: <SelectareVocaleGame />,
+            game:"SelectareVocale",
           },
         ],
       },
