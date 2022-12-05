@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { useEffect, useState } from "react";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import SelectableButton from "../components/buttons/SelectableButton";
@@ -12,6 +12,7 @@ const RecunoastereGame = ({field}) => {
   return (
     <View style={styles.RecunoastereGame} >
       <Text style={styles.text}>Ce {field} este ?</Text>
+      <Image style={styles.imagine} source={require("../assets/lup.png")}/>
       <View style={styles.poz_butoane}>
       <SelectableButton button_state={butoane[0]} onPress={()=>setbutoane([true,false,false,false])} more_styles={styles.buton}>Cal</SelectableButton>
       <SelectableButton button_state={butoane[1]} onPress={()=>setbutoane([false,true,false,false])} more_styles={styles.buton}>Caine</SelectableButton>
@@ -28,6 +29,7 @@ const styles = StyleSheet.create({
   RecunoastereGame: {
     alignItems: "center",
     paddingTop: "20%",
+    marginBottom: 25,
   },
   text: {
     fontSize: 40,
@@ -40,6 +42,10 @@ const styles = StyleSheet.create({
   },
   poz_butoane: {
     flexDirection: "row",
+  },
+  imagine: {
+    marginTop: 30,
+    marginBottom: 30,
   },
 });
 
