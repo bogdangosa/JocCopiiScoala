@@ -31,7 +31,7 @@ export default function App() {
         <Stack.Screen
           name="Felicitari"
           component={FelicitariPanda}
-          options={styles.header}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>

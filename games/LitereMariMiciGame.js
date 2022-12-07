@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SelectableButton from "../components/buttons/SelectableButton";
 
-const LitereMariMiciGame = ({onVerify}) => {
+const LitereMariMiciGame = ({onVerify,onComplete}) => {
     const [ButtonValueMatrix,setButtonValueMatrix] = useState([]);
     const [ButtonState,setButtonState] = useState(false);
     const [Contor,setContor] = useState(0);
+    const [ContorRaspunsuriCorecte,setContorRaspunsuriCorecte] = useState(1);
     
 
     useEffect(()=>{//se apeleaza cand se creeaza jocul
@@ -51,6 +52,7 @@ const LitereMariMiciGame = ({onVerify}) => {
                 newMatrix[i1][j1].state=2;
                 newMatrix[i2][j2].state=2;
                 setButtonValueMatrix(newMatrix);
+                setContorRaspunsuriCorecte(contor=>contor+1);
                 setContor(0);
             }
             else{
@@ -63,6 +65,9 @@ const LitereMariMiciGame = ({onVerify}) => {
             }
 
         }
+        console.log(ContorRaspunsuriCorecte);
+        if(ContorRaspunsuriCorecte==8)
+            onComplete();
     }
 
 

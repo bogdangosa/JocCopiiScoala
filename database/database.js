@@ -1,26 +1,29 @@
 
-/*
-export const getDBConnection = async () => {
-    return openDatabase(    {
-        name:'MainDB',
-        location:'default',
-    }),
-    () => { },
-    error => {
-      console.log("ERROR: " + error);
-    }
-};
-
-export const createTable = async(db,tableName)=>{
-
-    const query = `CREATE TABLE IF NOT EXISTS ${tableName} (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,type TEXT);`;
-
-    console.log(    db.executeSql(query) );
-
+export const createTable = (db,tableName) =>{
+db.transaction(tx => {
+    console.log(tx);
+    tx.executeSql(
+    `CREATE TABLE IF NOT EXISTS ${tableName} (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,type TEXT)`, [],
+    (txObj, Results) => console.log('Table Created ',Results),
+    (txObj, error) => console.log('Error ', error))
+})
 }
 
-export const addItem = async(db,tableName,item)=>{
-    const query = `INSERT INTO TABLE ${tableName} (name, type) VALUES ( ${item.name}, ${item.type} )`;
+export const addItem = (db,tableName,item) =>{
+//console.log(item);
+db.transaction(tx => {
+    tx.executeSql(`INSERT INTO ${tableName} ( name , type ) values ( ? , ? )`, [ item.name , item.type ],      
+    (txObj, ResultsSet) => console.log('Results ', ResultsSet),
+    (txObj, error) => console.log('Error ', error))
+}) // end transaction
+}
 
-    return db.executeSql(query);
-}*/
+
+
+export const dropTable = (db,tableName) =>{
+    db.transaction(tx => {
+        tx.executeSql(`DROP TABLE ${tableName}`,[],
+        (txObj, Results) => console.log('Table Dropped ',Results),
+        (txObj, error) => console.log('Error ', error))
+    }) // end transaction
+}
