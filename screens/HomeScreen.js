@@ -1,85 +1,77 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import * as SQLite from 'expo-sqlite';
 import SimpleCard from "../components/cards/SimpleCard";
-import RecunoastereGame from "../games/RecunoastereGame";
-import LitereMariMiciGame from "../games/LitereMariMiciGame";
-import SelectareVocaleGame from "../games/SelectareVocaleGame";
+import SimpleButton from "../components/buttons/SimpleButton"
+import { inital_data } from "../database/initial_data";
+import { app_structure_data } from "../database/app_structure_data";
+
 
 const HomeScreen = ({ navigation }) => {
   const [GamesData, setGameData] = useState([]);
+  const [Data,setData] = useState(null);
+  const [Adding,setAdding] = useState(false);
+  const DatabaseName = "MainDatabase";
+  const tableName = "MainTable";
+
+  const db = SQLite.openDatabase(DatabaseName);
 
   useEffect(() => {
-    const gameData = [
-      {
-        title: "Recunoastere",
-        color: "#6C63FF",
-        image: require("../assets/Panda6.png"),
-        games: [
-          {
-            name:"Animale",
-            color:"#EA9F2F",
-            game:"Recunoastere",
-            field:"animal"
-          },
-          {
-            name: "Fructe",
-            color: "#6C63FF",
-            game:"Recunoastere",
-            field:"fruct"
-          },
-          {
-            name: "Cifre",
-            color: "#FF5151",
-            game:"Recunoastere",
-            field:"cifra"
-          },
-        ],
-      },
-      {
-        title: "Reordoneaza",
-        color: "#2FEA63",
-        image: require("../assets/Panda7.png"),
-        games: [
-          {
-            name: "Litere",
-            color: "#EA9F2F",
-            game:"Recunoastere",
-            field:"animal"
-          },
-          {
-            name: "Cifre",
-            color: "#FF5151",
-            game:"Recunoastere",
-            field:"animal"
-          },
-        ],
-      },
-      {
-        title: "Selecteaza",
-        color: "#EA9F2F",
-        image: require("../assets/Panda3.png"),
-        games: [
-          {
-            name: "Perechi de litere",
-            color: "#2FEA63",
-            game:"LitereMariMici",
-          },
-          {
-            name: "Animalul",
-            color: "#EA9F2F",
-            game:"Recunoastere",
-            field:"animal"
-          },
-          {
-            name: "Selectare vocale",
-            color: "#ff0000",
-            game:"SelectareVocale",
-          },
-        ],
-      },
-    ];
-    setGameData(gameData);
+    setGameData(app_structure_data);
+    createTable(tableName);
   }, []);
+
+  useEffect(()=>{
+    if(Data==null)
+      getAllItems(tableName);
+  },[Data])
+
+  const AddInitialData =()=>{
+    createTable(tableName);
+    inital_data.forEach(item=>{
+      console.log(item);
+      addItem(tableName,item);
+    })
+    getAllItems(tableName);
+  }
+
+  const createTable = (tableName) =>{
+    db.transaction(tx => {
+      console.log(tx);
+      tx.executeSql(
+        `CREATE TABLE IF NOT EXISTS ${tableName} (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,type TEXT)`, [],
+        (txObj, Results) => console.log('Table Created ',Results),
+        (txObj, error) => console.log('Error ', error))
+    })
+  }
+
+  const addItem = (tableName,item) =>{
+    //console.log(item);
+    db.transaction(tx => {
+      tx.executeSql(`INSERT INTO ${tableName} ( name , type ) values ( ? , ? )`, [ item.name , item.type ],      
+      (txObj, ResultsSet) => console.log('Results ', ResultsSet),
+      (txObj, error) => console.log('Error ', error))
+    }) // end transaction
+  }
+
+  const getAllItems = (tableName) =>{
+    db.transaction(tx => {
+      tx.executeSql(`SELECT * FROM ${tableName}`, null, 
+      (txObj, ResultsSet) => {setData(ResultsSet.rows._array);console.log(ResultsSet.rows._array);},
+      (txObj, error) => console.log('Error ', error)
+      );
+    }) // end transaction
+  }
+
+  const dropTable = (tableName) =>{
+    db.transaction(tx => {
+      tx.executeSql(`DROP TABLE ${tableName}`,[],
+      (txObj, Results) => console.log('Table Dropped ',Results),
+      (txObj, error) => console.log('Error ', error))
+    }) // end transaction
+  }
+
+
 
   return (
     <View style={styles.HomeScreen}>
@@ -99,6 +91,11 @@ const HomeScreen = ({ navigation }) => {
               }}
             />
           );
+        })}
+        <SimpleButton onPress={()=>AddInitialData()} color="#EA9F2F">Adauaga baza</SimpleButton>
+        <SimpleButton onPress={()=>{dropTable(tableName),setData([])}} color="#2FEA63">Sterge baza</SimpleButton>
+        {Data?.map(item=>{
+          return <Text>{item.name}</Text>
         })}
       </View>
     </View>
