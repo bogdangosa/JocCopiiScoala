@@ -2,9 +2,59 @@ import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SelectableButton from "../components/buttons/SelectableButton";
 
-const SelectareVocaleGame = () => {
+const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
   const [ArrayButoane, setArrayButoane] = useState([]);
   const [ButtonState, setButtonState] = useState(false);
+
+  useEffect(() => {
+    //se apeleaza cand apesi butonul de verificare
+    Verify();
+  }, [onVerify]);
+
+ 
+
+  function isVowel(x) {
+    var result;
+
+    result =
+      x == "A" ||
+      x == "E" ||
+      x == "I" ||
+      x == "O" ||
+      x == "U" ||
+      x == "a" ||
+      x == "e" ||
+      x == "i" ||
+      x == "o" ||
+      x == "u";
+    return result;
+  }
+
+  const Verify = () => {
+    let c=null;
+    
+    console.log(c);
+
+    for (let i = 0; i < ArrayButoane.length; i++) {
+      if(c == null)c=0;
+      if (isVowel(ArrayButoane[i].litera) && ArrayButoane[i].state == 1) ///ArrayButoane[i].state inseamna ca e apasat butonul
+          ArrayButoane[i].state = 2;
+      if (isVowel(ArrayButoane[i].litera) == false && ArrayButoane[i].state == 1){
+        ArrayButoane[i].state = 3;
+        c++;
+      }
+      if (ArrayButoane[i].state==0 && isVowel(ArrayButoane[i].litera)==true)
+        c++;
+
+      console.log(c);
+    }
+
+
+    if(c==0)
+    {
+      onComplete();                      ///daca jocul e gata apeleaza onComplete din GameScreen
+    }
+  };
 
   useEffect(() => {
     creareCuvant();

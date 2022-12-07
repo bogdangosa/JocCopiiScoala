@@ -17,11 +17,11 @@ const GameScreen = ({ route, navigation }) => {
     const SetareJoc = ()=>{
         switch(route.params.game){
             case "Recunoastere":
-                return <RecunoastereGame field="animal" onVerify={Verifica}/>;
+                return <RecunoastereGame field="animal" onVerify={Verifica} />;
             case "LitereMariMici":
                 return <LitereMariMiciGame onVerify={Verifica}/>
             case "SelectareVocale":
-                return <SelectareVocaleGame onVerify={Verifica}/>
+                return <SelectareVocaleGame onVerify={Verifica} onComplete={()=>rezultatCorect()}/>   ///cand jocul e gata (onComplete) apeleaza functia rezultatCorect
         }
 
     }
