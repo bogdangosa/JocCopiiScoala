@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import { useEffect, useState } from "react";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import SelectableButton from "../components/buttons/SelectableButton";
-
+import {colors} from "../themes/color";
 
 const RecunoastereGame = ({field}) => {
     const [butoane,setbutoane]=useState([false,false,false,false])

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import SimpleCard from "../components/cards/SimpleCard";
 import RecunoastereGame from "../games/RecunoastereGame";
 import FelicitariPanda from "../screens/FelicitariPanda";
+import {colors} from "../themes/color";
 
 const GameMenuScreen = ({ route, navigation }) => {
   const { title, games } = route.params;
@@ -37,7 +38,7 @@ const GameMenuScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
   },

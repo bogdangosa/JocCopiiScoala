@@ -5,6 +5,7 @@ import SimpleButton from "../components/buttons/SimpleButton";
 import LitereMariMiciGame from "../games/LitereMariMiciGame";
 import SelectareVocaleGame from "../games/SelectareVocaleGame";
 import RecunoastereGame from "../games/RecunoastereGame";
+import {colors} from "../themes/color";
 
 const GameScreen = ({ route, navigation }) => {
   const [Verifica,setVerifica] = useState(0);
@@ -36,7 +37,7 @@ const GameScreen = ({ route, navigation }) => {
 
       <View style={styles.SimpleButtonContainer}>
         <SimpleButton
-          color="#6C63FF"
+          color={colors.blue}
           onPress={() =>setVerifica(verifica=>verifica+1)
           }
         >

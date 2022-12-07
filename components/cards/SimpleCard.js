@@ -1,5 +1,6 @@
 import { StyleSheet, Text, Touchable, View, Image } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+import {colors} from "../../themes/color";
 
 const SimpleCard = ({ text, image, color, onPress }) => {
   return (
@@ -10,7 +11,7 @@ const SimpleCard = ({ text, image, color, onPress }) => {
       ]}
       onPress={onPress}
     >
-      <Text style={[styles.SimpleCardText, { color: "#fff" }]}>{text}</Text>
+      <Text style={[styles.SimpleCardText, { color: colors.white }]}>{text}</Text>
       <Image style={styles.SimpleCardImage} source={image} />
     </Pressable>
   );
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
   SimpleCardImage: {
     height: 80,
     width: 80,
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
   },
 });
 

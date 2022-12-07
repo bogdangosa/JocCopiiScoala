@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SelectableButton from "../components/buttons/SelectableButton";
+import {colors} from "../themes/color";
 
 const LitereMariMiciGame = ({onVerify}) => {
     const [ButtonValueMatrix,setButtonValueMatrix] = useState([]);
@@ -145,7 +146,7 @@ const styles = StyleSheet.create({
     },
     Cerinta:{
         width:"90%",
-        color:"#333",
+        color:colors.black,
         fontSize:25,
         textAlign:"center",
         marginBottom:40,
