@@ -6,7 +6,7 @@ import SimpleButton from "../components/buttons/SimpleButton"
 import { inital_data } from "../database/initial_data";
 import { app_structure_data } from "../database/app_structure_data";
 import { createTable, addItem, dropTable } from "../database/database";
-
+import {colors} from "../themes/color";
 
 const HomeScreen = ({ navigation }) => {
   const [GamesData, setGameData] = useState([]);
@@ -75,8 +75,8 @@ const HomeScreen = ({ navigation }) => {
             />
           );
         })}
-        <SimpleButton onPress={()=>AddInitialData()} color="#EA9F2F">Adauaga baza</SimpleButton>
-        <SimpleButton onPress={()=>{dropTable(db,tableName),setData([])}} color="#2FEA63">Sterge baza</SimpleButton>
+        <SimpleButton onPress={()=>AddInitialData()} color={colors.orange}>Adauaga baza</SimpleButton>
+        <SimpleButton onPress={()=>{dropTable(tableName),setData([])}} color={colors.green}>Sterge baza</SimpleButton>
         {Data?.map(item=>{
           return <Text>{item.name}</Text>
         })}
@@ -88,7 +88,7 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
   },

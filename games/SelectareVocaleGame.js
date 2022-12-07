@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { getInspectorDataForInstance } from "react-native/Libraries/Renderer/implementations/ReactNativeRenderer-dev";
 import SelectableButton from "../components/buttons/SelectableButton";
+import {colors} from "../themes/color";
+
 
 const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
   const [ArrayButoane, setArrayButoane] = useState([]);
@@ -106,7 +109,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 40,
-    color: "#333",
+    color: colors.black,
   },
   container: {
     flexDirection: "row",

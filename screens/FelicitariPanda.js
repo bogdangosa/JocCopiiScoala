@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
 import SimpleButton from "../components/buttons/SimpleButton";
+import {colors} from "../themes/color";
 
 const FelicitariPanda = ({ route, navigation }) => {
   return (
@@ -15,7 +16,7 @@ const FelicitariPanda = ({ route, navigation }) => {
           source={require("../assets/PozaPandaFelicitari.png")}
         />
 
-        <SimpleButton onPress={() => navigation.pop(2)} color="#15B942">
+        <SimpleButton onPress={() => navigation.pop(2)} color={colors.darkgreen}>
           Continua!
         </SimpleButton>
       </ImageBackground>
@@ -26,7 +27,7 @@ const FelicitariPanda = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#2FEA63",
+    backgroundColor: colors.green,
     justifyContent: "center",
   },
 
@@ -38,12 +39,12 @@ const styles = StyleSheet.create({
 
   PrimaLinieText: {
     fontSize: 40,
-    color: "#fff",
+    color: colors.white,
   },
 
   ADouaLinieText: {
     fontSize: 40,
-    color: "#fff",
+    color: colors.white,
   },
 
   image: {},

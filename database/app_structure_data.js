@@ -1,24 +1,26 @@
+import {colors} from "../themes/color";
+
 export const app_structure_data = [
     {
       title: "Recunoastere",
-      color: "#6C63FF",
+      color: colors.red,
       image: require("../assets/Panda6.png"),
       games: [
         {
           name:"Animale",
-          color:"#EA9F2F",
+          color:colors.red,
           game:"Recunoastere",
           field:"animal"
         },
         {
           name: "Fructe",
-          color: "#6C63FF",
+          color: colors.green,
           game:"Recunoastere",
           field:"fruct"
         },
         {
           name: "Cifre",
-          color: "#FF5151",
+          color: colors.orange,
           game:"Recunoastere",
           field:"cifra"
         },
@@ -26,18 +28,18 @@ export const app_structure_data = [
     },
     {
       title: "Reordoneaza",
-      color: "#2FEA63",
+      color: colors.green,
       image: require("../assets/Panda7.png"),
       games: [
         {
           name: "Litere",
-          color: "#EA9F2F",
+          color: colors.red,
           game:"Recunoastere",
           field:"animal"
         },
         {
           name: "Cifre",
-          color: "#FF5151",
+          color: colors.green,
           game:"Recunoastere",
           field:"animal"
         },
@@ -45,23 +47,23 @@ export const app_structure_data = [
     },
     {
       title: "Selecteaza",
-      color: "#EA9F2F",
+      color: colors.orange,
       image: require("../assets/Panda3.png"),
       games: [
         {
           name: "Perechi de litere",
-          color: "#2FEA63",
+          color: colors.red,
           game:"LitereMariMici",
         },
         {
           name: "Animalul",
-          color: "#EA9F2F",
+          color: colors.green,
           game:"Recunoastere",
           field:"animal"
         },
         {
           name: "Selectare vocale",
-          color: "#ff0000",
+          color: colors.orange,
           game:"SelectareVocale",
         },
       ],

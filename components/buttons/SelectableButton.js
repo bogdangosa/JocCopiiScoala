@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, Text, View, color,  backgroundColor } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+import { colors } from "../../themes/color";
 
 const SelectableButton = ({ children, onPress, more_styles , button_state}) => {
     
@@ -16,7 +17,7 @@ const SelectableButton = ({ children, onPress, more_styles , button_state}) => {
 
 const styles = StyleSheet.create({
     SelectableButton: {
-    borderColor:"#6C63FF",
+    borderColor:colors.blue,
     borderWidth:2,
     alignItems: "center",
     justifyContent: "center",
@@ -25,21 +26,21 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   SelectableButtonWrong:{
-    borderColor:"#EAB62F",
-    backgroundColor:"#EAB62F",    
+    borderColor:colors.red,
+    backgroundColor:colors.red,    
     borderWidth:0,
   },
   SelectableButtonCorrect:{
-    borderColor:"#2FEA63",
-    backgroundColor:"#2FEA63",    
+    borderColor:colors.green,
+    backgroundColor:colors.green,    
     borderWidth:0,
   },
   SelectableButtonSelected:{
-    backgroundColor:"#6C63FF",
+    backgroundColor:colors.blue,
     borderWidth:0,
   },
   SelectableButtonText: {
-    color: "#333",
+    color: colors.black,
     fontWeight: "bold",
     fontSize: 20,
   },

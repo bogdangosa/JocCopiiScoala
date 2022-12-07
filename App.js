@@ -6,6 +6,7 @@ import GameMenuScreen from "./screens/GameMenuScreen";
 import HomeScreen from "./screens/HomeScreen";
 import GameScreen from "./screens/GameScreen";
 import FelicitariPanda from "./screens/FelicitariPanda";
+import {colors} from "./themes/color";
 
 const Stack = createNativeStackNavigator();
 
@@ -41,13 +42,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
   },
   header: {
-    headerStyle: { backgroundColor: "#6C63FF" },
-    headerTintColor: "#fff",
+    headerStyle: { backgroundColor: colors.blue },
+    headerTintColor: colors.white,
     headerTitleAlign: "center",
     headerTitleStyle: { fontSize: 30 },
   },
