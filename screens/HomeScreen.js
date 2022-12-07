@@ -5,12 +5,12 @@ import SimpleCard from "../components/cards/SimpleCard";
 import SimpleButton from "../components/buttons/SimpleButton"
 import { inital_data } from "../database/initial_data";
 import { app_structure_data } from "../database/app_structure_data";
+import { createTable, addItem, dropTable } from "../database/database";
 import {colors} from "../themes/color";
 
 const HomeScreen = ({ navigation }) => {
   const [GamesData, setGameData] = useState([]);
   const [Data,setData] = useState(null);
-  const [Adding,setAdding] = useState(false);
   const DatabaseName = "MainDatabase";
   const tableName = "MainTable";
 
@@ -18,7 +18,7 @@ const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     setGameData(app_structure_data);
-    createTable(tableName);
+    createTable(db,tableName);
   }, []);
 
   useEffect(()=>{
@@ -27,30 +27,20 @@ const HomeScreen = ({ navigation }) => {
   },[Data])
 
   const AddInitialData =()=>{
-    createTable(tableName);
+    createTable(db,tableName);
     inital_data.forEach(item=>{
       console.log(item);
-      addItem(tableName,item);
+      addItem(db,tableName,item);
     })
-    getAllItems(tableName);
+  getAllItems(tableName)
   }
 
-  const createTable = (tableName) =>{
+  const getItemByType = () =>{
     db.transaction(tx => {
-      console.log(tx);
-      tx.executeSql(
-        `CREATE TABLE IF NOT EXISTS ${tableName} (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,type TEXT)`, [],
-        (txObj, Results) => console.log('Table Created ',Results),
-        (txObj, error) => console.log('Error ', error))
-    })
-  }
-
-  const addItem = (tableName,item) =>{
-    //console.log(item);
-    db.transaction(tx => {
-      tx.executeSql(`INSERT INTO ${tableName} ( name , type ) values ( ? , ? )`, [ item.name , item.type ],      
-      (txObj, ResultsSet) => console.log('Results ', ResultsSet),
-      (txObj, error) => console.log('Error ', error))
+      tx.executeSql(`SELECT * FROM ${tableName}`, null, 
+      (txObj, ResultsSet) => {setData(ResultsSet.rows._array);console.log(ResultsSet.rows._array);},
+      (txObj, error) => console.log('Error ', error)
+      );
     }) // end transaction
   }
 
@@ -63,13 +53,6 @@ const HomeScreen = ({ navigation }) => {
     }) // end transaction
   }
 
-  const dropTable = (tableName) =>{
-    db.transaction(tx => {
-      tx.executeSql(`DROP TABLE ${tableName}`,[],
-      (txObj, Results) => console.log('Table Dropped ',Results),
-      (txObj, error) => console.log('Error ', error))
-    }) // end transaction
-  }
 
 
 

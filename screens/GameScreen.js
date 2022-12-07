@@ -20,7 +20,7 @@ const GameScreen = ({ route, navigation }) => {
             case "Recunoastere":
                 return <RecunoastereGame field="animal" onVerify={Verifica} />;
             case "LitereMariMici":
-                return <LitereMariMiciGame onVerify={Verifica}/>
+                return <LitereMariMiciGame onVerify={Verifica} onComplete={()=>rezultatCorect()}/>
             case "SelectareVocale":
                 return <SelectareVocaleGame onVerify={Verifica} onComplete={()=>rezultatCorect()}/>   ///cand jocul e gata (onComplete) apeleaza functia rezultatCorect
         }
