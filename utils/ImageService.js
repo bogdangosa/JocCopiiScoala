@@ -20,6 +20,22 @@
         name: 'lup.png',
         image: require('../assets/lup.png'),
       },
+      {
+        name: 'caine.png',
+        image: require('../assets/caine.png'),
+      },
+      {
+        name: 'pisica.png',
+        image: require('../assets/pisica.png'),
+      },
+      {
+        name: 'vulpe.png',
+        image: require('../assets/vulpe.png'),
+      },
+      {
+        name: 'vaca.png',
+        image: require('../assets/vaca.png'),
+      },
     ];
     static GetImage = (name) => {
       const found = ImageService.images.find(e => e.name === name);
