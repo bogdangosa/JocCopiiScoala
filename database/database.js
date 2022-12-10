@@ -3,7 +3,7 @@ export const createTable = (db,tableName) =>{
 db.transaction(tx => {
     console.log(tx);
     tx.executeSql(
-    `CREATE TABLE IF NOT EXISTS ${tableName} (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,type TEXT)`, [],
+    `CREATE TABLE IF NOT EXISTS ${tableName} (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT , type TEXT ,image TEXT )`, [],
     (txObj, Results) => console.log('Table Created ',Results),
     (txObj, error) => console.log('Error ', error))
 })
@@ -12,13 +12,11 @@ db.transaction(tx => {
 export const addItem = (db,tableName,item) =>{
 //console.log(item);
 db.transaction(tx => {
-    tx.executeSql(`INSERT INTO ${tableName} ( name , type ) values ( ? , ? )`, [ item.name , item.type ],      
+    tx.executeSql(`INSERT INTO ${tableName} ( name , type , image) values ( ? , ? , ? )`, [ item.name , item.type , item.image ],      
     (txObj, ResultsSet) => console.log('Results ', ResultsSet),
     (txObj, error) => console.log('Error ', error))
 }) // end transaction
 }
-
-
 
 export const dropTable = (db,tableName) =>{
     db.transaction(tx => {

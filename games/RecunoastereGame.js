@@ -4,11 +4,12 @@ import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import SelectableButton from "../components/buttons/SelectableButton";
 import {colors} from "../themes/color";
 import * as SQLite from 'expo-sqlite';
+import { ImageService } from "../utils/ImageService";
 
 
 const RecunoastereGame = ({field, onVerify}) => {
     const [butoane,setbutoane]=useState([false,false,false,false])
-    const [Variante,setVariante]=useState(["Cal","Câine","Lup","Vaca"])
+    const [Variante,setVariante]=useState(null)
     const DatabaseName = "MainDatabase";
     const tableName = "MainTable";
     const db = SQLite.openDatabase(DatabaseName);
@@ -36,10 +37,15 @@ const RecunoastereGame = ({field, onVerify}) => {
       
     }
 
+    if(Variante==null)
+      return <Text>Loading</Text>
+  
+    const GameImage = ImageService.GetImage(Variante[0].image);
+
   return (
     <View style={styles.RecunoastereGame} >
       <Text style={styles.text}>Ce {field} este ?</Text>
-      <Image style={styles.imagine} source={require("../assets/lup.png")}/>
+      <Image style={styles.imagine} source={GameImage}></Image>
       <View style={styles.poz_butoane}>
       <SelectableButton button_state={butoane[0]} onPress={()=>setbutoane([true,false,false,false])} more_styles={styles.buton}>{Variante[0].name}</SelectableButton>
       <SelectableButton button_state={butoane[1]} onPress={()=>setbutoane([false,true,false,false])} more_styles={styles.buton}>{Variante[1].name}</SelectableButton>

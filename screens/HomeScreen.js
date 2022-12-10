@@ -76,9 +76,9 @@ const HomeScreen = ({ navigation }) => {
           );
         })}
         <SimpleButton onPress={()=>AddInitialData()} color={colors.orange}>Adauaga baza</SimpleButton>
-        <SimpleButton onPress={()=>{dropTable(tableName),setData([])}} color={colors.green}>Sterge baza</SimpleButton>
+        <SimpleButton onPress={()=>{dropTable(db,tableName),setData([])}} color={colors.green}>Sterge baza</SimpleButton>
         {Data?.map(item=>{
-          return <Text>{item.name}</Text>
+          return <Text>{item.name+' si ' +item.image}</Text>
         })}
       </View>
     </View>
