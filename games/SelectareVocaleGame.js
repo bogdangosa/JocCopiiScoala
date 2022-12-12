@@ -38,19 +38,25 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
     
     console.log(c);
 
-    for (let i = 0; i < ArrayButoane.length; i++) {
+    const ArrayButoaneCopie = [...ArrayButoane];
+
+    for (let i = 0; i < ArrayButoaneCopie.length; i++) {
       if(c == null)c=0;
-      if (isVowel(ArrayButoane[i].litera) && ArrayButoane[i].state == 1) ///ArrayButoane[i].state inseamna ca e apasat butonul
-          ArrayButoane[i].state = 2;
-      if (isVowel(ArrayButoane[i].litera) == false && ArrayButoane[i].state == 1){
-        ArrayButoane[i].state = 3;
+      if (isVowel(ArrayButoaneCopie[i].litera) && ArrayButoaneCopie[i].state == 1) ///ArrayButoane[i].state inseamna ca e apasat butonul
+          ArrayButoaneCopie[i].state = 2;
+      if (isVowel(ArrayButoaneCopie[i].litera) == false && ArrayButoaneCopie[i].state == 1){
+        ArrayButoaneCopie[i].state = 3;
         c++;
       }
-      if (ArrayButoane[i].state==0 && isVowel(ArrayButoane[i].litera)==true)
+      if (ArrayButoaneCopie[i].state==0 && isVowel(ArrayButoaneCopie[i].litera)==true )
+        c++;
+      if (ArrayButoaneCopie[i].state==3 && isVowel(ArrayButoaneCopie[i].litera)==false )
         c++;
 
       console.log(c);
     }
+
+    setArrayButoane(ArrayButoaneCopie);
 
 
     if(c==0)
@@ -93,7 +99,7 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
               onPress={() => ApasareButon(index)}
             >
               {button.litera}
-            </SelectableButton> //e o functie pentru fiecare element din vector care trebuie sareturneze cv
+            </SelectableButton> //e o functie pentru fiecare element din vector care trebuie sa returneze cv
           );
         })}
       </View>
