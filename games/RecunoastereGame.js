@@ -7,13 +7,15 @@ import * as SQLite from 'expo-sqlite';
 import { ImageService } from "../utils/ImageService";
 
 
-const RecunoastereGame = ({field, onVerify}) => {
+const RecunoastereGame = ({field, onVerify,onComplete}) => {
     const [butoane,setbutoane]=useState([false,false,false,false])
     const [Variante,setVariante]=useState(null)
     const DatabaseName = "MainDatabase";
     const tableName = "MainTable";
-    const db = SQLite.openDatabase(DatabaseName);
-    
+    const db = SQLite.openDatabase(DatabaseName);Solution
+    const [Solution,setSolution]=useState(0);
+
+
     useEffect(() => {
       //se apeleaza cand apesi butonul de verificare
       Verify();
@@ -21,8 +23,7 @@ const RecunoastereGame = ({field, onVerify}) => {
 
     useEffect (()=>{
       getVarinte();
-      var Solution;
-      Solution="Lup";
+      setSolution(Math.floor(Math.random() * 4) + 1);
     },[]);
 
     const getVarinte = () =>{
@@ -33,14 +34,31 @@ const RecunoastereGame = ({field, onVerify}) => {
         );
       }) // end transaction
     }
+
     const Verify=()=>{
-      
+      if(Variante==null)
+        return;
+      let ArrayButoane = [...butoane];
+      for (let i=0;i<=3;i++)
+      {
+        if (i==Solution){
+          if (ArrayButoane[i]==1){
+            ArrayButoane[i]=2;
+            onComplete();
+          }
+        }
+        else if (ArrayButoane[i]==1)
+          ArrayButoane[i]=3;
+        
+      }
+      console.log(ArrayButoane);
+      setbutoane(ArrayButoane);
     }
 
     if(Variante==null)
       return <Text>Loading</Text>
   
-    const GameImage = ImageService.GetImage(Variante[0].image);
+    const GameImage = ImageService.GetImage(Variante[Solution].image);
 
   return (
     <View style={styles.RecunoastereGame} >

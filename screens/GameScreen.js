@@ -18,7 +18,7 @@ const GameScreen = ({ route, navigation }) => {
     const SetareJoc = ()=>{
         switch(route.params.game){
             case "Recunoastere":
-                return <RecunoastereGame field="animal" onVerify={Verifica} />;
+                return <RecunoastereGame field="animal" onVerify={Verifica} onComplete={()=>rezultatCorect()}/>;
             case "LitereMariMici":
                 return <LitereMariMiciGame onVerify={Verifica} onComplete={()=>rezultatCorect()}/>
             case "SelectareVocale":
