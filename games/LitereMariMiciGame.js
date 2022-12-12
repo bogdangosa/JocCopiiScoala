@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SelectableButton from "../components/buttons/SelectableButton";
 import {colors} from "../themes/color";
+import useSound from "../hooks/useSound";
 
 const LitereMariMiciGame = ({onVerify,onComplete}) => {
     const [ButtonValueMatrix,setButtonValueMatrix] = useState([]);
@@ -9,6 +10,7 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
     const [Contor,setContor] = useState(0);
     const [ContorRaspunsuriCorecte,setContorRaspunsuriCorecte] = useState(1);
     
+    const playSound = useSound();
 
     useEffect(()=>{//se apeleaza cand se creeaza jocul
         createMatrix();
@@ -55,6 +57,8 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
                 setButtonValueMatrix(newMatrix);
                 setContorRaspunsuriCorecte(contor=>contor+1);
                 setContor(0);
+                playSound();
+                
             }
             else{
                 const newMatrix = [...ButtonValueMatrix];

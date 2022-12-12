@@ -14,7 +14,7 @@ export default function Sunet (onPress) {
 
   return (
     <View>
-      <Pressable  onPress={()=>playSound(require('../sounds/corect_sound.mp3'))}>
+      <Pressable  onPress={()=>playSound()}>
         <Text >Sunet</Text>
       </Pressable>
     </View>
