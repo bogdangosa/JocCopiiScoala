@@ -57,7 +57,7 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
                 setButtonValueMatrix(newMatrix);
                 setContorRaspunsuriCorecte(contor=>contor+1);
                 setContor(0);
-                playSound();
+                playSound("corect");
                 
             }
             else{
@@ -67,11 +67,12 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
                 setButtonValueMatrix(newMatrix);
                 setContor(0);
                 setTimeout(()=>ResetWrongAnswers(i1,j1,i2,j2),700);
+                playSound("wrong");
             }
 
         }
         console.log(ContorRaspunsuriCorecte);
-        if(ContorRaspunsuriCorecte==8)
+        if(ContorRaspunsuriCorecte==9)
             onComplete();
     }
 

@@ -5,16 +5,19 @@ import SelectableButton from "../components/buttons/SelectableButton";
 import {colors} from "../themes/color";
 import * as SQLite from 'expo-sqlite';
 import { ImageService } from "../utils/ImageService";
+import useSound from "../hooks/useSound";
 
 
 const RecunoastereGame = ({field, onVerify,onComplete}) => {
     const [butoane,setbutoane]=useState([false,false,false,false])
     const [Variante,setVariante]=useState(null)
+    const [GameImage,setGameImage] = useState(null);
     const DatabaseName = "MainDatabase";
     const tableName = "MainTable";
     const db = SQLite.openDatabase(DatabaseName);Solution
     const [Solution,setSolution]=useState(0);
 
+    const playSound = useSound();
 
     useEffect(() => {
       //se apeleaza cand apesi butonul de verificare
@@ -23,16 +26,23 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
 
     useEffect (()=>{
       getVarinte();
-      setSolution(Math.floor(Math.random() * 4) + 1);
     },[]);
 
     const getVarinte = () =>{
       db.transaction(tx => {
         tx.executeSql(`SELECT * FROM ${tableName} ORDER BY random() LIMIT 4`, null, 
-        (txObj, ResultsSet) => setVariante(ResultsSet.rows._array),
+        (txObj, ResultsSet) => setData(ResultsSet.rows._array),
         (txObj, error) => console.log('Error ', error)
         );
       }) // end transaction
+    }
+
+    const setData = (data) =>{
+      setVariante(data);
+      const solution = Math.floor(Math.random() * 4) + 1
+      setSolution(solution);
+      const gameImage = ImageService.GetImage(data[solution].image);
+      setGameImage(gameImage);
     }
 
     const Verify=()=>{
@@ -45,10 +55,13 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
           if (ArrayButoane[i]==1){
             ArrayButoane[i]=2;
             onComplete();
+            playSound("corect");
           }
         }
-        else if (ArrayButoane[i]==1)
+        else if (ArrayButoane[i]==1){
           ArrayButoane[i]=3;
+          playSound("wrong");
+        }
         
       }
       console.log(ArrayButoane);
@@ -58,7 +71,6 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
     if(Variante==null)
       return <Text>Loading</Text>
   
-    const GameImage = ImageService.GetImage(Variante[Solution].image);
 
   return (
     <View style={styles.RecunoastereGame} >

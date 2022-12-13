@@ -41,7 +41,7 @@ const GameScreen = ({ route, navigation }) => {
           onPress={() =>setVerifica(verifica=>verifica+1)
           }
         >
-          Verify
+          Verifica
         </SimpleButton>
       </View>
     </View>

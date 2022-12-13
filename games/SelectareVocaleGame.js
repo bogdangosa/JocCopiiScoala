@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { getInspectorDataForInstance } from "react-native/Libraries/Renderer/implementations/ReactNativeRenderer-dev";
 import SelectableButton from "../components/buttons/SelectableButton";
+import useSound from "../hooks/useSound";
 import {colors} from "../themes/color";
 
 
 const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
   const [ArrayButoane, setArrayButoane] = useState([]);
   const [ButtonState, setButtonState] = useState(false);
+
+  const playSound = useSound();
 
   useEffect(() => {
     //se apeleaza cand apesi butonul de verificare
@@ -40,8 +43,13 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
 
     const ArrayButoaneCopie = [...ArrayButoane];
 
+    let something_selected = false;
+
     for (let i = 0; i < ArrayButoaneCopie.length; i++) {
       if(c == null)c=0;
+      if(ArrayButoaneCopie[i].state != 0)
+        something_selected = true;
+
       if (isVowel(ArrayButoaneCopie[i].litera) && ArrayButoaneCopie[i].state == 1) ///ArrayButoane[i].state inseamna ca e apasat butonul
           ArrayButoaneCopie[i].state = 2;
       if (isVowel(ArrayButoaneCopie[i].litera) == false && ArrayButoaneCopie[i].state == 1){
@@ -61,8 +69,10 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
 
     if(c==0)
     {
+      playSound("corect");
       onComplete();                      ///daca jocul e gata apeleaza onComplete din GameScreen
     }
+    else if(something_selected) playSound("wrong");
   };
 
   useEffect(() => {

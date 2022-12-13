@@ -6,15 +6,24 @@ const useSound =()=>{
     const [sound, setSound] = useState();
     //const [sound_adress,setSoundAdress] = useState(null);
 
-    const playSound = async () =>{
+    const playSound = async (sound_type) =>{
       //if(sound_adress==null)return;
-      console.log('Loading Sound:');
-      const { sound } = await Audio.Sound.createAsync(require('../components/sounds/corect_sound.mp3'));//require('../components/sounds/corect_sound.mp3')
-  
-      setSound(sound);
-  
-      console.log('Playing Sound');
-      await sound.playAsync();
+      //console.log('Loading Sound:');
+      if(sound_type=="corect"){
+         const {sound} = await Audio.Sound.createAsync(require('../components/sounds/corect_sound.mp3'));
+         setSound(sound);
+         await sound.playAsync();
+      }
+      else{
+        const {sound} = await Audio.Sound.createAsync(require('../components/sounds/wrong_sound.mp3'));
+        setSound(sound);
+        await sound.playAsync();
+      }
+      //require('../components/sounds/corect_sound.mp3')
+
+
+      //console.log('Playing Sound');
+      
     }
 
     /*useEffect(()=>{                                                    ///de fiecare data cand se schimba al doilea parametru, se apeleaza functia (primul parametru)
