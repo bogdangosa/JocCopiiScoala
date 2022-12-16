@@ -10,19 +10,22 @@ export const app_structure_data = [
           name:"Animale",
           color:colors.red,
           game:"Recunoastere",
-          field:"animal"
+          field:"animal",
+          progress_rate:20,
         },
         {
           name: "Fructe",
           color: colors.green,
           game:"Recunoastere",
-          field:"fruct"
+          field:"fruct",
+          progress_rate:20,
         },
         {
           name: "Cifre",
           color: colors.orange,
           game:"Recunoastere",
-          field:"cifra"
+          field:"cifra",
+          progress_rate:20,
         },
       ],
     },
@@ -35,13 +38,15 @@ export const app_structure_data = [
           name: "Litere",
           color: colors.red,
           game:"Recunoastere",
-          field:"animal"
+          field:"animal",
+          progress_rate:20,
         },
         {
           name: "Cifre",
           color: colors.green,
           game:"Recunoastere",
-          field:"animal"
+          field:"animal",
+          progress_rate:20,
         },
       ],
     },
@@ -54,17 +59,20 @@ export const app_structure_data = [
           name: "Perechi de litere",
           color: colors.red,
           game:"LitereMariMici",
+          progress_rate:12.5,
         },
         {
           name: "Animalul",
           color: colors.green,
           game:"Recunoastere",
-          field:"animal"
+          field:"animal",
+          progress_rate:20,
         },
         {
           name: "Selectare vocale",
           color: colors.orange,
           game:"SelectareVocale",
+          progress_rate:20,
         },
       ],
     },

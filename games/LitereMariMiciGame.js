@@ -58,7 +58,7 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
                 setContorRaspunsuriCorecte(contor=>contor+1);
                 setContor(0);
                 playSound("corect");
-                
+                onComplete();
             }
             else{
                 const newMatrix = [...ButtonValueMatrix];
@@ -72,8 +72,8 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
 
         }
         console.log(ContorRaspunsuriCorecte);
-        if(ContorRaspunsuriCorecte==9)
-            onComplete();
+        /*if(ContorRaspunsuriCorecte==9)
+            onComplete();*/
     }
 
 

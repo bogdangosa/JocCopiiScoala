@@ -7,6 +7,7 @@ import { inital_data } from "../database/initial_data";
 import { app_structure_data } from "../database/app_structure_data";
 import { createTable, addItem, dropTable } from "../database/database";
 import {colors} from "../themes/color";
+import ProgressBar from "../components/ProgressBar/ProgressBar";
 
 const HomeScreen = ({ navigation }) => {
   const [GamesData, setGameData] = useState([]);
@@ -75,6 +76,8 @@ const HomeScreen = ({ navigation }) => {
             />
           );
         })}
+        <ProgressBar percentage={40}></ProgressBar>
+
         <SimpleButton onPress={()=>AddInitialData()} color={colors.orange}>Adauaga baza</SimpleButton>
         <SimpleButton onPress={()=>{dropTable(db,tableName),setData([])}} color={colors.green}>Sterge baza</SimpleButton>
         {Data?.map(item=>{

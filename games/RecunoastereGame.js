@@ -28,6 +28,7 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
       getVarinte();
     },[]);
 
+    //aduce 4 elemente din baza de date la intamplare
     const getVarinte = () =>{
       db.transaction(tx => {
         tx.executeSql(`SELECT * FROM ${tableName} ORDER BY random() LIMIT 4`, null, 
@@ -55,6 +56,7 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
           if (ArrayButoane[i]==1){
             ArrayButoane[i]=2;
             onComplete();
+            getVarinte();
             playSound("corect");
           }
         }
@@ -91,7 +93,7 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
 const styles = StyleSheet.create({
   RecunoastereGame: {
     alignItems: "center",
-    paddingTop: "20%",
+    paddingTop: 20,
     marginBottom: 25,
   },
   text: {
