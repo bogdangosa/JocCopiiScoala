@@ -46,6 +46,7 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
       setGameImage(gameImage);
     }
 
+
     const Verify=()=>{
       if(Variante==null)
         return;
@@ -57,11 +58,13 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
             ArrayButoane[i]=2;
             onComplete();
             getVarinte();
+            setTimeout(()=>setbutoane(false,false,false,false),300);
             playSound("corect");
           }
         }
         else if (ArrayButoane[i]==1){
           ArrayButoane[i]=3;
+          setTimeout(()=>setbutoane(false,false,false,false),700);
           playSound("wrong");
         }
         
