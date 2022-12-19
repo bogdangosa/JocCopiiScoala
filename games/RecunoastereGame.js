@@ -28,10 +28,10 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
       getVarinte();
     },[]);
 
-    //aduce 4 elemente din baza de date la intamplare
+    //aduce 4 elemente din baza de date la intanpm audit fix --forcemplare
     const getVarinte = () =>{
       db.transaction(tx => {
-        tx.executeSql(`SELECT * FROM ${tableName} ORDER BY random() LIMIT 4`, null, 
+        tx.executeSql(`SELECT * FROM ${tableName} WHERE type= "${field}" ORDER BY random() LIMIT 4`, null, 
         (txObj, ResultsSet) => setData(ResultsSet.rows._array),
         (txObj, error) => console.log('Error ', error)
         );
