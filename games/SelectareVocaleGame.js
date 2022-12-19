@@ -95,7 +95,8 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
     if(c==0)
     {
       playSound("corect");
-      setTimeout(()=>{onComplete();                      ///daca jocul e gata apeleaza onComplete din GameScreen
+      setTimeout(()=>{
+      onComplete();                      ///daca jocul e gata apeleaza onComplete din GameScreen
       getCuvant();},300);
     }
     else if(something_selected)
@@ -131,7 +132,7 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
   if (ArrayButoane == undefined) return <View></View>;
 
   return (
-    <View style={styles.RecunoastereGame}>
+    <View style={styles.SelectareVocaleGame}>
       <Text style={styles.text}>Selecteaza</Text>
       <Text style={styles.text}>Vocalele</Text>
       <View style={styles.container}>
@@ -152,10 +153,10 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
 };
 
 const styles = StyleSheet.create({
-  RecunoastereGame: {
+  SelectareVocaleGame: {
     width: "100%",
     alignItems: "center",
-    paddingTop: 200,
+    paddingTop: 50,
   },
   text: {
     fontSize: 40,
