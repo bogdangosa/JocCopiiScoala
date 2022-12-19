@@ -4,20 +4,38 @@ import { getInspectorDataForInstance } from "react-native/Libraries/Renderer/imp
 import SelectableButton from "../components/buttons/SelectableButton";
 import useSound from "../hooks/useSound";
 import {colors} from "../themes/color";
+import * as SQLite from 'expo-sqlite';
 
 
 const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
   const [ArrayButoane, setArrayButoane] = useState([]);
   const [ButtonState, setButtonState] = useState(false);
-
+  const [Cuvant, setCuvant]=useState(null);
+  const DatabaseName = "MainDatabase";
+  const tableName = "MainTable";
+  const db = SQLite.openDatabase(DatabaseName);Solution
+  const [Solution,setSolution]=useState(0);
   const playSound = useSound();
 
   useEffect(() => {
     //se apeleaza cand apesi butonul de verificare
     Verify();
   }, [onVerify]);
-
  
+  useEffect (()=>{
+    getCuvant();
+  },[]);
+
+  const getCuvant = () =>{
+    db.transaction(tx => {
+      tx.executeSql(`SELECT * FROM ${tableName} ORDER BY random() LIMIT 1`, null, 
+      (txObj, ResultsSet) => setCuvant(ResultsSet.rows._array[0].name),  ///declar variabila setCuvant care ia valoarea primului element din vectorul care e sortat random 
+      (txObj, error) => console.log('Error ', error)
+      );
+    }) 
+  }
+
+  
 
   function isVowel(x) {
     var result;
@@ -35,6 +53,13 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
       x == "u";
     return result;
   }
+
+  const ResetCuvant=()=>{
+    
+    for(let i=0;i<ArrayButoane.length;i++)
+    ArrayButoane[i].state=0;
+    setArrayButoane(ArrayButoane);
+  };
 
   const Verify = () => {
     let c=null;
@@ -70,21 +95,30 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
     if(c==0)
     {
       playSound("corect");
-      onComplete();                      ///daca jocul e gata apeleaza onComplete din GameScreen
+      setTimeout(()=>{onComplete();                      ///daca jocul e gata apeleaza onComplete din GameScreen
+      getCuvant();},300);
     }
-    else if(something_selected) playSound("wrong");
+    else if(something_selected)
+    {
+        playSound("wrong");
+        setTimeout(()=>ResetCuvant(),300);
+    }
   };
 
   useEffect(() => {
     creareCuvant();
-  }, []); ///se apeleaza functia asta de fiecare data cand se schimba o variabila din []
+  }, [Cuvant]); ///se apeleaza functia asta de fiecare data cand se schimba o variabila din []
+
+  
 
   const creareCuvant = () => {
-    const cuvant = "bravo";
-    const array = new Array(cuvant.length);
-    for (let i = 0; i < cuvant.length; i++) {
-      array[i] = { litera: cuvant[i], state: false };
-    }
+    if(Cuvant==null)
+      return
+    console.log(Cuvant);
+    const array = new Array(Cuvant.length);
+    for (let i = 0; i < Cuvant.length; i++) {
+      array[i] = { litera: Cuvant[i], state: false };
+    }console.log(array);
     setArrayButoane(array);
   };
 
