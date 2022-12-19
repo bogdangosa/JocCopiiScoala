@@ -36,6 +36,62 @@
         name: 'vaca.png',
         image: require('../assets/vaca.png'),
       },
+      {
+        name: 'mar.png',
+        image: require('../assets/mar.png'),
+      },
+      {
+        name: 'para.png',
+        image: require('../assets/para.png'),
+      },
+      {
+        name: 'pruna.png',
+        image: require('../assets/pruna.png'),
+      },
+      {
+        name: 'piersica.png',
+        image: require('../assets/piersica.png'),
+      },
+      {
+        name: 'caisa.png',
+        image: require('../assets/caisa.png'),
+      },
+      {
+        name: 'ananas.png',
+        image: require('../assets/ananas.png'),
+      },
+      {
+        name: 'portocala.png',
+        image: require('../assets/portocala.png'),
+      },
+      {
+        name: 'banana.png',
+        image: require('../assets/banana.png'),
+      },
+      {
+        name: 'kiwi.png',
+        image: require('../assets/kiwi.png'),
+      },
+      {
+        name: 'pomelo.png',
+        image: require('../assets/pomelo.png'),
+      },
+      {
+        name: 'cirese.png',
+        image: require('../assets/cirese.png'),
+      },
+      {
+        name: 'capsuni.png',
+        image: require('../assets/capsuni.png'),
+      },
+      {
+        name: 'zmeura.png',
+        image: require('../assets/zmeura.png'),
+      },
+      {
+        name: 'mure.png',
+        image: require('../assets/mure.png'),
+      },
     ];
     static GetImage = (name) => {
       const found = ImageService.images.find(e => e.name === name);

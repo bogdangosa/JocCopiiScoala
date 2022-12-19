@@ -56,9 +56,7 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
         if (i==Solution){
           if (ArrayButoane[i]==1){
             ArrayButoane[i]=2;
-            onComplete();
-            getVarinte();
-            setTimeout(()=>setbutoane(false,false,false,false),300);
+            setTimeout(()=>{setbutoane(false,false,false,false);onComplete();getVarinte();},500);
             playSound("corect");
           }
         }
