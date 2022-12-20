@@ -32,17 +32,18 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
     const getVarinte = () =>{
       db.transaction(tx => {
         tx.executeSql(`SELECT * FROM ${tableName} WHERE type= "${field}" ORDER BY random() LIMIT 4`, null, 
-        (txObj, ResultsSet) => setData(ResultsSet.rows._array),
+        (txObj, ResultsSet) =>{console.log(ResultsSet); setData(ResultsSet.rows._array)},
         (txObj, error) => console.log('Error ', error)
         );
       }) // end transaction
     }
 
-    const setData = (data) =>{
+    const setData = async (data) =>{
       setVariante(data);
-      const solution = Math.floor(Math.random() * 4) + 1
+      const solution = Math.floor(Math.random() * 4) 
       setSolution(solution);
-      const gameImage = ImageService.GetImage(data[solution].image);
+      console.log(solution);
+      const gameImage = await ImageService.GetImage(data[solution].image);
       setGameImage(gameImage);
     }
 
