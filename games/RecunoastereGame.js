@@ -14,8 +14,9 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
     const [GameImage,setGameImage] = useState(null);
     const DatabaseName = "MainDatabase";
     const tableName = "MainTable";
-    const db = SQLite.openDatabase(DatabaseName);Solution
+    const db = SQLite.openDatabase(DatabaseName);
     const [Solution,setSolution]=useState(0);
+    const [SpecialMode,setSpecialMode] = useState(false);
 
     const playSound = useSound();
 
@@ -25,6 +26,8 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
     }, [onVerify]);
 
     useEffect (()=>{
+      if(field == "cifra" || field == "litera" || field == "culoare")
+        setSpecialMode(true);
       getVarinte();
     },[]);
 
@@ -72,6 +75,16 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
       setbutoane(ArrayButoane);
     }
 
+    const setareJocSpecial = () =>{
+      switch(field){
+        case "culoare":
+          return <View style={[styles.ColorView,{backgroundColor:Variante[Solution].image}]}></View>;
+        case "cifra":
+          return <Text style={styles.NumberText}>{Variante[Solution].image}</Text>
+      }
+    }
+
+
     if(Variante==null)
       return <Text>Loading</Text>
   
@@ -79,7 +92,11 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
   return (
     <View style={styles.RecunoastereGame} >
       <Text style={styles.text}>Ce {field} este ?</Text>
+      {SpecialMode?
+        setareJocSpecial()
+      :
       <Image style={styles.imagine} source={GameImage}></Image>
+      }
       <View style={styles.poz_butoane}>
       <SelectableButton button_state={butoane[0]} onPress={()=>setbutoane([true,false,false,false])} more_styles={styles.buton}>{Variante[0].name}</SelectableButton>
       <SelectableButton button_state={butoane[1]} onPress={()=>setbutoane([false,true,false,false])} more_styles={styles.buton}>{Variante[1].name}</SelectableButton>
@@ -114,6 +131,18 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 30,
   },
+  ColorView:{
+    width:"70%",
+    height:200,
+    borderRadius:40,
+    marginVertical:10,
+    backgroundColor:"#f3ee22"
+  },
+  NumberText:{
+    fontSize:50,
+    color:colors.black,
+    marginVertical:10,
+  }
 });
 
 export default RecunoastereGame;
