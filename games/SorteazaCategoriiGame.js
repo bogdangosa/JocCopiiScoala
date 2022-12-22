@@ -4,16 +4,18 @@ import SelectableButton from "../components/buttons/SelectableButton";
 import SelectableFieldButton from "../components/buttons/SelectableFieldButton";
 import { colors } from "../themes/color";
 import * as SQLite from 'expo-sqlite';
+import useSound from "../hooks/useSound";
 
 const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
   const [SelectedField,setSelectedField] = useState(0);
   const [SelectableButtonsMatrix,setSelectableButtonsMatrix] = useState([]);
   const [StateButtonsMatrix,setStateButtonsMatrix] = useState([]);
   const [Fields,setFields] = useState([]);
-  const colorsArray = [colors.purple,colors.orange,colors.brown];
+  const colorsArray = [colors.purple,colors.orange,colors.brown,colors.red,colors.green];
   const DatabaseName = "MainDatabase";
   const tableName = "MainTable";
   const db = SQLite.openDatabase(DatabaseName);
+  const playSound = useSound();
 
 
   useEffect(()=>{
@@ -28,23 +30,45 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
     if(StateButtonsMatrix==undefined || StateButtonsMatrix==[])
       return;
     let ok = true;
+    let newStateMatrix = [...StateButtonsMatrix];
+    if(newStateMatrix === [] || newStateMatrix.length == 0){
+      console.log("e gol");
+      return;
+    }
+    console.log(newStateMatrix);
+
+    let emptystateMatrix = new Array();
     for(let i = 0 ;i<StateButtonsMatrix.length;i++){
+        emptystateMatrix[i] = new Array(0,0);
         for(let j=0;j<=1;j++){
           if(StateButtonsMatrix[i][j]==0){
               ok = false;
               continue;
           }
-          if(Fields[StateButtonsMatrix[i][j]-1] != SelectableButtonsMatrix[i][j].type)
+          if(Fields[StateButtonsMatrix[i][j]-1] != SelectableButtonsMatrix[i][j].type){
               ok = false;
+              newStateMatrix[i][j]=4;
+          }
+          else{
+            newStateMatrix[i][j]=5;
+          }
           /*console.log("varianta aleasa:"+Fields[StateButtonsMatrix[i][j]-1]);
           console.log("varianta corecta:"+SelectableButtonsMatrix[i][j].type);*/
         }
 
     }
+    setStateButtonsMatrix(newStateMatrix);
+    //console.log(newStateMatrix);
     if(ok){
       onComplete();
-      generateGame();
+      playSound("corect");
     }
+    else 
+      playSound("wrong");
+    setTimeout(()=>{
+      setStateButtonsMatrix(emptystateMatrix);
+      if(ok) generateGame();
+    },500)
   }
 
   const getVarinte = (fields , field_index , limits , Matrix) =>{
@@ -65,7 +89,7 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
         if(Matrix[i][1]==field_index)
           Matrix[i][1] = resultsArray[res_index++];
     }
-    console.log(Matrix);
+    //console.log(Matrix);
     if(field_index<2)
       getVarinte(fields, field_index+1,limits,Matrix);
     else setSelectableButtonsMatrix(Matrix);
