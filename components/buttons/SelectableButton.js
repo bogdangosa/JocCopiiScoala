@@ -3,13 +3,22 @@ import { StyleSheet, Text, View, color,  backgroundColor } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import { colors } from "../../themes/color";
 
-const SelectableButton = ({ children, onPress, more_styles , button_state}) => {
+const SelectableButton = ({ children, onPress, more_styles , button_state, color}) => {
     
     //const [ButtonState,setButtonState] = useState(false);
         
 
   return (
-    <Pressable style={button_state==3?[styles.SelectableButton,styles.SelectableButtonWrong,more_styles]:(button_state==2?[styles.SelectableButton,styles.SelectableButtonCorrect,more_styles]:(button_state?[styles.SelectableButton,styles.SelectableButtonSelected,more_styles]:[styles.SelectableButton,more_styles]))} onPress={()=>onPress()}>
+    <Pressable style={
+      button_state==3?
+      [styles.SelectableButton,styles.SelectableButtonWrong,more_styles]:
+      (button_state==2?
+      [styles.SelectableButton,styles.SelectableButtonCorrect,more_styles]:
+      (button_state?
+      (color==null?[styles.SelectableButton,styles.SelectableButtonSelected,more_styles]:
+      [styles.SelectableButton,{borderColor:color,backgroundColor:color,borderWidth:0,},more_styles]):
+      [styles.SelectableButton,more_styles]))} 
+      onPress={()=>onPress()}>
       <Text style={button_state?[styles.SelectableButtonText,{color:"#fff"}]:styles.SelectableButtonText}>{children}</Text>
     </Pressable>
   );

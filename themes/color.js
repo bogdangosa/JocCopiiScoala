@@ -6,4 +6,8 @@ export const colors={
     black: "#333",
     white: "#fff",
     darkgreen:"#15B942",
+    purple:"#A020F0",
+    yellow:"#E8E337",
+    pink:"#FFC0CB",
+    brown:"#964B00",
 };

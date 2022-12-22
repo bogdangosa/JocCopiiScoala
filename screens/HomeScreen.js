@@ -76,8 +76,6 @@ const HomeScreen = ({ navigation }) => {
             />
           );
         })}
-        <ProgressBar percentage={40}></ProgressBar>
-
         <SimpleButton onPress={()=>AddInitialData()} color={colors.orange}>Adauaga baza</SimpleButton>
         <SimpleButton onPress={()=>{dropTable(db,tableName),setData([])}} color={colors.green}>Sterge baza</SimpleButton>
         {Data?.map(item=>{

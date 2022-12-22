@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import SimpleCard from "../components/cards/SimpleCard";
 import RecunoastereGame from "../games/RecunoastereGame";
 import FelicitariPanda from "../screens/FelicitariPanda";
@@ -14,7 +14,7 @@ const GameMenuScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.GameMenuScreen}>
-      <View style={styles.GameListContainer}>
+      <ScrollView style={styles.GameListContainer}>
         {games.map((game, index) => {
           return (
             <SimpleCard
@@ -25,13 +25,14 @@ const GameMenuScreen = ({ route, navigation }) => {
                 navigation.navigate("Game", {
                   title: game.name,
                   game: game.game,
+                  field: game.field,
                   progress_rate: game.progress_rate,
                 });
               }}
             />
           );
         })}
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -49,6 +50,9 @@ const styles = StyleSheet.create({
   GameListContainer: {
     width: "90%",
     paddingTop: 40,
+    paddingBottom:40,
+    paddingRight:20,
+    height:"95%",
   },
 });
 
