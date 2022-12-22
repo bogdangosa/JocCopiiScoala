@@ -17,7 +17,6 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
 
 
   useEffect(()=>{
-
     generateGame();
   },[])
 
@@ -26,8 +25,26 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
   },[onVerify])
 
   const Verify = ()=>{
-    onComplete();
-    generateGame();
+    if(StateButtonsMatrix==undefined || StateButtonsMatrix==[])
+      return;
+    let ok = true;
+    for(let i = 0 ;i<StateButtonsMatrix.length;i++){
+        for(let j=0;j<=1;j++){
+          if(StateButtonsMatrix[i][j]==0){
+              ok = false;
+              continue;
+          }
+          if(Fields[StateButtonsMatrix[i][j]-1] != SelectableButtonsMatrix[i][j].type)
+              ok = false;
+          /*console.log("varianta aleasa:"+Fields[StateButtonsMatrix[i][j]-1]);
+          console.log("varianta corecta:"+SelectableButtonsMatrix[i][j].type);*/
+        }
+
+    }
+    if(ok){
+      onComplete();
+      generateGame();
+    }
   }
 
   const getVarinte = (fields , field_index , limits , Matrix) =>{
@@ -49,9 +66,9 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
           Matrix[i][1] = resultsArray[res_index++];
     }
     console.log(Matrix);
-    setSelectableButtonsMatrix(Matrix);
     if(field_index<2)
       getVarinte(fields, field_index+1,limits,Matrix);
+    else setSelectableButtonsMatrix(Matrix);
   }
 
 
@@ -81,14 +98,13 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
         Matrix[i][1] = x;
         Vf[x]++;
       }
-      setSelectableButtonsMatrix(Matrix);
       setStateButtonsMatrix(stateMatrix);
 
       getVarinte(SelectedFieldsArray,0,Vf,Matrix);
 
       /*console.log(SelectedFieldsArray);
-      console.log(Vf);
-      console.log(Matrix);*/
+      console.log(Vf);*/
+      //console.log(Matrix);
   }
 
   const ChangeState = (i,j) =>{
@@ -99,9 +115,12 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
     else
       newMatrix[i][j] = 0;
     //console.log(Contor);
-    console.log(newMatrix);
+    //console.log(newMatrix);
     setStateButtonsMatrix(newMatrix);
   }
+
+  if(SelectableButtonsMatrix==undefined || StateButtonsMatrix == undefined)
+    return <Text> Loading</Text>
 
 
   return (
