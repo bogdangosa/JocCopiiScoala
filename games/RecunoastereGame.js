@@ -60,13 +60,13 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
         if (i==Solution){
           if (ArrayButoane[i]==1){
             ArrayButoane[i]=2;
-            setTimeout(()=>{setbutoane(false,false,false,false);onComplete();getVarinte();},500);
+            setTimeout(()=>{setbutoane([false,false,false,false]);onComplete();getVarinte();},500);
             playSound("corect");
           }
         }
         else if (ArrayButoane[i]==1){
           ArrayButoane[i]=3;
-          setTimeout(()=>setbutoane(false,false,false,false),700);
+          setTimeout(()=>setbutoane([false,false,false,false]),700);
           playSound("wrong");
         }
         
