@@ -97,4 +97,18 @@ export const app_structure_data = [
         },
       ],
     },
+    {
+      title: "Scrie Imaginea",
+      color: colors.blue,
+      image: require("../assets/Panda3.png"),
+      games: [
+        {
+          name: "Scrie animalul",
+          color: colors.red,
+          game:"ScriereImagine",
+          progress_rate:20,
+          field:"animal",
+        },
+      ],
+    },
   ];
