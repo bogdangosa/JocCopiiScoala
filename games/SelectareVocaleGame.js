@@ -50,7 +50,13 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
       x == "e" ||
       x == "i" ||
       x == "o" ||
-      x == "u";
+      x == "u" || 
+      x == "Ă" || 
+      x == "Î" || 
+      x == "ă" || 
+      x == "â" ||
+      x == "Â" || 
+      x == "î";
     return result;
   }
 
@@ -115,6 +121,8 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
   const creareCuvant = () => {
     if(Cuvant==null)
       return
+    if(Cuvant.length>5)
+    getCuvant();
     console.log(Cuvant);
     const array = new Array(Cuvant.length);
     for (let i = 0; i < Cuvant.length; i++) {
