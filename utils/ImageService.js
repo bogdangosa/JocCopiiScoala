@@ -37,6 +37,127 @@
         image: require('../assets/animale/vaca.png'),
       },
       {
+        name: 'sarpe.png',
+        image: require('../assets/animale/sarpe.png'),
+      },
+      {
+        name: 'crocodil.png',
+        image: require('../assets/animale/crocodil.png'),
+      },
+      {
+        name: 'gaina.png',
+        image: require('../assets/animale/gaina.png'),
+      },
+      {
+        name: 'soricel.png',
+        image: require('../assets/animale/soricel.png'),
+      },
+      {
+        name: 'cangur.png',
+        image: require('../assets/animale/cangur.png'),
+      },
+      {
+        name: 'rinocer.png',
+        image: require('../assets/animale/rinocer.png'),
+      },
+      {
+        name: 'hipopotam.png',
+        image: require('../assets/animale/hipopotam.png'),
+      },
+      {
+        name: 'porumbel.png',
+        image: require('../assets/animale/porumbel.png'),
+      },
+      {
+        name: 'bifnita.png',
+        image: require('../assets/animale/bufnita.png'),
+      },
+      {
+        name: 'leu.png',
+        image: require('../assets/animale/leu.png'),
+      },
+      {
+        name: 'tigru.png',
+        image: require('../assets/animale/tigru.png'),
+      },
+      {
+        name: 'koala.png',
+        image: require('../assets/animale/koala.png'),
+      },
+      {
+        name: 'panda.png',
+        image: require('../assets/animale/panda.png'),
+      },
+      {
+        name: 'arici.png',
+        image: require('../assets/animale/arici.png'),
+      },
+      {
+        name: 'camila.png',
+        image: require('../assets/animale/camila.png'),
+      },
+      {
+        name: 'veverita.png',
+        image: require('../assets/animale/veverita.png'),
+      },
+      {
+        name: 'mistret.png',
+        image: require('../assets/animale/mistret.png'),
+      },
+      {
+        name: 'cerb.png',
+        image: require('../assets/animale/cerb.png'),
+      },
+      {
+        name: 'maimuta.png',
+        image: require('../assets/animale/maimuta.png'),
+      },
+      {
+        name: 'elefant.png',
+        image: require('../assets/animale/elefant.png'),
+      },
+      {
+        name: 'girafa.png',
+        image: require('../assets/animale/girafa.png'),
+      },
+      {
+        name: 'gorila.png',
+        image: require('../assets/animale/gorila.png'),
+      },
+      {
+        name: 'testoasa.png',
+        image: require('../assets/animale/testoasa.png'),
+      },
+      {
+        name: 'broasca.png',
+        image: require('../assets/animale/broasca.png'),
+      },
+      {
+        name: 'magar.png',
+        image: require('../assets/animale/magar.png'),
+      },
+      {
+        name: 'oaie.png',
+        image: require('../assets/animale/oaie.png'),
+      },
+      {
+        name: 'rata.png',
+        image: require('../assets/animale/rata.png'),
+      },
+      {
+        name: 'cocos.png',
+        image: require('../assets/animale/cocos.png'),
+      },
+      {
+        name: 'iepure.png',
+        image: require('../assets/animale/iepure.png'),
+      },
+      {
+        name: 'ghepard.png',
+        image: require('../assets/animale/ghepard.png'),
+      },
+
+      {
         name: 'mar.png',
         image: require('../assets/fructe/mar.png'),
       },
