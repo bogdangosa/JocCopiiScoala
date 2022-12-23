@@ -53,6 +53,13 @@ export const inital_data = [
     {name:"CĂPȘUNI",type:"fruct", image: "capsuni.png"},
     {name:"ZMEURĂ",type:"fruct", image: "zmeura.png"},
     {name:"MURE",type:"fruct", image: "mure.png"},
+    {name:"LĂMÂIE",type:"fruct", image: "lamaie.png"},
+    {name:"PEPENE",type:"fruct", image: "pepene.png"},
+    {name:"STRUGURI",type:"fruct", image: "struguri.png"},
+    {name:"MANGO",type:"fruct", image: "mango.png"},
+    {name:"AFINE",type:"fruct", image: "afine.png"},
+    {name:"RODIE",type:"fruct", image: "rodie.png"},
+    {name:"COCOS",type:"fruct", image: "cocos.png"},
 
     {name:"ROSIE",type:"leguma", image: "rosie.png"},
     {name:"MORCOV",type:"leguma", image: "morcov.png"},

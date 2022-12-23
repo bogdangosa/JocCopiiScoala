@@ -214,6 +214,35 @@
         image: require('../assets/fructe/mure.png'),
       },
       {
+        name: 'lamaie.png',
+        image: require('../assets/fructe/lamaie.png'),
+      },
+      {
+        name: 'pepene.png',
+        image: require('../assets/fructe/pepene.png'),
+      },
+      {
+        name: 'struguri.png',
+        image: require('../assets/fructe/struguri.png'),
+      },
+      {
+        name: 'mango.png',
+        image: require('../assets/fructe/mango.png'),
+      },
+      {
+        name: 'afine.png',
+        image: require('../assets/fructe/afine.png'),
+      },
+      {
+        name: 'rodie.png',
+        image: require('../assets/fructe/rodie.png'),
+      },
+      {
+        name: 'cocos.png',
+        image: require('../assets/fructe/cocos.png'),
+      },
+
+      {
         name: 'rosie.png',
         image: require('../assets/legume/rosie.png'),
       },
