@@ -95,6 +95,13 @@ export const app_structure_data = [
           game:"SorteazaCategorii",
           progress_rate:20,
         },
+        {
+          name: "Gaseste ",
+          color: colors.green,
+          game:"GasesteCategoria",
+          field:"animal",
+          progress_rate:20,
+        },
       ],
     },
     {

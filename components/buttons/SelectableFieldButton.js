@@ -5,9 +5,8 @@ import { colors } from "../../themes/color";
 
 const SelectableFieldButton = ({ children, onPress, more_styles , button_state , color}) => {
   return (
-    <Pressable style={styles.SelectableFieldButton} onPress={()=>onPress()}>
-      <View style={[styles.SelectableColor,{backgroundColor:color}]}></View>
-      <Text style={button_state?[styles.SelectableFieldButtonText,{color:colors.blue}]:styles.SelectableFieldButtonText}>{children}</Text>
+    <Pressable style={button_state?styles.SelectableFieldButton:[styles.SelectableFieldButton,{borderColor:color,borderBottomWidth:5}]} onPress={()=>onPress()}>
+      <Text style={button_state?[styles.SelectableFieldButtonText,styles.SelectableFieldButtonTextSelected,{backgroundColor:color}]:styles.SelectableFieldButtonText}>{children}</Text>
     </Pressable>
   );
 };
@@ -15,12 +14,18 @@ const SelectableFieldButton = ({ children, onPress, more_styles , button_state ,
 const styles = StyleSheet.create({
     SelectableFieldButton: {
     alignItems: "center",
+    justifyContent:"center",
     flexDirection:"row",
   },
   SelectableFieldButtonText:{
     color:colors.black,
     fontSize:20,
-    marginLeft:5,
+    paddingVertical:5,
+    paddingHorizontal:10,
+    borderRadius:5,
+  },
+  SelectableFieldButtonTextSelected:{
+    color:"#fff",
   },
   SelectableColor:{
     height:20,

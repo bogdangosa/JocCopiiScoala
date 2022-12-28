@@ -5,6 +5,7 @@ import SimpleButton from "../components/buttons/SimpleButton";
 import LitereMariMiciGame from "../games/LitereMariMiciGame";
 import SelectareVocaleGame from "../games/SelectareVocaleGame";
 import RecunoastereGame from "../games/RecunoastereGame";
+import GasesteCategoriaGame from "../games/GasesteCategoriaGame";
 import {colors} from "../themes/color";
 import ProgressBar from "../components/ProgressBar/ProgressBar";
 import SorteazaCategoriiGame from "../games/SorteazaCategoriiGame";
@@ -30,6 +31,8 @@ const GameScreen = ({ route, navigation }) => {
                 return <LitereMariMiciGame onVerify={Verifica} onComplete={()=>rezultatCorect()}/>
             case "SorteazaCategorii":
               return <SorteazaCategoriiGame onVerify={Verifica} onComplete={()=>rezultatCorect()}/>
+            case "GasesteCategoria":
+              return <GasesteCategoriaGame field={route.params.field} onVerify={Verifica} onComplete={()=>rezultatCorect()}/>
             case "SelectareVocale":
                 return <SelectareVocaleGame onVerify={Verifica} onComplete={()=>rezultatCorect()}/>   ///cand jocul e gata (onComplete) apeleaza functia rezultatCorect
             case "ScriereImagine":
