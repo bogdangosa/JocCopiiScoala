@@ -1,7 +1,7 @@
 import {colors} from "../themes/color";
 
 export const app_structure_data = [
-    {
+    /*{
       title: "Invata",
       color: colors.green,
       image: require("../assets/Panda7.png"),
@@ -21,7 +21,7 @@ export const app_structure_data = [
           progress_rate:20,
         },
       ],
-    },
+    },*/
     {
       title: "Recunoastere",
       color: colors.red,

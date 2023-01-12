@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as SQLite from 'expo-sqlite';
 import SimpleCard from "../components/cards/SimpleCard";
+import SimpleCard2 from "../components/cards/SimpleCard2";
 import SimpleButton from "../components/buttons/SimpleButton"
 import { inital_data } from "../database/initial_data";
 import { app_structure_data } from "../database/app_structure_data";
@@ -59,6 +60,26 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.HomeScreen}>
+      <View style={styles.Card2}>
+      <SimpleCard2
+        style={{marginRight: 10,}}
+        text="Învață"
+        color={colors.blue}
+        onPress={() => {
+        navigation.navigate("Learn Menu", {
+        });
+      }}
+      />
+      <SimpleCard2
+        style={{marginLeft: 10,}}
+        text="Jocul zilei"
+        color={colors.purple}
+        onPress={() => {
+        navigation.navigate("Games Menu", {
+        });
+        }}
+      />
+      </View>
       <View style={styles.GameListContainer}>
         {GamesData.map((game_category, index) => {
           return (
@@ -98,8 +119,16 @@ const styles = StyleSheet.create({
   },
   GameListContainer: {
     width: "90%",
-    paddingTop: 40,
+    paddingTop: 20,
   },
+  Card2: {
+    display: "flex",
+    flexDirection: "row",
+    width: "90%",
+    paddingTop: 40,
+    justifyContent: "space-between",
+    
+  }
 });
 
 export default HomeScreen;

@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   buton: {
-    width: 130,
+    width: 140,
     height: 50,
     margin: 10,
   },
