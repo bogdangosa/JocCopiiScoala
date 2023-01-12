@@ -121,7 +121,8 @@ const styles = StyleSheet.create({
       width:"100%",
       alignContent:"center",
       alignItems:"center",
-      fontSize:20,
+      fontSize:30,
+      fontWeight:'500',
       textAlign:"center",
     },
     
