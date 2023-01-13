@@ -6,7 +6,9 @@ import GameMenuScreen from "./screens/GameMenuScreen";
 import HomeScreen from "./screens/HomeScreen";
 import GameScreen from "./screens/GameScreen";
 import FelicitariPanda from "./screens/FelicitariPanda";
+import LearnMenuScreen from "./screens/LearnMenuScreen";
 import {colors} from "./themes/color";
+import LearnScreen from "./screens/LearnScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +35,16 @@ export default function App() {
           name="Felicitari"
           component={FelicitariPanda}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Learn Menu"
+          component={LearnMenuScreen}
+          options={{...styles.header, ...{title: 'Învață'}}}
+        />
+        <Stack.Screen
+          name="Learn"
+          component={LearnScreen}
+          options={styles.header}
         />
       </Stack.Navigator>
     </NavigationContainer>

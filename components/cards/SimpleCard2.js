@@ -21,17 +21,17 @@ const styles = StyleSheet.create({
     width: "100%",
     borderWidth: 2,
     borderRadius: 10,
-    paddingLeft: 25,
-    marginBottom: 20,
+    paddingLeft: 10,
+    marginBottom: 0,
     flexDirection: "row",
     alignItems: "flex-end",
     overflow: "hidden",
-    height: 100,
+    height: 120,
     flex: 1,
   },
   SimpleCardText: {
-    fontSize: 25,
-    marginBottom: 10,
+    fontSize: 30,
+    marginBottom: 15,
   },
 });
 
