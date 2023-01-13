@@ -56,6 +56,25 @@ const HomeScreen = ({ navigation }) => {
   }
 
 
+  const openGameOfTheDay = () =>{
+    const nr_of_categories = app_structure_data.length;
+    let date = new Date().getDate();
+    let category_id = date%nr_of_categories;
+    const nr_of_games = app_structure_data[category_id].games.length;
+    let game_id = date%nr_of_games;
+
+    let game = app_structure_data[category_id].games[game_id];
+
+    navigation.navigate("Game", {
+      title: game.name,
+      game: game.game,
+      field: game.field,
+      progress_rate: game.progress_rate,
+    });
+
+  }
+
+
 
 
   return (
@@ -74,10 +93,7 @@ const HomeScreen = ({ navigation }) => {
         style={{marginLeft: 10,}}
         text="Jocul zilei"
         color={colors.purple}
-        onPress={() => {
-        navigation.navigate("Games Menu", {
-        });
-        }}
+        onPress={()=>openGameOfTheDay()}
       />
       </View>
       <View style={styles.GameListContainer}>
