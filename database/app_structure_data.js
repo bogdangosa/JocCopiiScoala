@@ -125,7 +125,7 @@ export const app_structure_data = [
           game:"ScriereImagine",
           progress_rate:20,
           field:"animal",
-          image: require("../assets/Panda6.png"),
+          image: require("../assets/animale.png"),
         },
         {
           name: "Scrie fructele",
@@ -133,7 +133,7 @@ export const app_structure_data = [
           game:"ScriereImagine",
           progress_rate:20,
           field:"fruct",
-          image: require("../assets/Panda6.png"),
+          image: require("../assets/fructe.png"),
         },
         {
           name: "Scrie legumele",
@@ -141,7 +141,7 @@ export const app_structure_data = [
           game:"ScriereImagine",
           progress_rate:20,
           field:"leguma",
-          image: require("../assets/Panda6.png"),
+          image: require("../assets/legume.png"),
         }, 
         {
           name: "Scrie vehiculele",
@@ -149,7 +149,7 @@ export const app_structure_data = [
           game:"ScriereImagine",
           progress_rate:20,
           field:"vehicul",
-          image: require("../assets/Panda6.png"),
+          image: require("../assets/vehicule.png"),
         },
         {
           name: "Scrie cifrele",
@@ -157,7 +157,7 @@ export const app_structure_data = [
           game:"ScriereImagine",
           progress_rate:20,
           field:"cifra",
-          image: require("../assets/Panda6.png"),
+          image: require("../assets/cifre.png"),
         },
         {
           name: "Scrie culorile",
@@ -165,7 +165,7 @@ export const app_structure_data = [
           game:"ScriereImagine",
           progress_rate:20,
           field:"culoare",
-          image: require("../assets/Panda6.png"),
+          image: require("../assets/culori.png"),
         },
       ],
     },
