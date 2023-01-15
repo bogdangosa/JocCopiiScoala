@@ -25,7 +25,7 @@ const InitialScreen = ({navigation}) => {
         <View style={styles.data_container}>{/** Prima pagina **/}
           <Text style={styles.Title}>Bine ai venit in <Text style={styles.accent}>EduPlay</Text></Text>
           <View style={styles.FirstPageContent}>
-            <Image style={styles.FirstImage}  source={require("../assets/panda_se_uita.png")}></Image>
+            <Image style={styles.FirstImage}  source={require("../assets/panda-se-uita.png")}></Image>
             <Text style={styles.Text}>O aplicatia <Text style={styles.accent}>interactiva</Text> si <Text style={styles.accent}>educativa</Text> care ajuta copii sa isi dezvolte abilitatile de vorbire, scriere si vocabularul.</Text>
           </View>
         </View>
