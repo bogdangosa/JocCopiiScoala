@@ -10,6 +10,7 @@ import {colors} from "../themes/color";
 import ProgressBar from "../components/ProgressBar/ProgressBar";
 import SorteazaCategoriiGame from "../games/SorteazaCategoriiGame";
 import ScriereImagine from "../games/ScriereImagine";
+import { KeyboardAvoidingView } from "react-native";
 
 const GameScreen = ({ route, navigation }) => {
   const [Verifica,setVerifica] = useState(0);

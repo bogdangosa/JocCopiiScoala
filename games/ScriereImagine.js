@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TextInput } from "react-native";
+import { StyleSheet, Text, View, Image, TextInput, ScrollView, SafeAreaView } from "react-native";
 import { useEffect, useState } from "react";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import SelectableButton from "../components/buttons/SelectableButton";
@@ -6,6 +6,7 @@ import {colors} from "../themes/color";
 import * as SQLite from 'expo-sqlite';
 import { ImageService } from "../utils/ImageService";
 import useSound from "../hooks/useSound";
+import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from "react-native";
 
 
 
@@ -19,11 +20,22 @@ const ScriereImagine = ({field,onVerify,onComplete})=>{
   const [Solution,setSolution]=useState(0);
   const playSound = useSound();
   const [ statusColor, setStatusColor ] = useState(colors.black);
+  const [SpecialMode,setSpecialMode] = useState(false);
 
   useEffect (()=>{
+    if(field == "cifra" || field == "litera" || field == "culoare")
+        setSpecialMode(true);
     getPoza();
   },[]);
 
+  const setareJocSpecial = () =>{
+    switch(field){
+      case "culoare":
+        return <View style={[styles.ColorView,{backgroundColor:GameImage}]}></View>;
+      case "cifra":
+        return <Text style={styles.NumberText}>{GameImage}</Text>
+    }
+  }
 
   useEffect(() => {
     Verify();
@@ -41,7 +53,9 @@ const ScriereImagine = ({field,onVerify,onComplete})=>{
       
   const setData = async (data) =>{
     console.log(data);
-    const gameImage = await ImageService.GetImage(data[0].image);
+    let gameImage;
+    if(SpecialMode) gameImage=data[0].image;
+    else gameImage = await ImageService.GetImage(data[0].image);
     setGameName(data[0].name);
     setGameImage(gameImage);
   }
@@ -74,22 +88,28 @@ const ScriereImagine = ({field,onVerify,onComplete})=>{
   
 
   return (
-    <View style={styles.ScriereImagine}>
-      <Text style={styles.Text}>Scrie ce</Text>
-        <Text style={styles.Text}>{field} apare</Text>
-          <Image style={styles.imagine} source={GameImage}></Image>
-      
-        <View style={styles.TextBar}>
-          <TextInput
-            style={[styles.searchBar , {color:statusColor}]}
+    <KeyboardAvoidingView  behavior="position" keyboardVerticalOffset="100">
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.ScriereImagine}>
+          <Text style={styles.Text}>Scrie ce</Text>
+            <Text style={styles.Text}>{field} apare</Text>
+              {
+                SpecialMode?setareJocSpecial():
+                <Image resizeMode="contain" style={styles.imagine} source={GameImage}></Image>
+              }
+                <View style={styles.TextBar}>
+                  <TextInput
+                    style={[styles.searchBar , {color:statusColor}, styles.multilineInput, styles.largeMultilineInput]}
             
-            placeholder="Scrie aici"
-            placeholderTextColor={"#EB6440"}
-            value={Mesaj}
-            onChangeText={setMesaj}
-          ></TextInput>
+                    placeholder="Scrie aici"
+                    placeholderTextColor={"#EB6440"}
+                    value={Mesaj}
+                    onChangeText={setMesaj}
+                  ></TextInput>
+                </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
     );
 };
 
@@ -97,6 +117,7 @@ const styles = StyleSheet.create({
     ScriereImagine:{
         alignItems:"center",
         padding:50,
+        overflow:"hidden",
     },
     Text:{
         fontWeight:"700",
