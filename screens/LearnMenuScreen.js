@@ -14,6 +14,7 @@ const LearnMenuScreen = ({ route, navigation }) => {
         color={colors.red}
         onPress={() => {
             navigation.navigate("Learn", {
+              type:"cifra"
             });
         }}
       />
@@ -23,6 +24,7 @@ const LearnMenuScreen = ({ route, navigation }) => {
         color={colors.yellow}
         onPress={() => {
         navigation.navigate("Learn", {
+          type: "litera"
         });
         }}
       />
@@ -34,6 +36,7 @@ const LearnMenuScreen = ({ route, navigation }) => {
         color={colors.orange}
         onPress={() => {
         navigation.navigate("Learn", {
+          type:"animal"
         });
       }}
       />
@@ -43,6 +46,7 @@ const LearnMenuScreen = ({ route, navigation }) => {
         color={colors.blue}
         onPress={() => {
         navigation.navigate("Learn", {
+          type:"vehicul"
         });
         }}
       />
@@ -54,6 +58,7 @@ const LearnMenuScreen = ({ route, navigation }) => {
         color={colors.purple}
         onPress={() => {
         navigation.navigate("Learn", {
+          type:"fruct"
         });
       }}
       />
@@ -63,6 +68,7 @@ const LearnMenuScreen = ({ route, navigation }) => {
         color={colors.green}
         onPress={() => {
         navigation.navigate("Learn", {
+          type:"leguma"
         });
         }}
       />

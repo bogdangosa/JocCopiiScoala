@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   SimpleCardImage: {
+    resizeMode:"contain",
     height: 80,
     width: 80,
     backgroundColor: colors.white,
