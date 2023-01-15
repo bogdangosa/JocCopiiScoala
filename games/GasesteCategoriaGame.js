@@ -65,13 +65,13 @@ const GasesteCategoriaGame = ({field, onVerify,onComplete}) => {
   const createMatrix = (cuvinte_array) =>{
     setCuvinte(cuvinte_array)
 
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZĂÎȘȚÂ";
     let n = 5;
     let Matrix = new Array();
     for(let i=0;i<n;i++){
       Matrix[i] = new Array();
       for(let j=0;j<n;j++){
-        let x = Math.floor(Math.random() * 26);
+        let x = Math.floor(Math.random() * 31);
         Matrix[i][j] = {value:characters.charAt(x),state:false};
       }
     }

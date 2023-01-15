@@ -21,6 +21,7 @@ const GameMenuScreen = ({ route, navigation }) => {
               key={index}
               text={game.name}
               color={game.color}
+              image={game.image}
               onPress={() => {
                 navigation.navigate("Game", {
                   title: game.name,

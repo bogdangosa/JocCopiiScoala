@@ -33,6 +33,7 @@ export const app_structure_data = [
           game:"Recunoastere",
           field:"animal",
           progress_rate:20,
+          image: require("../assets/animale.png"),
         },
         {
           name: "Fructe",
@@ -40,6 +41,7 @@ export const app_structure_data = [
           game:"Recunoastere",
           field:"fruct",
           progress_rate:20,
+          image: require("../assets/fructe.png"),
         },
         {
           name: "Legume",
@@ -47,6 +49,7 @@ export const app_structure_data = [
           game:"Recunoastere",
           field:"leguma",
           progress_rate:20,
+          image: require("../assets/legume.png"),
         },
         {
           name: "Vehicule",
@@ -54,6 +57,7 @@ export const app_structure_data = [
           game:"Recunoastere",
           field:"vehicul",
           progress_rate:20,
+          image: require("../assets/vehicule.png"),
         },
         {
           name: "Cifre",
@@ -61,6 +65,7 @@ export const app_structure_data = [
           game:"Recunoastere",
           field:"cifra",
           progress_rate:20,
+          image: require("../assets/cifre.png"),
         },
         {
           name: "Culori",
@@ -68,6 +73,7 @@ export const app_structure_data = [
           game:"Recunoastere",
           field:"culoare",
           progress_rate:20,
+          image: require("../assets/culori.png"),
         },
         
       ],
@@ -82,18 +88,21 @@ export const app_structure_data = [
           color: colors.red,
           game:"LitereMariMici",
           progress_rate:12.5,
+          image: require("../assets/Panda6.png"),
         },
         {
           name: "Selectare vocale",
           color: colors.orange,
           game:"SelectareVocale",
           progress_rate:20,
+          image: require("../assets/Panda6.png"),
         },
         {
           name: "Sorteaza ",
           color: colors.blue,
           game:"SorteazaCategorii",
           progress_rate:20,
+          image: require("../assets/Panda6.png"),
         },
         {
           name: "Gaseste ",
@@ -101,6 +110,7 @@ export const app_structure_data = [
           game:"GasesteCategoria",
           field:"animal",
           progress_rate:20,
+          image: require("../assets/Panda6.png"),
         },
       ],
     },
@@ -115,6 +125,7 @@ export const app_structure_data = [
           game:"ScriereImagine",
           progress_rate:20,
           field:"animal",
+          image: require("../assets/Panda6.png"),
         },
       ],
     },

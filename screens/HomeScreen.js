@@ -113,6 +113,7 @@ const HomeScreen = ({ navigation }) => {
             />
           );
         })}
+        <SimpleButton onPress={()=>navigation.navigate("Initial Screen")} color={colors.purple}>initial</SimpleButton>
         <SimpleButton onPress={()=>AddInitialData()} color={colors.orange}>Adauaga baza</SimpleButton>
         <SimpleButton onPress={()=>{dropTable(db,tableName),setData([])}} color={colors.green}>Sterge baza</SimpleButton>
         {Data?.map(item=>{

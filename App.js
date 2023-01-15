@@ -9,6 +9,7 @@ import FelicitariPanda from "./screens/FelicitariPanda";
 import LearnMenuScreen from "./screens/LearnMenuScreen";
 import {colors} from "./themes/color";
 import LearnScreen from "./screens/LearnScreen";
+import InitialScreen from "./screens/InitialScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -45,6 +46,11 @@ export default function App() {
           name="Learn"
           component={LearnScreen}
           options={styles.header}
+        />
+          <Stack.Screen
+          name="Initial Screen"
+          component={InitialScreen}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
