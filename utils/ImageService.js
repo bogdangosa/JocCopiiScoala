@@ -69,7 +69,7 @@
         image: require('../assets/animale/porumbel.png'),
       },
       {
-        name: 'bifnita.png',
+        name: 'bufnita.png',
         image: require('../assets/animale/bufnita.png'),
       },
       {

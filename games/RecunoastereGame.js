@@ -6,7 +6,7 @@ import {colors} from "../themes/color";
 import * as SQLite from 'expo-sqlite';
 import { ImageService } from "../utils/ImageService";
 import useSound from "../hooks/useSound";
-
+import {vw, vh} from "react-native-viewport-units";
 
 const RecunoastereGame = ({field, onVerify,onComplete}) => {
     const [butoane,setbutoane]=useState([false,false,false,false])
@@ -116,12 +116,12 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   text: {
-    fontSize: 40,
+    fontSize: 5 * vh,
     fontWeight: "bold",
   },
   buton: {
-    width: 140,
-    height: 50,
+    width: 40 * vw,
+    height: 7 * vh,
     margin: 10,
   },
   poz_butoane: {
@@ -130,6 +130,9 @@ const styles = StyleSheet.create({
   imagine: {
     marginTop: 30,
     marginBottom: 30,
+    height: 35 * vh,
+    width:"90%",
+    resizeMode:"contain",
   },
   ColorView:{
     width:"70%",

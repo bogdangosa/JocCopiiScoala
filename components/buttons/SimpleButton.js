@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, color,  backgroundColor } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import {colors} from "../../themes/color";
+import {vw, vh} from "react-native-viewport-units";
 
 const SimpleButton = ({ children, onPress, color }) => {
   return (
@@ -14,14 +15,14 @@ const styles = StyleSheet.create({
   SimpleButton: {
     alignItems: "center",
     justifyContent: "center",
-    height: 50,
-    width: 120,
+    height: 6 * vh,
+    width: 30 * vw,
     borderRadius: 10,
   },
   SimpleButtonText: {
     color: colors.white,
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 5 * vw,
   },
 });
 
