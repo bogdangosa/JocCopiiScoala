@@ -155,8 +155,11 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
 
   return (
     <View style={styles.SorteazaCategoriiGame} >
-      <Text style={styles.cerinta}>Sortează cuvintele pe categori</Text>
-      <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
+      
+      <View style={styles.CerintaContainer}>
+        <Text style={styles.cerinta}>Sortează cuvintele pe categori</Text>
+        <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
+      </View>
       <View style={styles.select_fields_container}>
         <SelectableFieldButton color={colorsArray[0]} button_state={SelectedField==0} onPress={()=>setSelectedField(0)}>{Fields[0]}</SelectableFieldButton>
         <SelectableFieldButton color={colorsArray[1]} button_state={SelectedField==1} onPress={()=>setSelectedField(1)}>{Fields[1]}</SelectableFieldButton>
@@ -187,11 +190,11 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   cerinta: {
-    fontSize: 30,
-    width:"100%",
+    fontSize: 25,
+    flex:1,
     textAlign:"center",
     fontWeight: "bold",
-    marginBottom:20,
+    marginRight:20,
   },
   buton: {
     width: 125,
@@ -207,6 +210,13 @@ const styles = StyleSheet.create({
   MatrixRow:{
     flexDirection:"row",
     marginTop:10,
+  },
+  CerintaContainer:{
+    width:"90%",
+    flexDirection:"row",
+    justifyContent:"center",
+    alignItems:"center",
+    marginBottom:40,
   }
 });
 

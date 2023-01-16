@@ -104,14 +104,16 @@ const GasesteCategoriaGame = ({field, onVerify,onComplete}) => {
     setButtonValueMatrix(newMatrix);
 }
 
-const speak =(field)=>{
-  Speech.speak("Găsește ce"+{field}+ " este ascuns", {language:"ro"});
+const speak =()=>{
+  Speech.speak(`Găsește ce ${field} este ascuns`, {language:"ro"});
 };
 
   return (
     <View style={styles.GasesteCategoriaGame} >
-      <Text style={styles.cerinta}>Gaseste ce {field} este ascuns</Text>
-      <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
+      <View style={styles.CerintaContainer}>
+        <Text style={styles.cerinta}>Gaseste ce {field} este ascuns</Text>
+        <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
+      </View>
       <View style={styles.LitereContainer}>
         {ButtonValueMatrix.map((button_row,indexR)=>{
               return(
@@ -136,11 +138,11 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   cerinta: {
-    fontSize: 30,
-    width:"100%",
+    fontSize: 25,
     textAlign:"center",
     fontWeight: "bold",
-    marginBottom:20,
+    marginRight:20,
+    flex:1,
   },
   LitereContainer:{
       width:"75%"
@@ -151,7 +153,13 @@ const styles = StyleSheet.create({
       width:"100%",
       marginBottom:5,
   },
-
+  CerintaContainer:{
+    width:"90%",
+    flexDirection:"row",
+    justifyContent:"center",
+    alignItems:"center",
+    marginBottom:40,
+  }
 });
 
 export default GasesteCategoriaGame;

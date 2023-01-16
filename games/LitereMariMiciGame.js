@@ -131,8 +131,10 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
 
   return (
     <View style={styles.LitereMariMiciGame} >
-      <Text style={styles.Cerinta}>Selecteaza perechile de litere mari si mici</Text>
-      <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
+      <View style={styles.CerintaContainer}>
+        <Text style={styles.Cerinta}>Selecteaza perechile de litere mari si mici</Text>
+        <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
+      </View>
       <View style={styles.LitereContainer}>
         {ButtonValueMatrix.map((button_row,indexR)=>{
             return(
@@ -163,10 +165,17 @@ const styles = StyleSheet.create({
         marginBottom:5,
     },
     Cerinta:{
-        width:"90%",
         color:colors.black,
         fontSize:25,
         textAlign:"center",
+        flex:1,
+        paddingRight:20,
+    },
+    CerintaContainer:{
+        width:"90%",
+        flexDirection:"row",
+        justifyContent:"center",
+        alignItems:"center",
         marginBottom:40,
     }
 });
