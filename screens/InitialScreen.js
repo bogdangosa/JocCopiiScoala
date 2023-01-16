@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import RoundButton from "../components/buttons/RoundButton";
 import SimpleButton from "../components/buttons/SimpleButton";
 import CircleAvatar from "../components/cards/CircleAvatar";
 import {colors} from "../themes/color";
 
 const InitialScreen = ({navigation}) => {
   const [SliderState,setSliderState] = useState(0);
-  
+  const PossibleAvatars =[require("../assets/avatar_fox_1.png"),require("../assets/avatar_dog_1.png"),require("../assets/avatar_panda_1.png")];
+  const [SelectedAvatar,setSelectedAvatar] = useState(0);
 
 
   const nextSlider = ()=>{
@@ -15,6 +17,17 @@ const InitialScreen = ({navigation}) => {
 
     setSliderState(SliderState+1);
     console.log(SliderState);
+  }
+
+
+  const changeAvatar = (direction) =>{
+      let newAvatar = SelectedAvatar + direction;
+      if(newAvatar==-1)
+        newAvatar = PossibleAvatars.length-1;
+      else if(newAvatar == PossibleAvatars.length)
+        newAvatar = 0;
+
+      setSelectedAvatar(newAvatar);
   }
 
   return (
@@ -33,7 +46,11 @@ const InitialScreen = ({navigation}) => {
         :(SliderState==1?
         <View style={styles.data_container}>{/** A doua pagina **/}
           <Text style={[styles.Title,styles.Title2]}>Pentru a incepe alegeti un <Text style={styles.accent}>avatar</Text> si un <Text style={styles.accent}>nume</Text></Text>
-          <CircleAvatar image={require("../assets/4.png")} style={styles.CircleAvatar}/>
+          <View style={styles.avatar_container}>
+            <RoundButton icon={require("../assets/arrow_icon_.png")} style={styles.rotate} onPress={()=>changeAvatar(-1)}></RoundButton>
+            <CircleAvatar image={PossibleAvatars[SelectedAvatar]} style={styles.CircleAvatar}/>
+            <RoundButton icon={require("../assets/arrow_icon_.png")} onPress={()=>changeAvatar(1)}></RoundButton>
+          </View>
         </View>
         :
         <View style={styles.data_container}>{/** A treia pagina **/}
@@ -119,10 +136,19 @@ const styles = StyleSheet.create({
     resizeMode:"contain",
     flex:1,
   },
+  avatar_container:{
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"center",
+  },
+  rotate:{
+    transform:[{rotate: '180deg'}]
+  },
 
   CircleAvatar:{
       width:140,
       height:140,
+      marginHorizontal:20,
   },
 
   BaftaPandaImage:{
