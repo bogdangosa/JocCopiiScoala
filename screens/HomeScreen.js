@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import * as SQLite from 'expo-sqlite';
 import SimpleCard from "../components/cards/SimpleCard";
 import SimpleCard2 from "../components/cards/SimpleCard2";
@@ -79,6 +79,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.HomeScreen}>
+      <ScrollView style={styles.HomeScreenScroll}>
       <View style={styles.Card2}>
       <SimpleCard2
         style={{marginRight: 10,}}
@@ -120,6 +121,7 @@ const HomeScreen = ({ navigation }) => {
           return <Text>{item.name+' si ' +item.image}</Text>
         })}
       </View>
+      </ScrollView>
     </View>
   );
 };
@@ -133,7 +135,13 @@ const styles = StyleSheet.create({
   },
   HomeScreen: {
     alignItems: "center",
+    width:"100%",
   },
+  HomeScreenScroll:{
+    width:"100%",
+    paddingLeft:20,
+  },
+
   GameListContainer: {
     width: "90%",
     paddingTop: 20,
@@ -146,6 +154,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     
   }
+
+
 });
 
 export default HomeScreen;
