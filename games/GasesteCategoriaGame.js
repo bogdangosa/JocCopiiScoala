@@ -5,6 +5,8 @@ import SelectableFieldButton from "../components/buttons/SelectableFieldButton";
 import { colors } from "../themes/color";
 import * as SQLite from 'expo-sqlite';
 import useSound from "../hooks/useSound";
+import * as Speech from 'expo-speech';
+import RoundButton from "../components/buttons/RoundButton";
 
 const GasesteCategoriaGame = ({field, onVerify,onComplete}) => {
   const [ButtonValueMatrix,setButtonValueMatrix] = useState([]);
@@ -102,10 +104,14 @@ const GasesteCategoriaGame = ({field, onVerify,onComplete}) => {
     setButtonValueMatrix(newMatrix);
 }
 
+const speak =(field)=>{
+  Speech.speak("Găsește ce"+{field}+ " este ascuns", {language:"ro"});
+};
+
   return (
     <View style={styles.GasesteCategoriaGame} >
       <Text style={styles.cerinta}>Gaseste ce {field} este ascuns</Text>
-
+      <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
       <View style={styles.LitereContainer}>
         {ButtonValueMatrix.map((button_row,indexR)=>{
               return(

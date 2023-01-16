@@ -5,6 +5,9 @@ import SelectableFieldButton from "../components/buttons/SelectableFieldButton";
 import { colors } from "../themes/color";
 import * as SQLite from 'expo-sqlite';
 import useSound from "../hooks/useSound";
+import * as Speech from 'expo-speech';
+import RoundButton from "../components/buttons/RoundButton";
+
 
 const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
   const [SelectedField,setSelectedField] = useState(0);
@@ -146,11 +149,14 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
   if(SelectableButtonsMatrix==undefined || StateButtonsMatrix == undefined)
     return <Text> Loading</Text>
 
+    const speak =()=>{
+      Speech.speak("Sortează cuvintele pe categorii", {language:"ro"});
+    };
 
   return (
     <View style={styles.SorteazaCategoriiGame} >
-      <Text style={styles.cerinta}>Sorteaza cuvintele pe categorii</Text>
-
+      <Text style={styles.cerinta}>Sortează cuvintele pe categori</Text>
+      <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
       <View style={styles.select_fields_container}>
         <SelectableFieldButton color={colorsArray[0]} button_state={SelectedField==0} onPress={()=>setSelectedField(0)}>{Fields[0]}</SelectableFieldButton>
         <SelectableFieldButton color={colorsArray[1]} button_state={SelectedField==1} onPress={()=>setSelectedField(1)}>{Fields[1]}</SelectableFieldButton>

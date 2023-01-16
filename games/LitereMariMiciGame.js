@@ -3,6 +3,9 @@ import { StyleSheet, Text, View } from "react-native";
 import SelectableButton from "../components/buttons/SelectableButton";
 import {colors} from "../themes/color";
 import useSound from "../hooks/useSound";
+import * as Speech from 'expo-speech';
+import RoundButton from "../components/buttons/RoundButton";
+
 
 const LitereMariMiciGame = ({onVerify,onComplete}) => {
     const [ButtonValueMatrix,setButtonValueMatrix] = useState([]);
@@ -122,9 +125,14 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
         setButtonValueMatrix(newMatrix);
     }
 
+    const speak =(field)=>{
+        Speech.speak("Selecteaza perechile de litere mari și mici", {language:"ro"});
+      };
+
   return (
     <View style={styles.LitereMariMiciGame} >
       <Text style={styles.Cerinta}>Selecteaza perechile de litere mari si mici</Text>
+      <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
       <View style={styles.LitereContainer}>
         {ButtonValueMatrix.map((button_row,indexR)=>{
             return(

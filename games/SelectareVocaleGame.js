@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { getInspectorDataForInstance } from "react-native/Libraries/Renderer/implementations/ReactNativeRenderer-dev";
 import SelectableButton from "../components/buttons/SelectableButton";
 import useSound from "../hooks/useSound";
 import {colors} from "../themes/color";
 import * as SQLite from 'expo-sqlite';
-
+import RoundButton from '../components/buttons/RoundButton';
+import * as Speech from 'expo-speech'
 
 const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
   const [ArrayButoane, setArrayButoane] = useState([]);
@@ -139,10 +140,16 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
 
   if (ArrayButoane == undefined) return <View></View>;
 
+
+  const speak =()=>{
+    Speech.speak("Selectează vocalele", {language:"ro"});
+  };
+
   return (
     <View style={styles.SelectareVocaleGame}>
-      <Text style={styles.text}>Selecteaza</Text>
+      <Text style={styles.text}>Selectează</Text>
       <Text style={styles.text}>Vocalele</Text>
+      <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
       <View style={styles.container}>
         {ArrayButoane.map((button, index) => {
           return (
