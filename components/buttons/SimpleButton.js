@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View, color,  backgroundColor } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import {colors} from "../../themes/color";
-import {vw, vh} from "react-native-viewport-units";
+import { getDimensions } from '../../utils/Dimensions';
+const {vh,vw} = getDimensions();
 
 const SimpleButton = ({ children, onPress, color }) => {
   return (

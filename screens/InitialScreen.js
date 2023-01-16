@@ -3,12 +3,14 @@ import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
 import RoundButton from "../components/buttons/RoundButton";
 import SimpleButton from "../components/buttons/SimpleButton";
 import CircleAvatar from "../components/cards/CircleAvatar";
+import InputField from "../components/formElements/InputField";
 import {colors} from "../themes/color";
 
 const InitialScreen = ({navigation}) => {
   const [SliderState,setSliderState] = useState(0);
   const PossibleAvatars =[require("../assets/avatar_fox_1.png"),require("../assets/avatar_dog_1.png"),require("../assets/avatar_panda_1.png")];
   const [SelectedAvatar,setSelectedAvatar] = useState(0);
+  const [NameInput,setNameInput] = useState("");
 
 
   const nextSlider = ()=>{
@@ -51,6 +53,7 @@ const InitialScreen = ({navigation}) => {
             <CircleAvatar image={PossibleAvatars[SelectedAvatar]} style={styles.CircleAvatar}/>
             <RoundButton icon={require("../assets/arrow_icon_.png")} onPress={()=>changeAvatar(1)}></RoundButton>
           </View>
+          <InputField placeholder="your name" value={NameInput} setValue={setNameInput}/>
         </View>
         :
         <View style={styles.data_container}>{/** A treia pagina **/}

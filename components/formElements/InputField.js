@@ -1,10 +1,9 @@
-import { StyleSheet, Text, View, color,  Image, TextInput} from "react-native";
-import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+import { StyleSheet, TextInput} from "react-native";
 import {colors} from "../../themes/color";
 
 const InputField = ({ value ,setValue , placeholder , style }) => {
   return (
-    <TextInput style={[styles.InputField,style]} >
+    <TextInput style={[styles.InputField,style]} value={value} onChangeText={setValue} placeholder={placeholder} >
 
     </TextInput>
   );
@@ -12,10 +11,11 @@ const InputField = ({ value ,setValue , placeholder , style }) => {
 
 const styles = StyleSheet.create({
     InputField: {
-    alignItems: "center",
-    justifyContent: "center",
     width:200,
     height:50,
+    borderBottomWidth:5,
+    borderColor:colors.gray,
+    color:colors.gray,
   },
 });
 

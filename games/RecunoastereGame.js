@@ -6,7 +6,8 @@ import {colors} from "../themes/color";
 import * as SQLite from 'expo-sqlite';
 import { ImageService } from "../utils/ImageService";
 import useSound from "../hooks/useSound";
-import {vw, vh} from "react-native-viewport-units";
+import { getDimensions } from '../utils/Dimensions';
+const {vh,vw} = getDimensions();
 
 const RecunoastereGame = ({field, onVerify,onComplete}) => {
     const [butoane,setbutoane]=useState([false,false,false,false])
