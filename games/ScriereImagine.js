@@ -7,16 +7,14 @@ import * as SQLite from 'expo-sqlite';
 import { ImageService } from "../utils/ImageService";
 import useSound from "../hooks/useSound";
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from "react-native";
-
+import {database_names} from '../database/database_names.js';
 
 
 const ScriereImagine = ({field,onVerify,onComplete})=>{
   const [Mesaj,setMesaj] = useState("");
   const [GameImage,setGameImage] = useState(null);
   const [GameName,setGameName]=useState(null);
-  const DatabaseName = "MainDatabase";
-  const tableName = "MainTable";
-  const db = SQLite.openDatabase(DatabaseName);Solution
+  const db = SQLite.openDatabase(database_names.database_name);
   const [Solution,setSolution]=useState(0);
   const playSound = useSound();
   const [ statusColor, setStatusColor ] = useState(colors.black);
@@ -43,7 +41,7 @@ const ScriereImagine = ({field,onVerify,onComplete})=>{
 
   const getPoza = () =>{
     db.transaction(tx => {
-      tx.executeSql(`SELECT * FROM ${tableName} WHERE type= "${field}" ORDER BY random() LIMIT 1`, null, 
+      tx.executeSql(`SELECT * FROM ${database_names.database_words_table} WHERE type= "${field}" ORDER BY random() LIMIT 1`, null, 
       (txObj, ResultsSet) => setData(ResultsSet.rows._array),  ///declar variabila setCuvant care ia valoarea primului element din vectorul care e sortat random 
       (txObj, error) => console.log('Error ', error)
       );

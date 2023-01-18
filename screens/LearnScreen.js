@@ -5,13 +5,12 @@ import SimpleCard from "../components/cards/SimpleCard";
 import { useEffect , useState} from "react";
 import * as SQLite from 'expo-sqlite';
 import { ImageService } from "../utils/ImageService";
+import {database_names} from '../database/database_names.js';
 
 
 const LearnScreen = ({ route, navigation }) => {
-
-  const DatabaseName = "MainDatabase";
-  const tableName = "MainTable";
-  const db = SQLite.openDatabase(DatabaseName);
+  
+  const db = SQLite.openDatabase(database_names.database_name);
 
   const {type}=route.params;
 
@@ -19,7 +18,7 @@ const LearnScreen = ({ route, navigation }) => {
   const [Color,setColor]=useState([colors.blue, colors.green, colors.orange, colors.red, colors.purple, colors.yellow, colors.brown])
   const getData = (type) =>{
     db.transaction(tx => {
-      tx.executeSql(`SELECT * FROM ${tableName} WHERE type= "${type}"`, null, 
+      tx.executeSql(`SELECT * FROM ${database_names.database_words_table} WHERE type= "${type}"`, null, 
       (txObj, ResultsSet) =>{console.log(ResultsSet); setData(ResultsSet.rows._array)},
       (txObj, error) => console.log('Error ', error)
       );

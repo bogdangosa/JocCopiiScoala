@@ -8,14 +8,13 @@ import { ImageService } from "../utils/ImageService";
 import useSound from "../hooks/useSound";
 import { getDimensions } from '../utils/Dimensions';
 const {vh,vw} = getDimensions();
+import {database_names} from '../database/database_names.js';
 
 const RecunoastereGame = ({field, onVerify,onComplete}) => {
     const [butoane,setbutoane]=useState([false,false,false,false])
     const [Variante,setVariante]=useState(null)
     const [GameImage,setGameImage] = useState(null);
-    const DatabaseName = "MainDatabase";
-    const tableName = "MainTable";
-    const db = SQLite.openDatabase(DatabaseName);
+    const db = SQLite.openDatabase(database_names.database_name);
     const [Solution,setSolution]=useState(0);
     const [SpecialMode,setSpecialMode] = useState(false);
 
@@ -35,7 +34,7 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
     //aduce 4 elemente din baza de date la intanpm audit fix --forcemplare
     const getVarinte = () =>{
       db.transaction(tx => {
-        tx.executeSql(`SELECT * FROM ${tableName} WHERE type= "${field}" ORDER BY random() LIMIT 4`, null, 
+        tx.executeSql(`SELECT * FROM ${database_names.database_words_table} WHERE type= "${field}" ORDER BY random() LIMIT 4`, null, 
         (txObj, ResultsSet) =>{console.log(ResultsSet); setData(ResultsSet.rows._array)},
         (txObj, error) => console.log('Error ', error)
         );

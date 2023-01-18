@@ -7,6 +7,7 @@ import * as SQLite from 'expo-sqlite';
 import useSound from "../hooks/useSound";
 import * as Speech from 'expo-speech';
 import RoundButton from "../components/buttons/RoundButton";
+import {database_names} from '../database/database_names.js';
 
 
 const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
@@ -15,9 +16,7 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
   const [StateButtonsMatrix,setStateButtonsMatrix] = useState([]);
   const [Fields,setFields] = useState([]);
   const colorsArray = [colors.purple,colors.orange,colors.brown,colors.red,colors.green];
-  const DatabaseName = "MainDatabase";
-  const tableName = "MainTable";
-  const db = SQLite.openDatabase(DatabaseName);
+  const db = SQLite.openDatabase(database_names.database_name);
   const playSound = useSound();
 
 
@@ -76,7 +75,7 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
 
   const getVarinte = (fields , field_index , limits , Matrix) =>{
     db.transaction(tx => {
-      tx.executeSql(`SELECT * FROM ${tableName} WHERE type= "${fields[field_index]}" ORDER BY random() LIMIT ${limits[field_index]}`, null, 
+      tx.executeSql(`SELECT * FROM ${database_names.database_words_table} WHERE type= "${fields[field_index]}" ORDER BY random() LIMIT ${limits[field_index]}`, null, 
       (txObj, ResultsSet) =>{setData(ResultsSet.rows._array,fields, field_index, limits , Matrix)},
       (txObj, error) => console.log('Error ', error)
       );

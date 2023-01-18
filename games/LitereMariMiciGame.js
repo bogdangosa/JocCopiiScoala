@@ -130,7 +130,7 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
       };
 
   return (
-    <View style={styles.LitereMariMiciGame} >
+    <View style={styles.LitereMariMiciGame}>
       <View style={styles.CerintaContainer}>
         <Text style={styles.Cerinta}>Selecteaza perechile de litere mari si mici</Text>
         <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>

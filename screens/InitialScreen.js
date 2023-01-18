@@ -1,21 +1,47 @@
 import { useState } from "react";
-import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, Image, ImageBackground, Slider } from "react-native";
 import RoundButton from "../components/buttons/RoundButton";
 import SimpleButton from "../components/buttons/SimpleButton";
 import CircleAvatar from "../components/cards/CircleAvatar";
 import InputField from "../components/formElements/InputField";
 import {colors} from "../themes/color";
+import {database_names} from '../database/database_names.js';
+import { addUser, createTable } from "../database/database";
+import * as SQLite from 'expo-sqlite';
+import { useMyUserContext, useMyUserUpdate } from "../contexts/UserContext";
 
 const InitialScreen = ({navigation}) => {
+  const updateUser = useMyUserUpdate();
+
+
   const [SliderState,setSliderState] = useState(0);
   const PossibleAvatars =[require("../assets/avatar_fox_1.png"),require("../assets/avatar_dog_1.png"),require("../assets/avatar_panda_1.png")];
   const [SelectedAvatar,setSelectedAvatar] = useState(0);
   const [NameInput,setNameInput] = useState("");
+  const AvatarArray = ["avatar_fox_1","avatar_dog_1","avatar_panda_1"]
 
+  
+  const db = SQLite.openDatabase(database_names.database_name);
+
+
+  const CreateUserDatabase = () => {
+    createTable(db,database_names.database_user_table,database_names.database_user_parameters);
+    const user_data = {
+      name:NameInput,
+      avatar:AvatarArray[SelectedAvatar],
+      level:1,
+      xp:0,
+    }
+    addUser(db,database_names.database_user_table,user_data);
+    updateUser(user_data);
+  }
 
   const nextSlider = ()=>{
-    if(SliderState==2)
-      navigation.pop();
+    if(SliderState==1)
+      CreateUserDatabase();
+
+    if(SliderState>=2)
+      navigation.navigate("Home Screen");
 
     setSliderState(SliderState+1);
     console.log(SliderState);
@@ -53,7 +79,7 @@ const InitialScreen = ({navigation}) => {
             <CircleAvatar image={PossibleAvatars[SelectedAvatar]} style={styles.CircleAvatar}/>
             <RoundButton icon={require("../assets/arrow_icon_.png")} onPress={()=>changeAvatar(1)}></RoundButton>
           </View>
-          <InputField placeholder="your name" value={NameInput} setValue={setNameInput}/>
+          <InputField placeholder="Numele tau" value={NameInput} setValue={setNameInput}/>
         </View>
         :
         <View style={styles.data_container}>{/** A treia pagina **/}
@@ -143,6 +169,7 @@ const styles = StyleSheet.create({
     flexDirection:"row",
     alignItems:"center",
     justifyContent:"center",
+    marginBottom:40,
   },
   rotate:{
     transform:[{rotate: '180deg'}]

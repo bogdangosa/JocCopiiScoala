@@ -7,14 +7,13 @@ import * as SQLite from 'expo-sqlite';
 import useSound from "../hooks/useSound";
 import * as Speech from 'expo-speech';
 import RoundButton from "../components/buttons/RoundButton";
+import {database_names} from '../database/database_names.js';
 
 const GasesteCategoriaGame = ({field, onVerify,onComplete}) => {
   const [ButtonValueMatrix,setButtonValueMatrix] = useState([]);
   const [Cuvinte,setCuvinte] = useState([]);
   const [SolutionAdress,setSolutionAdress] = useState();
-  const DatabaseName = "MainDatabase";
-  const tableName = "MainTable";
-  const db = SQLite.openDatabase(DatabaseName);
+  const db = SQLite.openDatabase(database_names.database_name);
   const playSound = useSound();
 
  
@@ -57,7 +56,7 @@ const GasesteCategoriaGame = ({field, onVerify,onComplete}) => {
 
   const getCuvinte = () =>{
     db.transaction(tx => {
-      tx.executeSql(`SELECT * FROM ${tableName} WHERE type= "${field}" AND LENGTH(name) <= 5 ORDER BY random() LIMIT 3`, null, 
+      tx.executeSql(`SELECT * FROM ${database_names.database_words_table} WHERE type= "${field}" AND LENGTH(name) <= 5 ORDER BY random() LIMIT 3`, null, 
       (txObj, ResultsSet) => createMatrix(ResultsSet.rows._array),  ///declar variabila setCuvant care ia valoarea primului element din vectorul care e sortat random 
       (txObj, error) => console.log('Error ', error)
       );
@@ -104,8 +103,8 @@ const GasesteCategoriaGame = ({field, onVerify,onComplete}) => {
     setButtonValueMatrix(newMatrix);
 }
 
-const speak =()=>{
-  Speech.speak(`Găsește ce ${field} este ascuns`, {language:"ro"});
+const speak = async()=>{
+  Speech.speak(`Găsește ce ${field} este ascuns`, {language:"ro-Ro",});
 };
 
   return (

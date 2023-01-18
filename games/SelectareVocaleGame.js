@@ -7,14 +7,13 @@ import {colors} from "../themes/color";
 import * as SQLite from 'expo-sqlite';
 import RoundButton from '../components/buttons/RoundButton';
 import * as Speech from 'expo-speech'
+import {database_names} from '../database/database_names.js';
 
 const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
   const [ArrayButoane, setArrayButoane] = useState([]);
   const [ButtonState, setButtonState] = useState(false);
   const [Cuvant, setCuvant]=useState(null);
-  const DatabaseName = "MainDatabase";
-  const tableName = "MainTable";
-  const db = SQLite.openDatabase(DatabaseName);Solution
+  const db = SQLite.openDatabase(database_names.database_name);
   const [Solution,setSolution]=useState(0);
   const playSound = useSound();
 
@@ -29,7 +28,7 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
 
   const getCuvant = () =>{
     db.transaction(tx => {
-      tx.executeSql(`SELECT * FROM ${tableName} WHERE LENGTH(name) <= 5 ORDER BY random() LIMIT 1`, null, 
+      tx.executeSql(`SELECT * FROM ${database_names.database_words_table} WHERE LENGTH(name) <= 5 ORDER BY random() LIMIT 1`, null, 
       (txObj, ResultsSet) => setCuvant(ResultsSet.rows._array[0].name),  ///declar variabila setCuvant care ia valoarea primului element din vectorul care e sortat random 
       (txObj, error) => console.log('Error ', error)
       );
