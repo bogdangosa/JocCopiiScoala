@@ -11,6 +11,7 @@ import {colors} from "../themes/color";
 import ProgressBar from "../components/ProgressBar/ProgressBar";
 import {database_names} from '../database/database_names.js';
 import { useMyUserContext , useMyUserUpdate } from "../contexts/UserContext";
+import AccountScreen from "./AccountScreen";
 
 
 const HomeScreen = ({ navigation }) => {
@@ -86,6 +87,15 @@ const HomeScreen = ({ navigation }) => {
     <View style={styles.HomeScreen}>
       <ScrollView style={styles.HomeScreenScroll}>
       <View style={styles.Card2}>
+      <SimpleCard2
+        style={{marginRight: 10,}}
+        text="Cont"
+        color={colors.blue}
+        onPress={() => {
+        navigation.navigate("Cont", {
+        });
+      }}
+      />
       <SimpleCard2
         style={{marginRight: 10,}}
         text="Învață"

@@ -9,8 +9,10 @@ import LearnMenuScreen from "./screens/LearnMenuScreen";
 import {colors} from "./themes/color";
 import LearnScreen from "./screens/LearnScreen";
 import InitialScreen from "./screens/InitialScreen";
+import AccountScreen from "./screens/AccountScreen";
 import { MyUserProvider, useMyUserContext } from "./contexts/UserContext";
 import { useEffect } from "react";
+import { ScreenStack } from "react-native-screens";
 
 const Stack = createNativeStackNavigator();
 
@@ -63,6 +65,13 @@ const Navigation = () =>{
                 component={LearnScreen}
                 options={styles.header}
             />
+           <Stack.Screen
+                name="Cont"
+                component={AccountScreen}
+                options={styles.header}
+           />
+            
+            
             </Stack.Navigator>
       </NavigationContainer>
     )
