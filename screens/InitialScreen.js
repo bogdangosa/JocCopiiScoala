@@ -41,7 +41,7 @@ const InitialScreen = ({navigation}) => {
       CreateUserDatabase();
 
     if(SliderState>=2)
-      navigation.navigate("Home Screen");
+      navigation.navigate("Main");
 
     setSliderState(SliderState+1);
     console.log(SliderState);

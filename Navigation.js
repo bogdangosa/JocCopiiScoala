@@ -1,4 +1,4 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { DrawerActions, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StyleSheet, Text, View } from "react-native";
 import GameMenuScreen from "./screens/GameMenuScreen";
@@ -13,8 +13,37 @@ import AccountScreen from "./screens/AccountScreen";
 import { MyUserProvider, useMyUserContext } from "./contexts/UserContext";
 import { useEffect } from "react";
 import { ScreenStack } from "react-native-screens";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import SettingsScreen from "./screens/SettingsScreen";
 
 const Stack = createNativeStackNavigator();
+
+const Drawer = createDrawerNavigator();
+
+const HomeDrawer = () =>{
+
+    return (
+        <Drawer.Navigator initialRouteName="Main">
+            <Drawer.Screen                
+                name="Home Screen"
+                component={HomeScreen}
+                options={{...styles.header, ...{title: 'EduLearn'}}}/>
+            
+            <Drawer.Screen 
+                name="Cont"
+                component={AccountScreen}
+                options={styles.header}/>
+
+            <Drawer.Screen 
+                name="Setari"
+                component={SettingsScreen}
+                options={styles.header}/>
+              
+        </Drawer.Navigator>
+    )
+}
+
+
 
 const Navigation = () =>{
     const User = useMyUserContext();
@@ -29,16 +58,16 @@ const Navigation = () =>{
 
     return(
         <NavigationContainer>
-        <Stack.Navigator initialRouteName={User=="no user"?"Initial Screen":"Home Screen"}>
+        <Stack.Navigator initialRouteName={User=="no user"?"Initial Screen":"Main"}>
             <Stack.Screen
                 name="Initial Screen"
                 component={InitialScreen}
                 options={{headerShown: false}}
             />
             <Stack.Screen
-                name="Home Screen"
-                component={HomeScreen}
-                options={{...styles.header, ...{title: 'EduLearn'}}}
+                name="Main"
+                component={HomeDrawer}
+                options={{headerShown: false}}
             />
             <Stack.Screen
                 name="Games Menu"
@@ -64,14 +93,7 @@ const Navigation = () =>{
                 name="Learn"
                 component={LearnScreen}
                 options={styles.header}
-            />
-           <Stack.Screen
-                name="Cont"
-                component={AccountScreen}
-                options={styles.header}
-           />
-            
-            
+            />    
             </Stack.Navigator>
       </NavigationContainer>
     )

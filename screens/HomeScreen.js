@@ -1,66 +1,22 @@
 import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import * as SQLite from 'expo-sqlite';
 import SimpleCard from "../components/cards/SimpleCard";
 import SimpleCard2 from "../components/cards/SimpleCard2";
-import SimpleButton from "../components/buttons/SimpleButton"
-import { inital_data } from "../database/initial_data";
 import { app_structure_data } from "../database/app_structure_data";
-import { createTable, addItem, dropTable } from "../database/database";
 import {colors} from "../themes/color";
-import ProgressBar from "../components/ProgressBar/ProgressBar";
 import {database_names} from '../database/database_names.js';
-import { useMyUserContext , useMyUserUpdate } from "../contexts/UserContext";
-import AccountScreen from "./AccountScreen";
+import { useMyUserContext } from "../contexts/UserContext";
 
 
 const HomeScreen = ({ navigation }) => {
   const [GamesData, setGameData] = useState([]);
-  const [Data,setData] = useState(null);
   const User = useMyUserContext();
-  const updateUser = useMyUserUpdate();
-
-  const db = SQLite.openDatabase(database_names.database_name);
 
   useEffect(() => {
     setGameData(app_structure_data);
     //createTable(db,database_names.database_words_table);
     console.log(database_names.database_name);
   }, []);
-
-  useEffect(()=>{
-    if(Data==null)
-      getAllItems(database_names.database_words_table);
-
-  },[Data])
-
-  const AddInitialData =()=>{
-    createTable(db,database_names.database_words_table,database_names.database_words_parameters);
-    inital_data.forEach(item=>{
-      //console.log(item);
-      addItem(db,database_names.database_words_table,item);
-    })
-    getAllItems(database_names.database_words_table)
-  }
-
-  const getItemByType = () =>{
-    db.transaction(tx => {
-      tx.executeSql(`SELECT * FROM ${database_names.database_words_table}`, null, 
-      (txObj, ResultsSet) => {setData(ResultsSet.rows._array);console.log(ResultsSet.rows._array);},
-      (txObj, error) => console.log('Error ', error)
-      );
-    }) // end transaction
-  }
-
-  const getAllItems = (tableName) =>{
-    db.transaction(tx => {
-      tx.executeSql(`SELECT * FROM ${tableName}`, null, 
-      (txObj, ResultsSet) => {setData(ResultsSet.rows._array);/*console.log(ResultsSet.rows._array);*/},
-      (txObj, error) => console.log('Error ', error)
-      );
-    }) // end transaction
-  }
-
 
   const openGameOfTheDay = () =>{
     const nr_of_categories = app_structure_data.length;
@@ -80,22 +36,10 @@ const HomeScreen = ({ navigation }) => {
 
   }
 
-
-
-
   return (
     <View style={styles.HomeScreen}>
       <ScrollView style={styles.HomeScreenScroll}>
       <View style={styles.Card2}>
-      <SimpleCard2
-        style={{marginRight: 10,}}
-        text="Cont"
-        color={colors.blue}
-        onPress={() => {
-        navigation.navigate("Cont", {
-        });
-      }}
-      />
       <SimpleCard2
         style={{marginRight: 10,}}
         text="Învață"
@@ -130,12 +74,6 @@ const HomeScreen = ({ navigation }) => {
           );
         })}
         {User!=undefined?<Text>{User.name+" si "+User.avatar}</Text>:<></>}
-        <SimpleButton onPress={()=>AddInitialData()} color={colors.orange}>Adauaga baza</SimpleButton>
-        <SimpleButton onPress={()=>{dropTable(db,database_names.database_words_table),setData([])}} color={colors.green}>Sterge baza</SimpleButton>
-        <SimpleButton onPress={()=>{dropTable(db,database_names.database_user_table),updateUser("no user")}} color={colors.red}>Sterge useri</SimpleButton>
-        {Data?.map((item,index)=>{
-          return <Text key={index}>{item.name+' si ' +item.image}</Text>
-        })}
       </View>
       </ScrollView>
     </View>
