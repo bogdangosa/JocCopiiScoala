@@ -20,7 +20,7 @@ const AccountCard2 =({image, levelnumber, title, text, color})=>{
     
 const styles = StyleSheet.create({
     card:{
-        justifyContent:"row",
+        flexDirection:"row",
     },
     
     icon:{

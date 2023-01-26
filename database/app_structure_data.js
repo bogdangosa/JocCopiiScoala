@@ -33,6 +33,7 @@ export const app_structure_data = [
           game:"Recunoastere",
           field:"animal",
           progress_rate:20,
+          game_xp:10,
           image: require("../assets/animale.png"),
         },
         {
@@ -41,6 +42,7 @@ export const app_structure_data = [
           game:"Recunoastere",
           field:"fruct",
           progress_rate:20,
+          game_xp:10,
           image: require("../assets/fructe.png"),
         },
         {
@@ -49,6 +51,7 @@ export const app_structure_data = [
           game:"Recunoastere",
           field:"leguma",
           progress_rate:20,
+          game_xp:10,
           image: require("../assets/legume.png"),
         },
         {
@@ -57,6 +60,7 @@ export const app_structure_data = [
           game:"Recunoastere",
           field:"vehicul",
           progress_rate:20,
+          game_xp:10,
           image: require("../assets/vehicule.png"),
         },
         {
@@ -65,6 +69,7 @@ export const app_structure_data = [
           game:"Recunoastere",
           field:"cifra",
           progress_rate:20,
+          game_xp:10,
           image: require("../assets/cifre.png"),
         },
         {
@@ -73,6 +78,7 @@ export const app_structure_data = [
           game:"Recunoastere",
           field:"culoare",
           progress_rate:20,
+          game_xp:10,
           image: require("../assets/culori.png"),
         },
         
@@ -88,6 +94,7 @@ export const app_structure_data = [
           color: colors.red,
           game:"LitereMariMici",
           progress_rate:12.5,
+          game_xp:5,
           image: require("../assets/Panda6.png"),
         },
         {
@@ -95,6 +102,7 @@ export const app_structure_data = [
           color: colors.orange,
           game:"SelectareVocale",
           progress_rate:20,
+          game_xp:5,
           image: require("../assets/Panda6.png"),
         },
         {
@@ -102,6 +110,7 @@ export const app_structure_data = [
           color: colors.blue,
           game:"SorteazaCategorii",
           progress_rate:20,
+          game_xp:15,
           image: require("../assets/Panda6.png"),
         },
         {
@@ -110,6 +119,7 @@ export const app_structure_data = [
           game:"GasesteCategoria",
           field:"animal",
           progress_rate:20,
+          game_xp:20,
           image: require("../assets/Panda6.png"),
         },
       ],
@@ -125,6 +135,7 @@ export const app_structure_data = [
           game:"ScriereImagine",
           progress_rate:20,
           field:"animal",
+          game_xp:15,
           image: require("../assets/animale.png"),
         },
         {
@@ -133,6 +144,7 @@ export const app_structure_data = [
           game:"ScriereImagine",
           progress_rate:20,
           field:"fruct",
+          game_xp:15,
           image: require("../assets/fructe.png"),
         },
         {
@@ -141,6 +153,7 @@ export const app_structure_data = [
           game:"ScriereImagine",
           progress_rate:20,
           field:"leguma",
+          game_xp:15,
           image: require("../assets/legume.png"),
         }, 
         {
@@ -149,6 +162,7 @@ export const app_structure_data = [
           game:"ScriereImagine",
           progress_rate:20,
           field:"vehicul",
+          game_xp:15,
           image: require("../assets/vehicule.png"),
         },
         {
@@ -157,6 +171,7 @@ export const app_structure_data = [
           game:"ScriereImagine",
           progress_rate:20,
           field:"cifra",
+          game_xp:15,
           image: require("../assets/cifre.png"),
         },
         {
@@ -165,6 +180,7 @@ export const app_structure_data = [
           game:"ScriereImagine",
           progress_rate:20,
           field:"culoare",
+          game_xp:15,
           image: require("../assets/culori.png"),
         },
       ],
@@ -180,6 +196,7 @@ export const app_structure_data = [
           game:"GasesteCategoria",
           field:"animal",
           progress_rate:20,
+          game_xp:20,
           image: require("../assets/animale.png"),
         },
         {
@@ -188,6 +205,7 @@ export const app_structure_data = [
           game:"GasesteCategoria",
           field:"fruct",
           progress_rate:20,
+          game_xp:20,
           image: require("../assets/fructe.png"),
         },
         {
@@ -196,6 +214,7 @@ export const app_structure_data = [
           game:"GasesteCategoria",
           field:"leguma",
           progress_rate:20,
+          game_xp:20,
           image: require("../assets/legume.png"),
         },
         {
@@ -204,6 +223,7 @@ export const app_structure_data = [
           game:"GasesteCategoria",
           field:"vehicul",
           progress_rate:20,
+          game_xp:20,
           image: require("../assets/vehicule.png"),
         },
         {
@@ -212,6 +232,7 @@ export const app_structure_data = [
           game:"GasesteCategoria",
           field:"cifra",
           progress_rate:20,
+          game_xp:20,
           image: require("../assets/cifre.png"),
         },
         {
@@ -220,6 +241,7 @@ export const app_structure_data = [
           game:"GasesteCategoria",
           field:"culoare",
           progress_rate:20,
+          game_xp:20,
           image: require("../assets/culori.png"),
         },
       ],

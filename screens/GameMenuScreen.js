@@ -26,6 +26,7 @@ const GameMenuScreen = ({ route, navigation }) => {
                 navigation.navigate("Game", {
                   title: game.name,
                   game: game.game,
+                  game_xp: game.game_xp,
                   field: game.field,
                   progress_rate: game.progress_rate,
                 });

@@ -21,10 +21,21 @@ export const addItem = (db,tableName,item) =>{
 export const addUser = (db,tableName,user_data) =>{
     //console.log(item);
     db.transaction(tx => {
-        tx.executeSql(`INSERT INTO ${tableName} ( name , avatar , level , xp ) values ( ? , ? , ? , ? )`, [ user_data.name , user_data.avatar , user_data.level , user_data.xp ],      
+        tx.executeSql(`INSERT INTO ${tableName} ( name , avatar , xp , max_day_streak , current_day_streak , fastest_time , longest_perfect_streak , current_perfect_streak ) values ( ? , ? , ? , ? ,? , ? , ? , ? )`, [ user_data.name , user_data.avatar , user_data.xp , user_data.max_day_streak , user_data.current_day_streak , user_data.fastest_time ,  user_data.longest_perfect_streak , user_data.current_perfect_streak],      
         (txObj, ResultsSet) => console.log('Results ', ResultsSet),
         (txObj, error) => console.log('Error ', error))
     }) // end transaction
+}
+
+
+
+export const updateUserXP = (db , tableName ,id , added_xp)=>{
+    console.log("test"+ added_xp);
+    db.transaction(tx => {
+        tx.executeSql(`UPDATE ${tableName} SET xp = xp + ${added_xp} WHERE id = ?`, [id],
+        (txObj, ResultsSet) => console.log('Results ', ResultsSet),
+        (txObj, error) => console.log('Error ', error))
+    })
 }
 
 

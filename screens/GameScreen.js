@@ -11,18 +11,26 @@ import ProgressBar from "../components/ProgressBar/ProgressBar";
 import SorteazaCategoriiGame from "../games/SorteazaCategoriiGame";
 import ScriereImagine from "../games/ScriereImagine";
 import { KeyboardAvoidingView } from "react-native";
+import { updateUserXP } from "../database/database";
+import { useMyUserContext, useMyUserUpdate } from "../contexts/UserContext";
+import * as SQLite from 'expo-sqlite';
+import {database_names} from '../database/database_names.js';
 
 const GameScreen = ({ route, navigation }) => {
   const [Verifica,setVerifica] = useState(0);
   const [GameProgressPercentage,setGameProgressPercentage] = useState(0);
   const [ProgressRate,setProgressRate] = useState(20);
-  const { title } = route.params;
+  const { title , game_xp } = route.params;
+  const User = useMyUserContext();
+  const updateUser = useMyUserUpdate();
+  
+  const db = SQLite.openDatabase(database_names.database_name);
 
-  useEffect(() => {
-    navigation.setOptions({ title: title });
-    //console.log(route.params.progress_rate);
-    setProgressRate(route.params.progress_rate);
-  }, []);
+    useEffect(() => {
+      navigation.setOptions({ title: title });
+      //console.log(route.params.progress_rate);
+      setProgressRate(route.params.progress_rate);
+    }, []);
 
     const SetareJoc = ()=>{
         switch(route.params.game){
@@ -42,9 +50,20 @@ const GameScreen = ({ route, navigation }) => {
 
     }
 
+    const updateUserXp = () =>{
+
+      const user_data = User;
+      user_data.xp += game_xp;
+      //console.log(user_data);
+      updateUser(user_data);
+      updateUserXP(db,database_names.database_user_table,user_data.id,game_xp);
+    }
+
     const rezultatCorect = () =>{
-        if(GameProgressPercentage+ProgressRate==100)
+        if(GameProgressPercentage+ProgressRate==100){
+          updateUserXp();
           navigation.navigate("Felicitari", { title: "Felicitari" })
+        }
         else{
           setGameProgressPercentage(current=>current+ProgressRate);
         }

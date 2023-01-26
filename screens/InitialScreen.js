@@ -29,8 +29,12 @@ const InitialScreen = ({navigation}) => {
     const user_data = {
       name:NameInput,
       avatar:AvatarArray[SelectedAvatar],
-      level:1,
       xp:0,
+      max_day_streak:0,
+      current_day_streak:0,
+      fastest_time:0,
+      longest_perfect_streak:0,
+      current_perfect_streak :0,
     }
     addUser(db,database_names.database_user_table,user_data);
     updateUser(user_data);

@@ -6,6 +6,7 @@ import { app_structure_data } from "../database/app_structure_data";
 import {colors} from "../themes/color";
 import {database_names} from '../database/database_names.js';
 import { useMyUserContext } from "../contexts/UserContext";
+import { xpToLevel } from "../utils/xpToLevel";
 
 
 const HomeScreen = ({ navigation }) => {
@@ -73,7 +74,7 @@ const HomeScreen = ({ navigation }) => {
             />
           );
         })}
-        {User!=undefined?<Text>{User.name+" si "+User.avatar}</Text>:<></>}
+        {User!=undefined?<Text>{User.name+" si "+User.avatar +" si xp:"+User.xp +" si level:"+ xpToLevel(User.xp) }</Text>:<></>}
       </View>
       </ScrollView>
     </View>

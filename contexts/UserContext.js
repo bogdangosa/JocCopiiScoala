@@ -38,6 +38,7 @@ export function MyUserProvider({children}){
 
     const updateUser = (data)=>{
         setUser(data)
+        console.log(User);
     }
 
 
