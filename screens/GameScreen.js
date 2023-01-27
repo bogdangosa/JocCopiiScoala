@@ -51,11 +51,9 @@ const GameScreen = ({ route, navigation }) => {
     }
 
     const updateUserXp = () =>{
-
       const user_data = User;
       user_data.xp += game_xp;
-      //console.log(user_data);
-      updateUser(user_data);
+      updateUser({...user_data});
       updateUserXP(db,database_names.database_user_table,user_data.id,game_xp);
     }
 
@@ -73,7 +71,7 @@ const GameScreen = ({ route, navigation }) => {
   return (
     <View style={styles.GameScreen}>
       <View style={styles.TopProgressContainer}>
-        <ProgressBar percentage={GameProgressPercentage}></ProgressBar>
+        <ProgressBar percentage={GameProgressPercentage} color={colors.blue}></ProgressBar>
       </View>
 
       <View>{SetareJoc()}</View>

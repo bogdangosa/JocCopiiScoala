@@ -6,12 +6,18 @@ import { app_structure_data } from "../database/app_structure_data";
 import {colors} from "../themes/color";
 import {database_names} from '../database/database_names.js';
 import { useMyUserContext } from "../contexts/UserContext";
-import { xpToLevel } from "../utils/xpToLevel";
+import { nextLevelProgressPercentage, xpToLevel } from "../utils/xpToLevel";
+import ProgressBar from "../components/ProgressBar/ProgressBar";
+import CircleAvatar from "../components/cards/CircleAvatar";
+import { ImageService } from "../utils/ImageService";
 
 
 const HomeScreen = ({ navigation }) => {
   const [GamesData, setGameData] = useState([]);
   const User = useMyUserContext();
+
+  const user_avatar = ImageService.GetImage(User.avatar);
+
 
   useEffect(() => {
     setGameData(app_structure_data);
@@ -40,23 +46,31 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.HomeScreen}>
       <ScrollView style={styles.HomeScreenScroll}>
-      <View style={styles.Card2}>
-      <SimpleCard2
-        style={{marginRight: 10,}}
-        text="Învață"
-        color={colors.blue}
-        onPress={() => {
-        navigation.navigate("Learn Menu", {
-        });
-      }}
-      />
-      <SimpleCard2
-        style={{marginLeft: 10,}}
-        text="Jocul zilei"
-        color={colors.purple}
-        onPress={()=>openGameOfTheDay()}
-      />
-      </View>
+
+        <View style={styles.HomeTopBar}>
+          <CircleAvatar image={user_avatar} style={styles.CircleAvatar}/>
+          <View>
+            <Text>Level: {xpToLevel(User.xp)}</Text>
+            <ProgressBar style={styles.LevelProgressBar} percentage={nextLevelProgressPercentage(User.xp)} color={colors.green}></ProgressBar>
+          </View>
+        </View>
+        <View style={styles.Card2}>
+        <SimpleCard2
+          style={{marginRight: 10,}}
+          text="Învață"
+          color={colors.blue}
+          onPress={() => {
+          navigation.navigate("Learn Menu", {
+          });
+        }}
+        />
+        <SimpleCard2
+          style={{marginLeft: 10,}}
+          text="Jocul zilei"
+          color={colors.purple}
+          onPress={()=>openGameOfTheDay()}
+        />
+        </View>
       <View style={styles.GameListContainer}>
         {GamesData.map((game_category, index) => {
           return (
@@ -105,10 +119,26 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     width: "90%",
-    paddingTop: 40,
+    paddingTop: 20,
     justifyContent: "space-between",
-    
-  }
+  },
+  HomeTopBar:{
+    paddingTop:30,
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"flex-start",
+    width:"100%",
+  },
+  LevelProgressBar:{
+    height:15,
+    width:"200%",
+  },
+  CircleAvatar:{
+    width:50,
+    height:50,
+    marginRight:10,
+    borderWidth:2,
+},
 
 
 });

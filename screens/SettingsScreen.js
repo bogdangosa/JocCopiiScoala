@@ -49,7 +49,7 @@ const SettingsScreen =({route , navigation})=>{
         
                 <SimpleButton onPress={()=>AddInitialData()} color={colors.orange}>Adauaga baza</SimpleButton>
                 <SimpleButton onPress={()=>{dropTable(db,database_names.database_words_table),setData([])}} color={colors.green}>Sterge baza</SimpleButton>
-                <SimpleButton onPress={()=>{dropTable(db,database_names.database_user_table),updateUser("no user")}} color={colors.red}>Sterge useri</SimpleButton>
+                <SimpleButton onPress={()=>{dropTable(db,database_names.database_user_table);updateUser("no user")}} color={colors.red}>Sterge useri</SimpleButton>
                 {Data?.map((item,index)=>{
                 return <Text key={index}>{item.name+' si ' +item.image}</Text>
                 })}

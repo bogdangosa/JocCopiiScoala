@@ -302,6 +302,18 @@
         name: 'tir.png',
         image: require('../assets/vehicule/tir.png'),
       },
+      {
+        name: 'avatar_fox_1',
+        image: require("../assets/avatar_fox_1.png"),
+      },
+      {
+        name: 'avatar_dog_1',
+        image: require("../assets/avatar_dog_1.png"),
+      },
+      {
+        name: 'avatar_panda_1',
+        image: require("../assets/avatar_panda_1.png"),
+      },
     ];
     static GetImage = (name) => {
       const found = ImageService.images.find(e => e.name === name);
