@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View, color,  Image } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import {colors} from "../../themes/color";
+import { getDimensions } from '../../utils/Dimensions';
+const {vh,vw} = getDimensions();
 
 const RoundButton = ({ icon, onPress, style }) => {
   return (
@@ -16,8 +18,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor:colors.blue,
     borderRadius: 1000,
-    width:50,
-    height:50,
+    width:8 * vh,
+    height:8 * vh,
   },
   RoundButtonIcon: {
     color: colors.white,

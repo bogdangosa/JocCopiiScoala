@@ -15,6 +15,8 @@ import { useEffect } from "react";
 import { ScreenStack } from "react-native-screens";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import SettingsScreen from "./screens/SettingsScreen";
+import { getDimensions } from '../JocCopiiScoala/utils/Dimensions';
+const {vh,vw} = getDimensions();
 
 const Stack = createNativeStackNavigator();
 
@@ -111,8 +113,10 @@ const styles = StyleSheet.create({
       headerStyle: { backgroundColor: colors.blue },
       headerTintColor: colors.white,
       headerTitleAlign: "center",
-      headerTitleStyle: { fontSize: 30 },
+      headerTitleStyle: { fontSize: 3.8 * vh },
+      fontSize: 1 * vh,
     },
+
   });
 
 export default Navigation;

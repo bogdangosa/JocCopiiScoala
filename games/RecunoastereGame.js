@@ -10,6 +10,7 @@ import { getDimensions } from '../utils/Dimensions';
 const {vh,vw} = getDimensions();
 import {database_names} from '../database/database_names.js';
 
+
 const RecunoastereGame = ({field, onVerify,onComplete}) => {
     const [butoane,setbutoane]=useState([false,false,false,false])
     const [Variante,setVariante]=useState(null)

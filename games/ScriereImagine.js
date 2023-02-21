@@ -8,7 +8,8 @@ import { ImageService } from "../utils/ImageService";
 import useSound from "../hooks/useSound";
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from "react-native";
 import {database_names} from '../database/database_names.js';
-
+import { getDimensions } from '../utils/Dimensions';
+const {vh,vw} = getDimensions();
 
 const ScriereImagine = ({field,onVerify,onComplete})=>{
   const [Mesaj,setMesaj] = useState("");
@@ -119,11 +120,13 @@ const styles = StyleSheet.create({
     },
     Text:{
         fontWeight:"700",
-        fontSize:40,
+        fontSize:4 * vh,
         paddingBottom:10,
     },
     imagine:{
-      margin:20,
+      margin:2 * vh,
+      width: 85 * vw,
+      height: 40 * vh
     },
     TextBar:{
       padding:10,
@@ -134,13 +137,13 @@ const styles = StyleSheet.create({
       borderBottomWidth:4,
       borderColor:"#D9D9D9",
       alignItems:"center",
-      width:210,
+      width:50 * vw,
     },
     searchBar:{
       width:"100%",
       alignContent:"center",
       alignItems:"center",
-      fontSize:30,
+      fontSize:3 * vh,
       fontWeight:'500',
       textAlign:"center",
     },

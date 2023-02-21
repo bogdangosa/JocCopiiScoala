@@ -9,6 +9,8 @@ import {database_names} from '../database/database_names.js';
 import { addUser, createTable } from "../database/database";
 import * as SQLite from 'expo-sqlite';
 import { useMyUserContext, useMyUserUpdate } from "../contexts/UserContext";
+import { getDimensions } from '../utils/Dimensions';
+const {vh,vw} = getDimensions();
 
 const InitialScreen = ({navigation}) => {
   const updateUser = useMyUserUpdate();
@@ -68,26 +70,26 @@ const InitialScreen = ({navigation}) => {
         {SliderState==0?
 
         <View style={styles.data_container}>{/** Prima pagina **/}
-          <Text style={styles.Title}>Bine ai venit in <Text style={styles.accent}>EduPlay</Text></Text>
+          <Text style={styles.Title}>Bine ai venit în <Text style={styles.accent}>EduPlay</Text></Text>
           <View style={styles.FirstPageContent}>
             <Image style={styles.FirstImage}  source={require("../assets/panda-se-uita.png")}></Image>
-            <Text style={styles.Text}>O aplicatia <Text style={styles.accent}>interactiva</Text> si <Text style={styles.accent}>educativa</Text> care ajuta copii sa isi dezvolte abilitatile de vorbire, scriere si vocabularul.</Text>
+            <Text style={styles.Text}>O aplicație <Text style={styles.accent}>interactivă</Text> și <Text style={styles.accent}>educativă</Text> care ajută copiii să își dezvolte abilitățile de vorbire, scriere și vocabularul.</Text>
           </View>
         </View>
 
         :(SliderState==1?
         <View style={styles.data_container}>{/** A doua pagina **/}
-          <Text style={[styles.Title,styles.Title2]}>Pentru a incepe alegeti un <Text style={styles.accent}>avatar</Text> si un <Text style={styles.accent}>nume</Text></Text>
+          <Text style={[styles.Title,styles.Title2]}>Pentru a începe alegeți un <Text style={styles.accent}>avatar</Text> și un <Text style={styles.accent}>nume</Text></Text>
           <View style={styles.avatar_container}>
             <RoundButton icon={require("../assets/arrow_icon_.png")} style={styles.rotate} onPress={()=>changeAvatar(-1)}></RoundButton>
             <CircleAvatar image={PossibleAvatars[SelectedAvatar]} style={styles.CircleAvatar}/>
             <RoundButton icon={require("../assets/arrow_icon_.png")} onPress={()=>changeAvatar(1)}></RoundButton>
           </View>
-          <InputField placeholder="Numele tau" value={NameInput} setValue={setNameInput}/>
+          <InputField style={styles.Input} placeholder="Numele tău" value={NameInput} setValue={setNameInput}/>
         </View>
         :
         <View style={styles.data_container}>{/** A treia pagina **/}
-          <Text style={[styles.Title,styles.Title2]}> Panda iti ureaza <Text style={styles.accent}>succes</Text> in calatoria ta spre cunoastere</Text>
+          <Text style={[styles.Title,styles.Title2]}> Panda iți urează <Text style={styles.accent}>succes</Text> în calatoria ta spre cunoaștere</Text>
           <Image
             style={styles.BaftaPandaImage}
             source={require("../assets/PozaPandaFelicitari.png")}/>
@@ -120,14 +122,14 @@ const styles = StyleSheet.create({
     width:"100%",
   },
   Title:{
-    fontSize:40,
+    fontSize:5 * vh,
     textAlign:"center",
     width:"80%",
     fontWeight:"bold",
     marginBottom:30,
   },
   Title2:{
-    fontSize:30,
+    fontSize:3.5 * vh,
   },
   accent:{
     color:colors.blue,
@@ -140,8 +142,8 @@ const styles = StyleSheet.create({
     marginTop:20,
   },
   slider_indicator:{
-      width:40,
-      height:10,
+      width:14 * vw,
+      height:1.5 * vh,
       marginHorizontal:10,
       borderRadius:50,
       marginBottom:40,
@@ -158,7 +160,7 @@ const styles = StyleSheet.create({
   },
 
   Text:{
-    fontSize:15,
+    fontSize:2 * vh,
     textAlign:"center",
     color:colors.gray,
     flex:1,
@@ -180,16 +182,20 @@ const styles = StyleSheet.create({
   },
 
   CircleAvatar:{
-      width:140,
-      height:140,
+      width:160,
+      height:160,
       marginHorizontal:20,
   },
 
   BaftaPandaImage:{
-    height:"50%",
+    height:55 * vh,
     resizeMode:"contain",
-  }
-
+    width:"100%",
+  },
+  Input:{
+    width:50 * vw,
+    fontSize:3 * vh,
+},
 });
 
 export default InitialScreen;

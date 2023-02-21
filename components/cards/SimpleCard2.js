@@ -1,6 +1,8 @@
 import { StyleSheet, Text, Touchable, View, Image } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import {colors} from "../../themes/color";
+import { getDimensions } from '../../utils/Dimensions';
+const {vh,vw} = getDimensions();
 
 const SimpleCard2 = ({ text, color, onPress, style }) => {
   return (
@@ -26,12 +28,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-end",
     overflow: "hidden",
-    height: 120,
+    height: 12 * vh,
     flex: 1,
   },
   SimpleCardText: {
-    fontSize: 30,
-    marginBottom: 15,
+    fontSize: 3.5 * vh,
+    marginBottom: 2 * vh,
   },
 });
 

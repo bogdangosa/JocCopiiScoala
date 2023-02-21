@@ -8,7 +8,8 @@ import useSound from "../hooks/useSound";
 import * as Speech from 'expo-speech';
 import RoundButton from "../components/buttons/RoundButton";
 import {database_names} from '../database/database_names.js';
-
+import { getDimensions } from '../utils/Dimensions';
+const {vh,vw} = getDimensions();
 
 const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
   const [SelectedField,setSelectedField] = useState(0);
@@ -156,7 +157,7 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
     <View style={styles.SorteazaCategoriiGame} >
       
       <View style={styles.CerintaContainer}>
-        <Text style={styles.cerinta}>Sortează cuvintele pe categori</Text>
+        <Text style={styles.cerinta}>Sortează cuvintele pe categorii</Text>
         <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
       </View>
       <View style={styles.select_fields_container}>
@@ -185,30 +186,31 @@ const styles = StyleSheet.create({
   SorteazaCategoriiGame: {
     alignItems: "center",
     justifyContent:"center",
-    paddingTop: 20,
-    marginBottom: 25,
+    paddingTop: 2 * vh,
+    marginBottom: 10 * vh,
   },
   cerinta: {
-    fontSize: 25,
+    fontSize: 3 * vh,
     flex:1,
     textAlign:"center",
     fontWeight: "bold",
     marginRight:20,
   },
   buton: {
-    width: 125,
-    height: 50,
-    margin: 10,
+    width: 40 * vw,
+    height: 7 * vh,
+    margin: 1 * vh,
   },
   select_fields_container:{
     flexDirection:"row",
     justifyContent:"space-between",
     alignItems:"center",
     width:"90%",
+    marginBottom: 3 * vh,
   },
   MatrixRow:{
     flexDirection:"row",
-    marginTop:10,
+    marginTop:1 * vh,
   },
   CerintaContainer:{
     width:"90%",

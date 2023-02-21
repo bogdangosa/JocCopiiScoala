@@ -5,7 +5,8 @@ import {colors} from "../themes/color";
 import useSound from "../hooks/useSound";
 import * as Speech from 'expo-speech';
 import RoundButton from "../components/buttons/RoundButton";
-
+import { getDimensions } from '../utils/Dimensions';
+const {vh,vw} = getDimensions();
 
 const LitereMariMiciGame = ({onVerify,onComplete}) => {
     const [ButtonValueMatrix,setButtonValueMatrix] = useState([]);
@@ -132,7 +133,7 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
   return (
     <View style={styles.LitereMariMiciGame}>
       <View style={styles.CerintaContainer}>
-        <Text style={styles.Cerinta}>Selecteaza perechile de litere mari si mici</Text>
+        <Text style={styles.Cerinta}>Selectează perechile de litere mari și mici</Text>
         <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
       </View>
       <View style={styles.LitereContainer}>
@@ -153,20 +154,22 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
 const styles = StyleSheet.create({
     LitereMariMiciGame:{
         alignItems:"center",
-        marginTop:30,
+        marginTop:5 * vh,
+        marginBottom:10 * vh,
     },
     LitereContainer:{
-        width:"60%"
+        width: 60 * vw,
+        height: 60 * vw,
     },
     LitereRowContainer:{
         flexDirection:"row",
         justifyContent:"space-between",
         width:"100%",
-        marginBottom:5,
+        marginBottom:4 * vw,
     },
     Cerinta:{
         color:colors.black,
-        fontSize:25,
+        fontSize:3.5 * vh,
         textAlign:"center",
         flex:1,
         paddingRight:20,

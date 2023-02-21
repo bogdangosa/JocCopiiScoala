@@ -8,6 +8,9 @@ import useSound from "../hooks/useSound";
 import * as Speech from 'expo-speech';
 import RoundButton from "../components/buttons/RoundButton";
 import {database_names} from '../database/database_names.js';
+import { getDimensions } from '../utils/Dimensions';
+const {vh,vw} = getDimensions();
+
 
 const GasesteCategoriaGame = ({field, onVerify,onComplete}) => {
   const [ButtonValueMatrix,setButtonValueMatrix] = useState([]);
@@ -110,7 +113,7 @@ const speak = async()=>{
   return (
     <View style={styles.GasesteCategoriaGame} >
       <View style={styles.CerintaContainer}>
-        <Text style={styles.cerinta}>Gaseste ce {field} este ascuns</Text>
+        <Text style={styles.cerinta}>Găsește ce {field} este ascuns</Text>
         <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
       </View>
       <View style={styles.LitereContainer}>
@@ -133,31 +136,31 @@ const styles = StyleSheet.create({
     GasesteCategoriaGame: {
     alignItems: "center",
     justifyContent:"center",
-    paddingTop: 20,
-    marginBottom: 25,
+    paddingTop: 2 * vh,
+    marginBottom: 6 * vh,
   },
   cerinta: {
-    fontSize: 25,
+    fontSize: 3 * vh,
     textAlign:"center",
     fontWeight: "bold",
-    marginRight:20,
+    marginRight:2 * vw,
     flex:1,
   },
   LitereContainer:{
-      width:"75%"
+      width:65 * vw,
   },
   LitereRowContainer:{
       flexDirection:"row",
       justifyContent:"space-between",
       width:"100%",
-      marginBottom:5,
+      marginBottom:1 * vh,
   },
   CerintaContainer:{
-    width:"90%",
+    width:"80%",
     flexDirection:"row",
     justifyContent:"center",
     alignItems:"center",
-    marginBottom:40,
+    marginBottom:5 * vh,
   }
 });
 

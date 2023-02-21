@@ -1,6 +1,9 @@
 import { StyleSheet, Text, Touchable, View, Image } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import {colors} from "../../themes/color";
+import { getDimensions } from '../../utils/Dimensions';
+const {vh,vw} = getDimensions();
+
 
 const SimpleCard = ({ text, image, color, onPress }) => {
   return (
@@ -30,13 +33,13 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   SimpleCardText: {
-    fontSize: 25,
-    marginBottom: 10,
+    fontSize: 3 * vh,
+    marginBottom: 15,
   },
   SimpleCardImage: {
     resizeMode:"contain",
-    height: 80,
-    width: 80,
+    height: 10 * vh,
+    width: 10 * vh,
     backgroundColor: colors.white,
   },
 });

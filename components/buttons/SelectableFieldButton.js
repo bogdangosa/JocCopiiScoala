@@ -2,6 +2,9 @@ import { useState } from "react";
 import { StyleSheet, Text, View, color,  backgroundColor } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import { colors } from "../../themes/color";
+import { getDimensions } from '../../utils/Dimensions';
+const {vh,vw} = getDimensions();
+
 
 const SelectableFieldButton = ({ children, onPress, more_styles , button_state , color}) => {
   return (
@@ -19,7 +22,7 @@ const styles = StyleSheet.create({
   },
   SelectableFieldButtonText:{
     color:colors.black,
-    fontSize:20,
+    fontSize:2.5 * vh,
     paddingVertical:5,
     paddingHorizontal:10,
     borderRadius:5,

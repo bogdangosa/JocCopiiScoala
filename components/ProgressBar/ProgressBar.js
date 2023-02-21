@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { StyleSheet, Text, View, color,  backgroundColor, Animated } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import {colors} from "../../themes/color";
+import { getDimensions } from '../../utils/Dimensions';
+const {vh,vw} = getDimensions();
 
 const ProgressBar = ({percentage,color,style}) => {
     const animated_width = useRef(new Animated.Value(0)).current;
@@ -29,7 +31,7 @@ const ProgressBar = ({percentage,color,style}) => {
 const styles = StyleSheet.create({
     ProgressBarContainer:{
         alignItems: "flex-start",
-        height: 40,
+        height: 4 * vh,
         width: "70%",
         backgroundColor:"#e3e3e3",
         borderRadius:5,

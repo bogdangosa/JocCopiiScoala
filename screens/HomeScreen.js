@@ -10,6 +10,8 @@ import { nextLevelProgressPercentage, xpToLevel } from "../utils/xpToLevel";
 import ProgressBar from "../components/ProgressBar/ProgressBar";
 import CircleAvatar from "../components/cards/CircleAvatar";
 import { ImageService } from "../utils/ImageService";
+import { getDimensions } from '../utils/Dimensions';
+const {vh,vw} = getDimensions();
 
 
 const HomeScreen = ({ navigation }) => {
@@ -50,7 +52,7 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.HomeTopBar}>
           <CircleAvatar image={user_avatar} style={styles.CircleAvatar}/>
           <View>
-            <Text>Level: {xpToLevel(User.xp)}</Text>
+            <Text style={styles.Text}>Level: {xpToLevel(User.xp)}</Text>
             <ProgressBar style={styles.LevelProgressBar} percentage={nextLevelProgressPercentage(User.xp)} color={colors.green}></ProgressBar>
           </View>
         </View>
@@ -130,15 +132,18 @@ const styles = StyleSheet.create({
     width:"100%",
   },
   LevelProgressBar:{
-    height:15,
-    width:"200%",
+    height:1.5 * vh,
+    width:25 * vw,
   },
   CircleAvatar:{
-    width:50,
-    height:50,
+    width:7 * vh,
+    height:7 * vh,
     marginRight:10,
     borderWidth:2,
 },
+  Text:{
+    fontSize:2 * vh,
+  },
 
 
 });

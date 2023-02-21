@@ -8,6 +8,9 @@ import * as SQLite from 'expo-sqlite';
 import RoundButton from '../components/buttons/RoundButton';
 import * as Speech from 'expo-speech'
 import {database_names} from '../database/database_names.js';
+import { getDimensions } from '../utils/Dimensions';
+const {vh,vw} = getDimensions();
+
 
 const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
   const [ArrayButoane, setArrayButoane] = useState([]);
@@ -154,7 +157,7 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
           return (
             <SelectableButton
               button_state={button.state}
-              more_styles={{ margin: 10 }}
+              more_styles={{ margin: 1 * vw }}
               onPress={() => ApasareButon(index)}
             >
               {button.litera}
@@ -170,15 +173,15 @@ const styles = StyleSheet.create({
   SelectareVocaleGame: {
     width: "100%",
     alignItems: "center",
-    paddingTop: 50,
+    paddingTop: 5 * vh,
   },
   text: {
-    fontSize: 40,
+    fontSize: 5* vh,
     color: colors.black,
   },
   container: {
     flexDirection: "row",
-    padding: 10,
+    padding: 4 * vh,
   },
 });
 
