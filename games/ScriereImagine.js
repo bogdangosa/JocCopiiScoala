@@ -2,10 +2,12 @@ import { StyleSheet, Text, View, Image, TextInput, ScrollView, SafeAreaView } fr
 import { useEffect, useState } from "react";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import SelectableButton from "../components/buttons/SelectableButton";
+import RoundButton from "../components/buttons/RoundButton";
 import {colors} from "../themes/color";
 import * as SQLite from 'expo-sqlite';
 import { ImageService } from "../utils/ImageService";
 import useSound from "../hooks/useSound";
+import * as Speech from 'expo-speech';
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from "react-native";
 import {database_names} from '../database/database_names.js';
 import { getDimensions } from '../utils/Dimensions';
@@ -84,14 +86,24 @@ const ScriereImagine = ({field,onVerify,onComplete})=>{
       setTimeout(()=>setStatusColor(colors.black),500);
     }
   };
-  
+
+  const speak = async()=>{
+    Speech.speak(`Scrie ce ${field} apare în imagine`, {language:"ro-Ro",});
+  }; 
 
   return (
     <KeyboardAvoidingView  behavior="position" keyboardVerticalOffset="100">
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.ScriereImagine}>
+          <View style={styles.cerinta_audio}>
+          <View style={styles.cerinta}>
           <Text style={styles.Text}>Scrie ce</Text>
             <Text style={styles.Text}>{field} apare</Text>
+            </View>
+            <View>
+            <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
+            </View>
+            </View>
               {
                 SpecialMode?setareJocSpecial():
                 <Image resizeMode="contain" style={styles.imagine} source={GameImage}></Image>
@@ -146,6 +158,12 @@ const styles = StyleSheet.create({
       fontSize:3 * vh,
       fontWeight:'500',
       textAlign:"center",
+    },
+    cerinta:{
+      alignItems:"center",
+    },
+    cerinta_audio:{
+      flexDirection:"row",
     },
     
   });

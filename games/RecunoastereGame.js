@@ -2,10 +2,12 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import { useEffect, useState } from "react";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import SelectableButton from "../components/buttons/SelectableButton";
+import RoundButton from "../components/buttons/RoundButton";
 import {colors} from "../themes/color";
 import * as SQLite from 'expo-sqlite';
 import { ImageService } from "../utils/ImageService";
 import useSound from "../hooks/useSound";
+import * as Speech from 'expo-speech';
 import { getDimensions } from '../utils/Dimensions';
 const {vh,vw} = getDimensions();
 import {database_names} from '../database/database_names.js';
@@ -84,15 +86,21 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
           return <Text style={styles.NumberText}>{Variante[Solution].image}</Text>
       }
     }
-
+    const speak = async()=>{
+      Speech.speak(`Ce ${field} este`, {language:"ro-Ro",});
+    };
+    
 
     if(Variante==null)
       return <Text>Loading</Text>
+
+      
   
 
   return (
     <View style={styles.RecunoastereGame} >
       <Text style={styles.text}>Ce {field} este ?</Text>
+      <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
       {SpecialMode?
         setareJocSpecial()
       :
@@ -113,7 +121,7 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
 const styles = StyleSheet.create({
   RecunoastereGame: {
     alignItems: "center",
-    paddingTop: 20,
+    paddingTop: 10,
     marginBottom: 25,
   },
   text: {
