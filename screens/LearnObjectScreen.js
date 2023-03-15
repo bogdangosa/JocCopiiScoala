@@ -18,6 +18,7 @@ const LearnObjectScreen = ({ route, navigation }) => {
 
   const {name}=route.params;
   const {imagine}=route.params;
+  const {descriere}=route.params;
   const [Data,setData]=useState([])
   const [Color,setColor]=useState([colors.blue, colors.green, colors.orange, colors.red, colors.purple, colors.yellow, colors.brown])
   /*const getData = (type) =>{
@@ -38,8 +39,7 @@ const LearnObjectScreen = ({ route, navigation }) => {
         
         <Image style={styles.imagine} source={ImageService.GetImage(imagine)}></Image>
         <View style={styles.text}>
-        <Text style={styles.descriere}>Lupul este un animal salbatic care trăiește în pădure. El este carnivor, adică se hrănește cu carne.
-         Este un animal de talie medie, având o greutate de maxim 70 de kg. Lupul trăiește în haită, care este pentru el ca și o familie.</Text>
+        <Text style={styles.descriere}>{descriere}</Text>
          </View>
     </View>
   );
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 3 * vh,
     textAlign: 'center'
   },
-  
+
 });
 
 export default LearnObjectScreen;

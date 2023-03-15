@@ -12,7 +12,7 @@ db.transaction(tx => {
 export const addItem = (db,tableName,item) =>{
 //console.log(item);
     db.transaction(tx => {
-        tx.executeSql(`INSERT INTO ${tableName} ( name , type , image) values ( ? , ? , ? )`, [ item.name , item.type , item.image ],      
+        tx.executeSql(`INSERT INTO ${tableName} ( name , type , image , description ) values ( ? , ? , ? , ? )`, [ item.name , item.type , item.image , item.description ],      
         (txObj, ResultsSet) => console.log('Results ', ResultsSet),
         (txObj, error) => console.log('Error ', error))
     }) // end transaction

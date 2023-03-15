@@ -41,6 +41,7 @@ const LearnScreen = ({ route, navigation }) => {
               navigation.navigate("LearnObject", {
                 name: type_object.name,
                 imagine: type_object.image,
+                descriere: type_object.description,
               });
             }}
           />
