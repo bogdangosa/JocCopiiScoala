@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import { ScreenStack } from "react-native-screens";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import SettingsScreen from "./screens/SettingsScreen";
-import { getDimensions } from '../JocCopiiScoala/utils/Dimensions';
+import { getDimensions } from './utils/Dimensions';
 const {vh,vw} = getDimensions();
 
 const Stack = createNativeStackNavigator();
