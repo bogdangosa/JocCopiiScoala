@@ -21,7 +21,7 @@ const AccountScreen =({route , navigation})=>{
 
 return ( 
     <View style={styles.screen}>
-    <ScrollView>
+    <ScrollView scrollIndicatorInsets={{ right: 1 }}>
             <View style={styles.AccountTopBar}>
                 <CircleAvatar image={user_avatar} style={styles.CircleAvatar}/>
                 <View style={styles.progressView} >
@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
     },
     Realizari:{
         padding:30,
-        fontSize:30,    
+        fontSize:30,
+        paddingBottom:10,    
     },
     
     container2:{
