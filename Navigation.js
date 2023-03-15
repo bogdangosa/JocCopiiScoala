@@ -8,6 +8,7 @@ import FelicitariPanda from "./screens/FelicitariPanda";
 import LearnMenuScreen from "./screens/LearnMenuScreen";
 import {colors} from "./themes/color";
 import LearnScreen from "./screens/LearnScreen";
+import LearnObjectScreen from "./screens/LearnObjectScreen";
 import InitialScreen from "./screens/InitialScreen";
 import AccountScreen from "./screens/AccountScreen";
 import { MyUserProvider, useMyUserContext } from "./contexts/UserContext";
@@ -94,6 +95,11 @@ const Navigation = () =>{
             <Stack.Screen
                 name="Learn"
                 component={LearnScreen}
+                options={styles.header}
+            />    
+            <Stack.Screen
+                name="LearnObject"
+                component={LearnObjectScreen}
                 options={styles.header}
             />    
             </Stack.Navigator>
