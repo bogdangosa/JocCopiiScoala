@@ -52,7 +52,7 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.HomeTopBar}>
           <CircleAvatar image={user_avatar} style={styles.CircleAvatar}/>
           <View>
-            <Text style={styles.Text}>Level: {xpToLevel(User.xp)}</Text>
+            <Text style={styles.Text}>Nivel: {xpToLevel(User.xp)}</Text>
             <ProgressBar style={styles.LevelProgressBar} percentage={nextLevelProgressPercentage(User.xp)} color={colors.green}></ProgressBar>
           </View>
         </View>

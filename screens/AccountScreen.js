@@ -11,7 +11,9 @@ import { ImageService } from "../utils/ImageService";
 import { useMyUserContext } from "../contexts/UserContext";
 import ProgressBar from "../components/ProgressBar/ProgressBar";
 import { colors } from "../themes/color";
-import { xpToLevel } from "../utils/xpToLevel";
+import { nextLevelProgressPercentage, xpToLevel } from "../utils/xpToLevel";
+
+
 
 const AccountScreen =({route , navigation})=>{
 
@@ -24,9 +26,12 @@ return (
     <ScrollView scrollIndicatorInsets={{ right: 1 }}>
             <View style={styles.AccountTopBar}>
                 <CircleAvatar image={user_avatar} style={styles.CircleAvatar}/>
-                <View style={styles.progressView} >
-                    <ProgressBar style={styles.progressBar} color={colors.green}/>
-                    <Text style={styles.TextNivel}>Level: {xpToLevel(User.xp)}</Text>
+                <View style={styles.containerFaraAvatar}>
+                    <Text style={styles.textNume}>{User.name}</Text>
+                    <View style={styles.progressView} >   
+                        <ProgressBar style={styles.progressBar} percentage={nextLevelProgressPercentage(User.xp)} color={colors.green}/>
+                        <Text style={styles.TextNivel}>Nivel: {xpToLevel(User.xp)}</Text>
+                    </View>
                 </View>
             </View>
         <View style={styles.container1}>
@@ -116,18 +121,29 @@ const styles = StyleSheet.create({
    progressView:{
     flex:1,
     flexDirection:"row",
+    paddingTop:10,
+    paddingLeft:10,
    },
 
    progressBar:{
-    marginTop:80,
-    marginLeft:15,
+    marginLeft:0,
     height:15,
     width:120,
    },
 
    TextNivel:{
-    marginTop:80,
     marginLeft:20,
+    fontWeight:'bold',
+   },
+
+   textNume:{
+    paddingLeft:10,
+    fontSize:30,
+    fontWeight:'bold',
+   },
+
+   containerFaraAvatar:{
+    paddingTop:40,
    },
 
    });

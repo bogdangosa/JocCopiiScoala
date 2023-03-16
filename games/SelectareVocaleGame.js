@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { getInspectorDataForInstance } from "react-native/Libraries/Renderer/implementations/ReactNativeRenderer-dev";
 import SelectableButton from "../components/buttons/SelectableButton";
 import useSound from "../hooks/useSound";
@@ -9,6 +9,7 @@ import RoundButton from '../components/buttons/RoundButton';
 import * as Speech from 'expo-speech'
 import {database_names} from '../database/database_names.js';
 import { getDimensions } from '../utils/Dimensions';
+import { TextInput } from "react-native-gesture-handler";
 const {vh,vw} = getDimensions();
 
 
@@ -17,6 +18,7 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
   const [ButtonState, setButtonState] = useState(false);
   const [Cuvant, setCuvant]=useState(null);
   const db = SQLite.openDatabase(database_names.database_name);
+  const [IsHintVisible,setIsHintVisible] = useState(false);
   const [Solution,setSolution]=useState(0);
   const playSound = useSound();
 
@@ -147,6 +149,7 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
     Speech.speak("Selectează vocalele", {language:"ro"});
   };
 
+ 
   return (
     <View style={styles.SelectareVocaleGame}>
       <Text style={styles.text}>Selectează</Text>
@@ -165,6 +168,15 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
           );
         })}
       </View>
+
+        <Text style={{fontSize:25}}>
+          Apasa aici pentru ajutor!
+        </Text>
+      <View style={styles.hintButton}>
+        <RoundButton icon={require("../assets/Vector.png")}  onPress={()=>{setIsHintVisible(!IsHintVisible);console.log(IsHintVisible);}} ></RoundButton>
+
+        {IsHintVisible==true &&  <Text style={styles.texthint} >Vocalele sunt{`\n`}A E I O U Ă Â Î </Text > }
+      </View>
     </View>
   );
 };
@@ -182,6 +194,21 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     padding: 4 * vh,
+  },
+  
+  hintButton:{
+    paddingTop:20,
+    alignItems:"center",
+    paddingBottom:20,
+  },
+
+  texthint:{
+    fontSize:30,
+    paddingTop:20,
+    paddingBottom:20,
+    borderRadius:15,
+    color:'#F7C04A',
+    fontWeight:'bold',
   },
 });
 
