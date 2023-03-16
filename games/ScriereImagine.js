@@ -165,7 +165,17 @@ const styles = StyleSheet.create({
     cerinta_audio:{
       flexDirection:"row",
     },
-    
+    NumberText:{
+      fontSize: 10 * vh,
+      fontWeight: "bold",
+    },
+    ColorView:{
+    width:"100%",
+    height:200,
+    borderRadius:40,
+    marginVertical:10,
+    backgroundColor:"#f3ee22"
+    },
   });
 
 export default ScriereImagine;
