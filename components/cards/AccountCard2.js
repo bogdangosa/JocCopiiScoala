@@ -24,7 +24,7 @@ const AccountCard2 =({image, levelnumber, title, text, color})=>{
             <View>
                 <Text style={styles.titlu}>{title}</Text>
                 <Text style={styles.text}>{text}</Text>
-                <ProgressBar style={styles.progressBar} color={colors.green}/>   
+                <ProgressBar style={styles.progressBar} color={colors.green} percentage={40}/>   
                 
             </View>
         </View>
@@ -33,7 +33,7 @@ const AccountCard2 =({image, levelnumber, title, text, color})=>{
 
     
 const styles = StyleSheet.create({
-    card:{
+   card:{
         flexDirection:"row",
     },
     
