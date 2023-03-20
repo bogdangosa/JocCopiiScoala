@@ -20,6 +20,7 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
     const db = SQLite.openDatabase(database_names.database_name);
     const [Solution,setSolution]=useState(0);
     const [SpecialMode,setSpecialMode] = useState(false);
+    const [NoMistake, setNoMistake] = useState(true);
 
     const playSound = useSound();
 
@@ -63,12 +64,13 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
         if (i==Solution){
           if (ArrayButoane[i]==1){
             ArrayButoane[i]=2;
-            setTimeout(()=>{setbutoane([false,false,false,false]);onComplete();getVarinte();},500);
+            setTimeout(()=>{setbutoane([false,false,false,false]);onComplete(NoMistake);getVarinte();},500);
             playSound("corect");
           }
         }
         else if (ArrayButoane[i]==1){
           ArrayButoane[i]=3;
+          setNoMistake(false);
           setTimeout(()=>setbutoane([false,false,false,false]),700);
           playSound("wrong");
         }

@@ -22,6 +22,8 @@ const ScriereImagine = ({field,onVerify,onComplete})=>{
   const playSound = useSound();
   const [ statusColor, setStatusColor ] = useState(colors.black);
   const [SpecialMode,setSpecialMode] = useState(false);
+  const [NoMistake, setNoMistake] = useState(true);
+
 
   useEffect (()=>{
     if(field == "cifra" || field == "litera" || field == "culoare")
@@ -73,7 +75,7 @@ const ScriereImagine = ({field,onVerify,onComplete})=>{
       playSound("corect");
       setStatusColor(colors.green);
       setTimeout(() => {
-        onComplete();
+        onComplete(NoMistake);
         getPoza();
         setMesaj("");
         setStatusColor(colors.black);
@@ -82,6 +84,7 @@ const ScriereImagine = ({field,onVerify,onComplete})=>{
     else if(GameName!=null)
     {
       playSound("gresit");
+      setNoMistake(false);
       setStatusColor(colors.red);
       setTimeout(()=>setStatusColor(colors.black),500);
     }

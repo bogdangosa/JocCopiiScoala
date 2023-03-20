@@ -13,6 +13,7 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
     const [ButtonState,setButtonState] = useState(false);
     const [Contor,setContor] = useState(0);
     const [ContorRaspunsuriCorecte,setContorRaspunsuriCorecte] = useState(1);
+    const [NoMistake, setNoMistake] = useState(true);
     
     const playSound = useSound();
 
@@ -62,7 +63,7 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
                 setContorRaspunsuriCorecte(contor=>contor+1);
                 setContor(0);
                 playSound("corect");
-                onComplete();
+                onComplete(NoMistake);
             }
             else{
                 const newMatrix = [...ButtonValueMatrix];
@@ -71,6 +72,7 @@ const LitereMariMiciGame = ({onVerify,onComplete}) => {
                 setButtonValueMatrix(newMatrix);
                 setContor(0);
                 setTimeout(()=>ResetWrongAnswers(i1,j1,i2,j2),700);
+                setNoMistake(false);
                 playSound("wrong");
             }
 

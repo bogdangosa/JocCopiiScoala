@@ -16,6 +16,7 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
   const [SelectableButtonsMatrix,setSelectableButtonsMatrix] = useState([]);
   const [StateButtonsMatrix,setStateButtonsMatrix] = useState([]);
   const [Fields,setFields] = useState([]);
+  const [NoMistake, setNoMistake] = useState(true);
   const colorsArray = [colors.purple,colors.orange,colors.brown,colors.red,colors.green];
   const db = SQLite.openDatabase(database_names.database_name);
   const playSound = useSound();
@@ -63,11 +64,12 @@ const SorteazaCategoriiGame = ({field, onVerify,onComplete}) => {
     setStateButtonsMatrix(newStateMatrix);
     //console.log(newStateMatrix);
     if(ok){
-      onComplete();
+      onComplete(NoMistake);
       playSound("corect");
     }
     else 
       playSound("wrong");
+      setNoMistake(false);
     setTimeout(()=>{
       setStateButtonsMatrix(emptystateMatrix);
       if(ok) generateGame();

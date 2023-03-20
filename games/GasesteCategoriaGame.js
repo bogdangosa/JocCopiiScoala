@@ -16,6 +16,7 @@ const GasesteCategoriaGame = ({field, onVerify,onComplete}) => {
   const [AnswerMatrix,setAnswerMatrix] = useState([]);
   const [Cuvinte,setCuvinte] = useState([]);
   const [SolutionAdress,setSolutionAdress] = useState();
+  const [NoMistake, setNoMistake] = useState(true);
   const db = SQLite.openDatabase(database_names.database_name);
   const playSound = useSound();
 
@@ -85,11 +86,12 @@ const GasesteCategoriaGame = ({field, onVerify,onComplete}) => {
 
     if(ok){
       playSound("corect");
-      onComplete();
+      onComplete(NoMistake);
       getCuvinte();
     }
     else{
       playSound("wrong");
+      setNoMistake(false);
       setTimeout(()=>resetMatrix(),500);
     }
   }

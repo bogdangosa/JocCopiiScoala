@@ -35,31 +35,38 @@ const GameScreen = ({ route, navigation }) => {
     const SetareJoc = ()=>{
         switch(route.params.game){
             case "Recunoastere":
-                return <RecunoastereGame field={route.params.field} onVerify={Verifica} onComplete={()=>rezultatCorect()}/>;
+                return <RecunoastereGame field={route.params.field} onVerify={Verifica} onComplete={(NoMistakeState)=>rezultatCorect(NoMistakeState)}/>;
             case "LitereMariMici":
-                return <LitereMariMiciGame onVerify={Verifica} onComplete={()=>rezultatCorect()}/>
+                return <LitereMariMiciGame onVerify={Verifica} onComplete={(NoMistakeState)=>rezultatCorect(NoMistakeState)}/>
             case "SorteazaCategorii":
-              return <SorteazaCategoriiGame onVerify={Verifica} onComplete={()=>rezultatCorect()}/>
+              return <SorteazaCategoriiGame onVerify={Verifica} onComplete={(NoMistakeState)=>rezultatCorect(NoMistakeState)}/>
             case "GasesteCategoria":
-              return <GasesteCategoriaGame field={route.params.field} onVerify={Verifica} onComplete={()=>rezultatCorect()}/>
+              return <GasesteCategoriaGame field={route.params.field} onVerify={Verifica} onComplete={(NoMistakeState)=>rezultatCorect(NoMistakeState)}/>
             case "SelectareVocale":
-                return <SelectareVocaleGame onVerify={Verifica} onComplete={()=>rezultatCorect()}/>   ///cand jocul e gata (onComplete) apeleaza functia rezultatCorect
+                return <SelectareVocaleGame onVerify={Verifica} onComplete={(NoMistakeState)=>rezultatCorect(NoMistakeState)}/>   ///cand jocul e gata (onComplete) apeleaza functia rezultatCorect
             case "ScriereImagine":
-                return <ScriereImagine field={route.params.field} onVerify={Verifica} onComplete={()=>rezultatCorect()}/>;
+                return <ScriereImagine field={route.params.field} onVerify={Verifica} onComplete={(NoMistakeState)=>rezultatCorect(NoMistakeState)}/>;
         }
 
     }
 
-    const updateUserXp = () =>{
+    const updateUserXp = (NoMistakeState) =>{
       const user_data = User;
+      //console.log(User);
+      if(NoMistakeState){
+        user_data.current_perfect_streak = user_data.current_perfect_streak + 1; 
+        if(user_data.current_perfect_streak>user_data.longest_perfect_streak)
+            user_data.longest_perfect_streak = user_data.current_perfect_streak;
+      }
+      else user_data.current_perfect_streak = 0;
       user_data.xp += game_xp;
       updateUser({...user_data});
       updateUserXP(db,database_names.database_user_table,user_data.id,game_xp);
     }
 
-    const rezultatCorect = () =>{
+    const rezultatCorect = (NoMistakeState) =>{
         if(GameProgressPercentage+ProgressRate==100){
-          updateUserXp();
+          updateUserXp(NoMistakeState);
           navigation.navigate("Felicitari", { title: "Felicitari" })
         }
         else{

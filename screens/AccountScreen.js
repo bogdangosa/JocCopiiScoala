@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StyleSheet, Text, View , Image, ScrollView} from "react-native";
-import { useEffect } from "react";
+import { useEffect ,useState} from "react";
 import AccountCard from "../components/cards/AccountCard";
 import AccountCard2 from "../components/cards/AccountCard2";
 import useSound from "../hooks/useSound";
@@ -14,9 +14,26 @@ import { colors } from "../themes/color";
 import { nextLevelProgressPercentage, xpToLevel } from "../utils/xpToLevel";
 
 const AccountScreen =({route , navigation})=>{
+    const [MistakeLevel,setMistakeLevel] = useState(0);
 
     const User = useMyUserContext();
     const user_avatar = ImageService.GetImage(User.avatar);
+
+    const noMistakeGamesArray=[0,3,5,10,20,50];
+
+    useEffect(()=>{
+        if(User!=undefined)
+            CalculateMistakeAchievementLevel();
+
+    },[User])
+
+
+    const CalculateMistakeAchievementLevel = () =>{
+        let level = 1;
+        while(User.longest_perfect_streak>=noMistakeGamesArray[level])
+            level++;
+        setMistakeLevel(level);
+    }
     
 
 return ( 
@@ -34,7 +51,7 @@ return (
                 <AccountCard image={require("../assets/IconStreak.png")} text={"Zile in serie"} number="5"/>
             </View>
             <View style={styles.cards}>
-                <AccountCard image={require("../assets/IconXp.png")}  text={"XP total"} number="4"/>
+                <AccountCard image={require("../assets/IconXp.png")}  text={"XP total"} number={User.xp}/>
             </View>    
         </View>
         <Text style={styles.Realizari}>Achievements</Text>
@@ -56,7 +73,7 @@ return (
             </View>
             <View style={styles.container3}>
                 <View style={styles.cards2}>
-                    <AccountCard2 image={require("../assets/target.png")} levelnumber="4" title={"Fara greseala"} text={"Raspunde corect la 10 joculete la\nrand, fara nicio greseala."} color="#2FEA63"/>
+                    <AccountCard2 image={require("../assets/target.png")} levelnumber={MistakeLevel} title={"Fara greseala"} text={`Raspunde corect la ${noMistakeGamesArray[MistakeLevel]} joculete la\nrand, fara nicio greseala.`} color="#2FEA63"/>
                 </View> 
             </View>
         </View>

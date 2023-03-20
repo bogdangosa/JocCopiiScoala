@@ -40,6 +40,7 @@ const HomeScreen = ({ navigation }) => {
       title: game.name,
       game: game.game,
       field: game.field,
+      game_xp: 20,
       progress_rate: game.progress_rate,
     });
 

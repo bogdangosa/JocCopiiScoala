@@ -20,6 +20,7 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
   const db = SQLite.openDatabase(database_names.database_name);
   const [IsHintVisible,setIsHintVisible] = useState(false);
   const [Solution,setSolution]=useState(0);
+  const [NoMistake, setNoMistake] = useState(true);
   const playSound = useSound();
 
   useEffect(() => {
@@ -107,12 +108,13 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
     {
       playSound("corect");
       setTimeout(()=>{
-      onComplete();                      ///daca jocul e gata apeleaza onComplete din GameScreen
+      onComplete(NoMistake);                      ///daca jocul e gata apeleaza onComplete din GameScreen
       getCuvant();},300);
     }
     else if(something_selected)
     {
         playSound("wrong");
+        setNoMistake(false);
         setTimeout(()=>ResetCuvant(),300);
     }
   };
