@@ -1,7 +1,7 @@
 export const inital_data = [
-    {name:"LUP",type:"animal", image: "lup.png", description:"Lupul este un animal salbatic care trăiește în pădure. El este carnivor, adică se hrănește cu carne. Este un animal de talie medie, având o greutate de maxim 70 de kg. Lupul trăiește în haită, care este pentru el ca și o familie." },
-    {name:"URS",type:"animal", image: "urs.png", description:"Ursul este un animal salbatic care trăiește în pădure. El este carnivor, adică se hrănește cu carne. Este un animal de talie mare, ajungând până la 300 kg. Îi place să doarmă toată iarna, acest lucru se numește hibernare." },
-    {name:"VULPE",type:"animal", image: "vulpe.png", description:"" },
+    {name:"LUP",type:"animal", image: "lup.png", description:"Lupul este un mamifer, adică naște pui vii, salbatic care trăiește în pădure. El este carnivor, adică se hrănește cu carne. Este un animal de talie medie, având o greutate de maxim 70 de kg. Lupul trăiește în haită, care este pentru el ca și o familie." },
+    {name:"URS",type:"animal", image: "urs.png", description:"Ursul este un mamifer, adică naște pui vii, salbatic care trăiește în pădure. El este carnivor, adică se hrănește cu carne. Este un animal de talie mare, ajungând până la 300 kg. Îi place să doarmă toată iarna, acest lucru se numește hibernare." },
+    {name:"VULPE",type:"animal", image: "vulpe.png", description:"Vulpea este un mamifer, adică naște pui vii. Ea trăiește în pădure \n Ceva dupa" },
     {name:"CAL",type:"animal", image: "cal.png", description:"" },
     {name:"VACĂ",type:"animal", image: "vaca.png", description:"" },
     {name:"CÂINE",type:"animal", image: "caine.png", description:"" },
