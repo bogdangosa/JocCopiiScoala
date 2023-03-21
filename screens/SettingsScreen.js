@@ -30,8 +30,6 @@ const SettingsScreen =({route , navigation})=>{
           );
         }) // end transaction
     }
-    
-
 
     const AddInitialData =()=>{
         createTable(db,database_names.database_words_table,database_names.database_words_parameters);
@@ -45,7 +43,7 @@ const SettingsScreen =({route , navigation})=>{
 
     return ( 
         <View style={styles.SettingsScreen}>
-            <ScrollView>
+            <ScrollView scrollIndicatorInsets={{ right: 1 }}>
         
                 <SimpleButton onPress={()=>AddInitialData()} color={colors.orange}>Adauaga baza</SimpleButton>
                 <SimpleButton onPress={()=>{dropTable(db,database_names.database_words_table),setData([])}} color={colors.green}>Sterge baza</SimpleButton>
