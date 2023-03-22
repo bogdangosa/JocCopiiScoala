@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     imagine:{
       margin:2 * vh,
       width: 85 * vw,
-      height: 40 * vh
+      height: 35 * vh
     },
     TextBar:{
       padding:10,

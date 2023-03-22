@@ -30,7 +30,7 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
     }, [onVerify]);
 
     useEffect (()=>{
-      if(field == "cifra" || field == "litera" || field == "culoare")
+      if(field == "litera" || field == "culoare")
         setSpecialMode(true);
       getVarinte();
     },[]);
@@ -84,8 +84,6 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
       switch(field){
         case "culoare":
           return <View style={[styles.ColorView,{backgroundColor:Variante[Solution].image}]}></View>;
-        case "cifra":
-          return <Text style={styles.NumberText}>{Variante[Solution].image}</Text>
       }
     }
     const speak = async()=>{
@@ -141,7 +139,7 @@ const styles = StyleSheet.create({
   imagine: {
     marginTop: 30,
     marginBottom: 30,
-    height: 35 * vh,
+    height: 30 * vh,
     width:"90%",
     resizeMode:"contain",
   },
