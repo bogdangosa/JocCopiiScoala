@@ -15,10 +15,13 @@ import { updateUserXP } from "../database/database";
 import { useMyUserContext, useMyUserUpdate } from "../contexts/UserContext";
 import * as SQLite from 'expo-sqlite';
 import {database_names} from '../database/database_names.js';
+import { getDimensions } from '../utils/Dimensions';
+const {vh,vw} = getDimensions();
 
 const GameScreen = ({ route, navigation }) => {
   const [Verifica,setVerifica] = useState(0);
   const [GameProgressPercentage,setGameProgressPercentage] = useState(0);
+  const [Timer,setTimer] = useState(0);
   const [ProgressRate,setProgressRate] = useState(20);
   const { title , game_xp } = route.params;
   const User = useMyUserContext();
@@ -30,6 +33,10 @@ const GameScreen = ({ route, navigation }) => {
       navigation.setOptions({ title: title });
       //console.log(route.params.progress_rate);
       setProgressRate(route.params.progress_rate);
+
+      const interval = setInterval(()=>setTimer(timer=>timer+1),1000);
+
+      return () => clearInterval(interval);
     }, []);
 
     const SetareJoc = ()=>{
@@ -49,7 +56,7 @@ const GameScreen = ({ route, navigation }) => {
         }
 
     }
-
+ 
     const updateUserXp = (NoMistakeState) =>{
       const user_data = User;
       //console.log(User);
@@ -58,6 +65,9 @@ const GameScreen = ({ route, navigation }) => {
         if(user_data.current_perfect_streak>user_data.longest_perfect_streak)
             user_data.longest_perfect_streak = user_data.current_perfect_streak;
       }
+      if(user_data.fastest_time==0 || user_data.fastest_time>Timer)
+        user_data.fastest_time = Timer;
+
       else user_data.current_perfect_streak = 0;
       user_data.xp += game_xp;
       updateUser({...user_data});
@@ -92,11 +102,15 @@ const GameScreen = ({ route, navigation }) => {
           Verifica
         </SimpleButton>
       </View>
+      <Text style={styles.TimeCounter}>Time: {Timer}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  GameScreen:{
+    height:"100%",
+  },
   SimpleButtonContainer: {
     width: "100%",
     justifyContent: "center",
@@ -107,7 +121,19 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems:"center",
     marginTop: 20,
+  },
+  TimeCounter:{
+      position:"absolute",
+      left:0,
+      bottom:0,
+      padding:7,
+      color: colors.white,
+      backgroundColor:colors.blue,
+      borderTopRightRadius:10,
+      fontSize:22,
+      marginTop: 50,
   }
 });
+
 
 export default GameScreen;

@@ -15,24 +15,36 @@ import { nextLevelProgressPercentage, xpToLevel } from "../utils/xpToLevel";
 
 const AccountScreen =({route , navigation})=>{
     const [MistakeLevel,setMistakeLevel] = useState(0);
+    const [TimeLevel,setTimeLevel] = useState(0);
 
     const User = useMyUserContext();
     const user_avatar = ImageService.GetImage(User.avatar);
 
     const noMistakeGamesArray=[0,3,5,10,20,50];
+    const timeArray=[240,120,60,30,20,10,5,3];
 
     useEffect(()=>{
-        if(User!=undefined)
+        if(User!=undefined){
             CalculateMistakeAchievementLevel();
+            CalculateTimeAchievementLevel();
+        }
 
     },[User])
 
 
     const CalculateMistakeAchievementLevel = () =>{
         let level = 1;
+
         while(User.longest_perfect_streak>=noMistakeGamesArray[level])
             level++;
         setMistakeLevel(level);
+    }
+
+    const CalculateTimeAchievementLevel = () =>{
+        let level = 1;
+        while(User.fastest_time<timeArray[level] && User.fastest_time!=0)
+            level++;
+        setTimeLevel(level);
     }
     
 
@@ -61,22 +73,22 @@ return (
         <View style={styles.container2}>
             <View style={styles.container3}>
                 <View style={styles.cards2}>
-                <AccountCard2  image={require("../assets/fire.png")} levelnumber="1" title={"In flacari"} text={"Mentine o serie de 7 zile consecutive\ncu minim un joc rezolvat"} color="#FF5151"/>
+                <AccountCard2  image={require("../assets/fire.png")} levelnumber="1" title={"În flăcări"} text={"Menține o serie de 7 zile consecutive\ncu minim un joc rezolvat"} color="#FF5151" percentage={40}/>
                 </View>
             </View>
             <View style={styles.container3}>
                 <View style={styles.cards2}>
-                    <AccountCard2 image={require("../assets/graduate.png")} levelnumber="2" title={"Intelept"} text={"Rezolva corect toate nivelele de la 3\nmini jocuri."} color="#772096"/>
+                    <AccountCard2 image={require("../assets/graduate.png")} levelnumber="2" title={"Înțelept"} text={"Rezolvă corect toate nivelele de la 3\nmini jocuri."} color="#772096" percentage={40}/>
                 </View>
             </View>
             <View style={styles.container3}>
                 <View style={styles.cards2}>
-                    <AccountCard2 image={require("../assets/timer.png")} levelnumber="3" title={"Gandeste rapid"} text={"Rezolva o serie de nivele in sub 2\nsecunde per joc."} color="#EAB62F"/>
+                    <AccountCard2 image={require("../assets/timer.png")} levelnumber={TimeLevel} title={"Gândește rapid"} text={`Rezolvă o serie de nivele în sub ${timeArray[TimeLevel]}\n de secunde per joc.`} color="#EAB62F" percentage={User.fastest_time==0?0:(timeArray[TimeLevel]/User.fastest_time)*100}/>
                 </View>
             </View>
             <View style={styles.container3}>
                 <View style={styles.cards2}>
-                    <AccountCard2 image={require("../assets/target.png")} levelnumber={MistakeLevel} title={"Fara greseala"} text={`Raspunde corect la ${noMistakeGamesArray[MistakeLevel]} joculete la\nrand, fara nicio greseala.`} color="#2FEA63"/>
+                    <AccountCard2 image={require("../assets/target.png")} levelnumber={MistakeLevel} title={"Fără greșeală"} text={`Răspunde corect la ${noMistakeGamesArray[MistakeLevel]} joculețe la\nrand, fără nicio greșeală.`} color="#2FEA63" percentage={(User.longest_perfect_streak/noMistakeGamesArray[MistakeLevel])*100}/>
                 </View> 
             </View>
         </View>
@@ -103,6 +115,7 @@ const styles = StyleSheet.create({
     
     container2:{
         paddingLeft:10,
+        paddingBottom:20,
         width:"100%",
         flexDirection:"column",
         justifyContent:"center",
@@ -160,9 +173,6 @@ const styles = StyleSheet.create({
    containerFaraAvatar:{
     paddingTop:40,
    },
-
-  
-
    });
    
 
