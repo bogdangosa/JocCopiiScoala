@@ -26,7 +26,7 @@ const ScriereImagine = ({field,onVerify,onComplete})=>{
 
 
   useEffect (()=>{
-    if(field == "cifra" || field == "litera" || field == "culoare")
+    if( field == "litera" || field == "culoare")
         setSpecialMode(true);
     getPoza();
   },[]);
@@ -35,8 +35,6 @@ const ScriereImagine = ({field,onVerify,onComplete})=>{
     switch(field){
       case "culoare":
         return <View style={[styles.ColorView,{backgroundColor:GameImage}]}></View>;
-      case "cifra":
-        return <Text style={styles.NumberText}>{GameImage}</Text>
     }
   }
 

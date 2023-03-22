@@ -314,6 +314,50 @@
         name: 'avatar_panda_1',
         image: require("../assets/avatar_panda_1.png"),
       },
+      {
+        name: 'NumberOne.png',
+        image: require("../assets/Cifre/NumberOne.png"),
+      },
+      {
+        name: 'NumberTwo.png',
+        image: require("../assets/Cifre/NumberTwo.png"),
+      },
+      {
+        name: 'NumberThree.png',
+        image: require("../assets/Cifre/NumberThree.png"),
+      },
+      {
+        name: 'NumberFour.png',
+        image: require("../assets/Cifre/NumberFour.png"),
+      },
+      {
+        name: 'NumberFive.png',
+        image: require("../assets/Cifre/NumberFive.png"),
+      },
+      {
+        name: 'NumberSix.png',
+        image: require("../assets/Cifre/NumberSix.png"),
+      },
+      {
+        name: 'NumberSix.png',
+        image: require("../assets/Cifre/NumberSix.png"),
+      },
+      {
+        name: 'NumberSeven.png',
+        image: require("../assets/Cifre/NumberSeven.png"),
+      },
+      {
+        name: 'NumberEight.png',
+        image: require("../assets/Cifre/NumberEight.png"),
+      },
+      {
+        name: 'NumberNine.png',
+        image: require("../assets/Cifre/NumberNine.png"),
+      },
+      {
+        name: 'NumberZero.png',
+        image: require("../assets/Cifre/NumberZero.png"),
+      },
     ];
     static GetImage = (name) => {
       const found = ImageService.images.find(e => e.name === name);
