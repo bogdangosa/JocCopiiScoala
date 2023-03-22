@@ -88,16 +88,16 @@ export const inital_data = [
     {name:"MARO",type:"culoare", image: "#964B00", description:"" },
 
     
-    {name:"UNU",type:"cifra", image: "1", description:"" },
-    {name:"DOI",type:"cifra", image: "2", description:"" },
-    {name:"TREI",type:"cifra", image: "3", description:"" },
-    {name:"PATRU",type:"cifra", image: "4", description:"" },
-    {name:"CINCI",type:"cifra", image: "5", description:"" },
-    {name:"ȘAȘE",type:"cifra", image: "6", description:"" },
-    {name:"ȘAPTE",type:"cifra", image: "7", description:"" },
-    {name:"OPT",type:"cifra", image: "8", description:"" },
-    {name:"NOUĂ",type:"cifra", image: "9", description:"" },
-    {name:"ZECE",type:"cifra", image: "10", description:"" },
+    {name:"UNU",type:"cifra", image: "NumberOne.png", description:"" },
+    {name:"DOI",type:"cifra", image: "NumberTwo.png", description:"" },
+    {name:"TREI",type:"cifra", image: "NumberThree.png", description:"" },
+    {name:"PATRU",type:"cifra", image: "NumberFour.png", description:"" },
+    {name:"CINCI",type:"cifra", image: "NumberFive.png", description:"" },
+    {name:"ȘAȘE",type:"cifra", image: "NumberSix.png", description:"" },
+    {name:"ȘAPTE",type:"cifra", image: "NumberSeven.png", description:"" },
+    {name:"OPT",type:"cifra", image: "NumberEight.png", description:"" },
+    {name:"NOUĂ",type:"cifra", image: "NumberNine.png", description:"" },
+    {name:"ZERO",type:"cifra", image: "NumberZero.png", description:"" },
 
 
 ]
