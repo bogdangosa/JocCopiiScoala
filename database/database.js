@@ -28,6 +28,14 @@ export const addUser = (db,tableName,user_data) =>{
 }
 
 
+export const updateUserAfterGame = (db , tableName ,id , added_xp , fastest_new_time, new_longest_perfect_streak , new_current_perfect_streak)=>{
+    console.log("test"+ added_xp);
+    db.transaction(tx => {
+        tx.executeSql(`UPDATE ${tableName} SET xp = xp + ${added_xp} , fastest_time = ${fastest_new_time} , longest_perfect_streak = ${new_longest_perfect_streak} , current_perfect_streak = ${new_current_perfect_streak} WHERE id = ?`, [id],
+        (txObj, ResultsSet) => console.log('Results ', ResultsSet),
+        (txObj, error) => console.log('Error ', error))
+    })
+}
 
 export const updateUserXP = (db , tableName ,id , added_xp)=>{
     console.log("test"+ added_xp);

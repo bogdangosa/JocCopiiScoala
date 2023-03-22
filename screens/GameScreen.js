@@ -11,7 +11,7 @@ import ProgressBar from "../components/ProgressBar/ProgressBar";
 import SorteazaCategoriiGame from "../games/SorteazaCategoriiGame";
 import ScriereImagine from "../games/ScriereImagine";
 import { KeyboardAvoidingView } from "react-native";
-import { updateUserXP } from "../database/database";
+import { updateUserAfterGame, updateUserXP } from "../database/database";
 import { useMyUserContext, useMyUserUpdate } from "../contexts/UserContext";
 import * as SQLite from 'expo-sqlite';
 import {database_names} from '../database/database_names.js';
@@ -71,7 +71,7 @@ const GameScreen = ({ route, navigation }) => {
       else user_data.current_perfect_streak = 0;
       user_data.xp += game_xp;
       updateUser({...user_data});
-      updateUserXP(db,database_names.database_user_table,user_data.id,game_xp);
+      updateUserAfterGame(db,database_names.database_user_table,user_data.id,game_xp,user_data.fastest_time,user_data.longest_perfect_streak,user_data.current_perfect_streak);
     }
 
     const rezultatCorect = (NoMistakeState) =>{
