@@ -35,7 +35,7 @@ export const inital_data = [
     {name:"MĂGAR",type:"animal", image: "magar.png", description:"" },
     {name:"OAIE",type:"animal", image: "oaie.png", description:"" },
     {name:"RAȚĂ",type:"animal", image: "rata.png", description:"" },
-    {name:"COCOȘ",type:"animal", image: "cocos.png", description:"" },
+    {name:"COCOȘ",type:"animal", image: "cocosul.png", description:"" },
     {name:"IEPURE",type:"animal", image: "iepure.png", description:"" },
     {name:"GHEPARD",type:"animal", image: "ghepard.png", description:"" },
 
@@ -93,7 +93,7 @@ export const inital_data = [
     {name:"TREI",type:"cifra", image: "NumberThree.png", description:"" },
     {name:"PATRU",type:"cifra", image: "NumberFour.png", description:"" },
     {name:"CINCI",type:"cifra", image: "NumberFive.png", description:"" },
-    {name:"ȘAȘE",type:"cifra", image: "NumberSix.png", description:"" },
+    {name:"ȘASE",type:"cifra", image: "NumberSix.png", description:"" },
     {name:"ȘAPTE",type:"cifra", image: "NumberSeven.png", description:"" },
     {name:"OPT",type:"cifra", image: "NumberEight.png", description:"" },
     {name:"NOUĂ",type:"cifra", image: "NumberNine.png", description:"" },

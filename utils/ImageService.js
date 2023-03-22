@@ -145,8 +145,8 @@
         image: require('../assets/animale/rata.png'),
       },
       {
-        name: 'cocos.png',
-        image: require('../assets/animale/cocos.png'),
+        name: 'cocosul.png',
+        image: require('../assets/animale/cocosul.png'),
       },
       {
         name: 'iepure.png',
