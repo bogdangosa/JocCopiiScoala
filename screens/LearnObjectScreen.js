@@ -43,22 +43,6 @@ const LearnObjectScreen = ({ route, navigation }) => {
         <View elevation={5} style={styles.text}>
         <Text style={styles.descriere}>{descriere}</Text>
         </View>
-          <View style={styles.butoane}>
-            <RoundButton icon={require("../assets/arrow_icon_.png")} style={styles.rotate} onPress={() => {
-              navigation.navigate("LearnObject", {
-                name: type_object.name,
-                imagine: type_object.image,
-                descriere: type_object.description,
-              });
-            }}></RoundButton>
-            <RoundButton icon={require("../assets/arrow_icon_.png")} onPress={() => {
-              navigation.navigate("LearnObject", {
-                name: type_object.name,
-                imagine: type_object.image,
-                descriere: type_object.description,
-              });
-            }}></RoundButton>
-          </View>
          
     </View>
   );
@@ -74,11 +58,11 @@ const styles = StyleSheet.create({
       paddingTop: 2 * vh,
   },
   imagine:{
-    marginTop: 1 * vh,
+    marginTop: 2 * vh,
   },
   text: {
-    margin: 1 * vh,
-    marginBottom:20,
+    margin: 2 * vh,
+    marginBottom:10,
     borderRadius:10,
     
     alignItems: "center",
@@ -98,14 +82,6 @@ const styles = StyleSheet.create({
     margin: 3 * vh,
     fontSize: 3 * vh,
     textAlign: 'center',
-  },
-  rotate:{
-    transform:[{rotate: '180deg'}]
-  },
-  butoane:{
-    justifyContent: "space-between",
-    width:"90%",
-    flexDirection:"row",
   },
 
 });
