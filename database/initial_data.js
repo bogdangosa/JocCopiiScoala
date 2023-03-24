@@ -78,14 +78,14 @@ export const inital_data = [
     {name:"TROTINETĂ",type:"vehicul", image: "trotineta.png", description:"" },
     {name:"AVION",type:"vehicul", image: "avion.png", description:"" },
 
-    {name:"ROȘU",type:"culoare", image: "#FF5151", description:"" },
-    {name:"PORTOCALIU",type:"culoare", image: "#EA9F2F", description:"" },
-    {name:"ALBASTRU",type:"culoare", image: "#6C63FF", description:"" },
-    {name:"VERDE",type:"culoare", image: "#2FEA63", description:"" },
-    {name:"GALBEN",type:"culoare", image: "#E8E337", description:"" },
-    {name:"MOV",type:"culoare", image: "#A020F0", description:"" },
-    {name:"ROZ",type:"culoare", image: "#FFC0CB", description:"" },
-    {name:"MARO",type:"culoare", image: "#964B00", description:"" },
+    {name:"ROȘU",type:"culoare", image: "rosu.png", description:"" },
+    {name:"PORTOCALIU",type:"culoare", image: "portocaliu.png", description:"" },
+    {name:"ALBASTRU",type:"culoare", image: "albastru.png", description:"" },
+    {name:"VERDE",type:"culoare", image: "verde.png", description:"" },
+    {name:"GALBEN",type:"culoare", image: "galben.png", description:"" },
+    {name:"MOV",type:"culoare", image: "mov.png", description:"" },
+    {name:"ROZ",type:"culoare", image: "roz.png", description:"" },
+    {name:"MARO",type:"culoare", image: "maro.png", description:"" },
 
     
     {name:"UNU",type:"cifra", image: "NumberOne.png", description:"" },

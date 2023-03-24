@@ -30,8 +30,6 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
     }, [onVerify]);
 
     useEffect (()=>{
-      if(field == "litera" || field == "culoare")
-        setSpecialMode(true);
       getVarinte();
     },[]);
 
@@ -80,12 +78,6 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
       setbutoane(ArrayButoane);
     }
 
-    const setareJocSpecial = () =>{
-      switch(field){
-        case "culoare":
-          return <View style={[styles.ColorView,{backgroundColor:Variante[Solution].image}]}></View>;
-      }
-    }
     const speak = async()=>{
       Speech.speak(`Ce ${field} este`, {language:"ro-Ro",});
     };
@@ -101,11 +93,7 @@ const RecunoastereGame = ({field, onVerify,onComplete}) => {
     <View style={styles.RecunoastereGame} >
       <Text style={styles.text}>Ce {field} este ?</Text>
       <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
-      {SpecialMode?
-        setareJocSpecial()
-      :
       <Image style={styles.imagine} source={GameImage}></Image>
-      }
       <View style={styles.poz_butoane}>
       <SelectableButton button_state={butoane[0]} onPress={()=>setbutoane([true,false,false,false])} more_styles={styles.buton}>{Variante[0].name}</SelectableButton>
       <SelectableButton button_state={butoane[1]} onPress={()=>setbutoane([false,true,false,false])} more_styles={styles.buton}>{Variante[1].name}</SelectableButton>

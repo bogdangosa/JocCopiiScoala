@@ -358,6 +358,38 @@
         name: 'NumberZero.png',
         image: require("../assets/Cifre/NumberZero.png"),
       },
+      {
+        name: 'albastru.png',
+        image: require("../assets/culori/albastru.png"),
+      },
+      {
+        name: 'galben.png',
+        image: require("../assets/culori/galben.png"),
+      },
+      {
+        name: 'mov.png',
+        image: require("../assets/culori/mov.png"),
+      },
+      {
+        name: 'portocaliu.png',
+        image: require("../assets/culori/portocaliu.png"),
+      },
+      {
+        name: 'roz.png',
+        image: require("../assets/culori/roz.png"),
+      },
+      {
+        name: 'verde.png',
+        image: require("../assets/culori/verde.png"),
+      },
+      {
+        name: 'maro.png',
+        image: require("../assets/culori/maro.png"),
+      },
+      {
+        name: 'rosu.png',
+        image: require("../assets/culori/rosu.png"),
+      },
     ];
     static GetImage = (name) => {
       const found = ImageService.images.find(e => e.name === name);
