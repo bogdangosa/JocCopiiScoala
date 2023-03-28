@@ -145,8 +145,8 @@
         image: require('../assets/animale/rata.png'),
       },
       {
-        name: 'cocos.png',
-        image: require('../assets/animale/cocos.png'),
+        name: 'cocosul.png',
+        image: require('../assets/animale/cocosul.png'),
       },
       {
         name: 'iepure.png',
@@ -357,6 +357,38 @@
       {
         name: 'NumberZero.png',
         image: require("../assets/Cifre/NumberZero.png"),
+      },
+      {
+        name: 'albastru.png',
+        image: require("../assets/culori/albastru.png"),
+      },
+      {
+        name: 'galben.png',
+        image: require("../assets/culori/galben.png"),
+      },
+      {
+        name: 'mov.png',
+        image: require("../assets/culori/mov.png"),
+      },
+      {
+        name: 'portocaliu.png',
+        image: require("../assets/culori/portocaliu.png"),
+      },
+      {
+        name: 'roz.png',
+        image: require("../assets/culori/roz.png"),
+      },
+      {
+        name: 'verde.png',
+        image: require("../assets/culori/verde.png"),
+      },
+      {
+        name: 'maro.png',
+        image: require("../assets/culori/maro.png"),
+      },
+      {
+        name: 'rosu.png',
+        image: require("../assets/culori/rosu.png"),
       },
     ];
     static GetImage = (name) => {

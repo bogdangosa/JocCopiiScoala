@@ -26,17 +26,9 @@ const ScriereImagine = ({field,onVerify,onComplete})=>{
 
 
   useEffect (()=>{
-    if( field == "litera" || field == "culoare")
-        setSpecialMode(true);
     getPoza();
   },[]);
 
-  const setareJocSpecial = () =>{
-    switch(field){
-      case "culoare":
-        return <View style={[styles.ColorView,{backgroundColor:GameImage}]}></View>;
-    }
-  }
 
   useEffect(() => {
     Verify();
@@ -105,10 +97,7 @@ const ScriereImagine = ({field,onVerify,onComplete})=>{
             <RoundButton icon={require("../assets/sound_icon.png")} onPress={speak}></RoundButton>
             </View>
             </View>
-              {
-                SpecialMode?setareJocSpecial():
                 <Image resizeMode="contain" style={styles.imagine} source={GameImage}></Image>
-              }
                 <View style={styles.TextBar}>
                   <TextInput
                     style={[styles.searchBar , {color:statusColor}, styles.multilineInput, styles.largeMultilineInput]}
@@ -139,7 +128,7 @@ const styles = StyleSheet.create({
     imagine:{
       margin:2 * vh,
       width: 85 * vw,
-      height: 40 * vh
+      height: 35 * vh
     },
     TextBar:{
       padding:10,

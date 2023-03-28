@@ -12,7 +12,7 @@ const speak =()=>{
     Speech.speak("xvau" ,{language:"ro"});
   };
 
-const AccountCard2 =({image, levelnumber, title, text, color})=>{
+const AccountCard2 =({image, levelnumber, title, text, color, percentage})=>{
    
     return (
         <View style={styles.card}> 
@@ -24,7 +24,7 @@ const AccountCard2 =({image, levelnumber, title, text, color})=>{
             <View>
                 <Text style={styles.titlu}>{title}</Text>
                 <Text style={styles.text}>{text}</Text>
-                <ProgressBar style={styles.progressBar} color={colors.green} percentage={40}/>   
+                <ProgressBar style={styles.progressBar} color={colors.green} percentage={percentage}/>   
                 
             </View>
         </View>
@@ -56,10 +56,12 @@ const styles = StyleSheet.create({
         marginLeft:10,
         marginTop:5,
         fontSize:25,
+        color:colors.black,
         fontWeight:"bold",  
     },
 
     text:{
+        color:colors.gray,
         marginLeft:10,
         fontSize:13,
     },

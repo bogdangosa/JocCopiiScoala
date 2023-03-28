@@ -28,6 +28,7 @@
     "react-native-sound": "^0.11.2",
     "react-native-sqlite-storage": "^6.0.1",
     "react-native-switch": "^1.5.1",
+    "react-native-swiper": "^1.6.0-rc.3",
     "react-native-tts": "^4.1.0"
   },
   "devDependencies": {
