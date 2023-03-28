@@ -40,7 +40,7 @@ const LearnObjectScreen = ({ route, navigation }) => {
         <Text style={styles.titlu}>{name}</Text>
         
         <Image style={styles.imagine} source={ImageService.GetImage(imagine)}></Image>
-        <View elevation={5} style={styles.text}>
+        <View style={styles.text}>
         <Text style={styles.descriere}>{descriere}</Text>
         </View>
          
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     borderRadius:10,
     
     alignItems: "center",
-    shadowColor:"#757575",
+    /*shadowColor:"#757575",
     shadowOffset: {
       width: 0,
       height: 1,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     
-    elevation: 3,
+    elevation: 3,*/
     
   },
   descriere:{
