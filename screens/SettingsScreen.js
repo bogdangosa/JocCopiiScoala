@@ -50,17 +50,6 @@ const SettingsScreen = ({ route, navigation }) => {
   return (
     <View style={styles.SettingsScreen}>
       <ScrollView scrollIndicatorInsets={{ right: 1 }}>
-        <SimpleButton onPress={() => AddInitialData()} color={colors.orange}>
-          Adauaga baza
-        </SimpleButton>
-        <SimpleButton
-          onPress={() => {
-            dropTable(db, database_names.database_words_table), setData([]);
-          }}
-          color={colors.green}
-        >
-          Sterge baza
-        </SimpleButton>
         <SimpleButton
           onPress={() => {
             dropTable(db, database_names.database_user_table);
@@ -70,13 +59,7 @@ const SettingsScreen = ({ route, navigation }) => {
         >
           Sterge useri
         </SimpleButton>
-        {Data?.map((item, index) => {
-          return (
-            <Text key={index}>
-              {item.name + " si " + item.image + " si " + item.description}
-            </Text>
-          );
-        })}
+        
       </ScrollView>
     </View>
   );
