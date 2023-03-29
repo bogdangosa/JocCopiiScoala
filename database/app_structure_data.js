@@ -113,15 +113,6 @@ export const app_structure_data = [
           game_xp:15,
           image: require("../assets/Panda6.png"),
         },
-        {
-          name: "Gaseste ",
-          color: colors.green,
-          game:"GasesteCategoria",
-          field:"animal",
-          progress_rate:20,
-          game_xp:20,
-          image: require("../assets/Panda6.png"),
-        },
       ],
     },
     {

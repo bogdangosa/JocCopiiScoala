@@ -91,7 +91,6 @@ const HomeScreen = ({ navigation }) => {
             />
           );
         })}
-        {User!=undefined?<Text>{User.name+" si "+User.avatar +" si xp:"+User.xp +" si level:"+ xpToLevel(User.xp) }</Text>:<></>}
       </View>
       </ScrollView>
     </View>
