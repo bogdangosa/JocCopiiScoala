@@ -34,7 +34,8 @@ const SelectareVocaleGame = ({ onVerify ,onComplete}) => {
 
   const getCuvant = () =>{
     db.transaction(tx => {
-      tx.executeSql(`SELECT * FROM ${database_names.database_words_table} WHERE LENGTH(name) <= 5 ORDER BY random() LIMIT 1`, null, 
+      tx.executeSql(`SELECT * FROM ${database_names.database_words_table} 
+      WHERE LENGTH(name) <= 5 ORDER BY random() LIMIT 1`, null, 
       (txObj, ResultsSet) => setCuvant(ResultsSet.rows._array[0].name),  ///declar variabila setCuvant care ia valoarea primului element din vectorul care e sortat random 
       (txObj, error) => console.log('Error ', error)
       );

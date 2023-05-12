@@ -6,7 +6,8 @@ import CircleAvatar from "../components/cards/CircleAvatar";
 import InputField from "../components/formElements/InputField";
 import {colors} from "../themes/color";
 import {database_names} from '../database/database_names.js';
-import { addUser, createTable } from "../database/database";
+import { addUser, createTable , addItem } from "../database/database";
+import { inital_data } from "../database/initial_data";
 import * as SQLite from 'expo-sqlite';
 import { useMyUserContext, useMyUserUpdate } from "../contexts/UserContext";
 import { getDimensions } from '../utils/Dimensions';
@@ -27,6 +28,7 @@ const InitialScreen = ({navigation}) => {
 
 
   const CreateUserDatabase = () => {
+    AddInitialData();
     createTable(db,database_names.database_user_table,database_names.database_user_parameters);
     const user_data = {
       name:NameInput,
@@ -52,6 +54,19 @@ const InitialScreen = ({navigation}) => {
     setSliderState(SliderState+1);
     console.log(SliderState);
   }
+
+  const AddInitialData = () => {
+    createTable(
+      db,
+      database_names.database_words_table,
+      database_names.database_words_parameters
+    );
+    inital_data.forEach((item) => {
+      //console.log(item);
+      addItem(db, database_names.database_words_table, item);
+    });
+    //getAllItems(database_names.database_words_table);
+  };
 
 
   const changeAvatar = (direction) =>{

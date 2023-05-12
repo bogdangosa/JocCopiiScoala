@@ -12,7 +12,9 @@ import CircleAvatar from "../components/cards/CircleAvatar";
 import { ImageService } from "../utils/ImageService";
 import { getDimensions } from '../utils/Dimensions';
 const {vh,vw} = getDimensions();
+import { Platform } from 'react-native';
 
+const OsVer = Platform.constants['Release'];
 
 const HomeScreen = ({ navigation }) => {
   const [GamesData, setGameData] = useState([]);
@@ -25,6 +27,7 @@ const HomeScreen = ({ navigation }) => {
     setGameData(app_structure_data);
     //createTable(db,database_names.database_words_table);
     console.log(database_names.database_name);
+    console.log("OsVer: "+ OsVer);
   }, []);
 
   const openGameOfTheDay = () =>{
